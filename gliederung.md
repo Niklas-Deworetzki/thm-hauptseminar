@@ -2,25 +2,26 @@
 # Gliederung für Hauptseminar "Mobile Technologies"
 
 
-## Einleitung
-### Progressive Web Apps als Lösung zwischen Website und installierter Anwendung
-### Sowohl Mobil als auch auf dem Desktop
-### Fokus auf Responsivität und Kompatibilität
+## Einleitung (1-2 Seiten)
+- Progressive Web Apps als Lösung zwischen Website und installierter Anwendung
+- Sowohl Mobil als auch auf dem Desktop
+- Fokus auf Responsivität und Kompatibilität
 
-## Was ist eine "Progressive Web App"?
-### Eigenschaften von PWAs (Pflicht)
-### Empfehlungen beim Erstellen von PWAs (Nice to have)
-### Designmerkmale
+## Was ist eine "Progressive Web App"? (3-6 Seiten)
+### (1-2) Eigenschaften von PWAs (Pflicht)
+### (1-2) Empfehlungen beim Erstellen von PWAs (Nice to have)
+### (1-2) Designmerkmale
 
 ## Technische Voraussetzungen
-### Installationsformat (Web App Manifest)
-### Interaktion mit dem Nutzer (History API, PageSpeed)
-### Interaktion mit der Hardware (Permissions, Device APIs)
-### Service Worker
-### Browserspezifische Voraussetzungen
+### (2) Installationsformat (Web App Manifest)
+### (2-3) Interaktion mit dem Nutzer (History API, PageSpeed)
+### (2-3) Interaktion mit der Hardware (Permissions, Device APIs)
+### (2) Service Worker
+### (3) Browserspezifische Voraussetzungen
 
 ## Fallbeispiele
 
+## Vorteile von PWAs
 ## Entwicklung einer PWA
 ## Probleme bei PWAs
 

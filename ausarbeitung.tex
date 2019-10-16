@@ -1,0 +1,169 @@
+% ----------------------------------------------------------------------------
+%
+% ----------------------------------------------------------------------------
+
+\documentclass[11pt, parskip=half]{scrartcl}       % KOMA-Skript für Artikel
+
+%% Präambel
+\usepackage[english, ngerman]{babel} % deutsche typogr. Regeln + Trenntabelle
+\usepackage[T1]{fontenc}             % interner TeX-Font-Codierung
+\usepackage{lmodern}                 % Font Latin Modern
+\usepackage[utf8]{inputenc}          % Font-Codierung der Eingabedatei
+\usepackage[babel]{csquotes}         % Anführungszeichen
+\usepackage{graphicx}                % Graphiken
+\usepackage{booktabs}                % Tabellen schöner
+\usepackage{amsmath}      % Mathematik
+\usepackage{amssymb}      % Mathematische Symbole
+\usepackage{float}
+\usepackage[pdftex]{hyperref}
+\usepackage{subcaption}
+\usepackage{url}
+\hypersetup{
+  bookmarksopen=true,
+  bookmarksopenlevel=3,
+  colorlinks,
+  citecolor=blue,
+  linkcolor=blue
+}
+\usepackage{scrhack} % unterdrückt Fehlermeldung von listings
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{/home/niklas/Documents/bibfile/bibliographie.bib}
+
+
+%% Nummerierungstiefen
+\setcounter{tocdepth}{3}     % 3 Stufen im Inhaltsverzeichnis
+\setcounter{secnumdepth}{3}  % 3 Stufen in Abschnittnummerierung
+
+\usepackage[nolist]{acronym}
+\begin{acronym}
+\acro{pwa}[PWA]{Progressive Web App}
+\end{acronym}
+
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\R}{\mathbb{R}}
+
+% Code packages
+\usepackage{listingsutf8} % Code mit UTF-8 Support
+\usepackage{color,xcolor} % Farben definierbar als HTML, RGB, ...
+\usepackage{textcomp}
+
+\definecolor{alabasterGray}{HTML}{F7F7F7}
+\definecolor{alabasterBlue}{HTML}{325CC0}
+\definecolor{alabasterGreen}{HTML}{448C27}
+\definecolor{alabasterPink}{HTML}{7A3E9D}
+\definecolor{alabasterRed}{HTML}{AA3731}
+
+\lstset{
+  basewidth={0.5em,0.45em},
+  extendedchars=true,
+  backgroundcolor=\color{alabasterGray}, % background color (color or xcolor needed)
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{alabasterBlue},
+  commentstyle=\color{alabasterRed},
+  rulecolor=\color{black},          % frame color may change if not set (frame on comment, is comment-colored)
+  stringstyle=\color{alabasterGreen},
+  numberstyle=\tiny\color{gray},    %
+  numbers=none,                     % where to put the line-numbers (none, left, right)
+  numbersep=7pt,                    % margin between numbers and code
+  stepnumber=1,                     % every n-th row will be numbered
+  captionpos=b,                     % sets the caption-position to bottom
+  frame=single,                     % adds a frame around the code
+  keepspaces=true,                  % keeps spaces in text
+  showtabs=false,                   % show tabs as special char
+  showspaces=false,                 % show spaces as special char
+  showstringspaces=false,           % show spaces in strings only as special char
+  tabsize=2,                        % tabsize is 2 spaces
+  breakatwhitespace=false,          % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                  % sets automatic line breaking
+}
+\lstset{
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           % https://tex.stackexchange.com/questions/17739/listings-package-how-to-highlight-math-operators
+           {true}{{{\color{alabasterPink}true}}}4
+           {false}{{{\color{alabasterPink}false}}}5
+           {TRUE}{{{\color{alabasterPink}TRUE}}}4
+           {FALSE}{{{\color{alabasterPink}FALSE}}}5
+           {True}{{{\color{alabasterPink}True}}}4
+           {False}{{{\color{alabasterPink}False}}}5
+}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\-\do\\/}
+
+\begin{document}
+
+\titlehead{\includegraphics[width=\textwidth]{src/Logo_THM_CG_FB06.png}}
+
+%% Titelseite
+\subject{Manusskript}
+\title{Progressive Web Apps}
+\subtitle{Kurs \enquote{Hauptseminar -- Mobile Techonologies}}
+\author{Niklas Deworetzki}
+\date{\today}
+\maketitle
+
+\vspace*{1.5cm}
+\section*{\centerline{Zusammenfassung}}
+
+Diese Arbeit befasst sich mit Progressive Web Applications.
+
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+
+https://medium.com/@amberleyjohanna/seriously-though-what-is-a-progressive-web-app-56130600a093
+
+\acp{pwa} 
+Progressive Web Apps werden immer relevanter.
+Ergänzendes Element zwischen herkömmlicher Anwendung und Website.
+Was kann man damit machen? Worum geht's eigentlich?
+
+\section{Was ist eine PWA?}
+
+
+
+\subsection{Definitionskriterien}
+
+\subsection{Häufige Eigenschaften}
+
+\subsection{Designmerkmale}
+
+
+\section{Technische Voraussetzungen}
+
+\subsection{Installationsformat}
+
+\subsection{Datenverwaltung durch Service Worker}
+
+\subsection{Interaktion mit Nutzern}
+
+\subsection{Interaktion mit Hardware}
+
+\subsection{Browserspezifische Voraussetzungen}
+
+
+\section{Vorteile von PWAs}
+
+\section{Kritik an PWAs}
+
+
+\section{Fazit}
+
+Hallo~\cite{test_online}
+
+\newpage
+UUga
+\printbibliography
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
