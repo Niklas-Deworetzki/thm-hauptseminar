@@ -39,6 +39,8 @@
 \acro{pwa}[PWA]{Progressive Web App}
 \end{acronym}
 
+\newcommand\litem[1]{\item{\bfseries#1.\space}}
+
 \newcommand*{\N}{\mathbb{N}}
 \newcommand*{\Z}{\mathbb{Z}}
 \newcommand*{\Q}{\mathbb{Q}}
@@ -126,9 +128,42 @@ Was kann man damit machen? Worum geht's eigentlich?
 
 \section{Was ist eine PWA?}
 
+Im Folgenden wird zunächst versucht, zu klären, was eine \ac{pwa} ist.
+Da es keine offizielle Definition für \acp{pwa} gibt, werden an dieser Stelle verschiedene Meinungen, Definitionen und Empfehlungen zusammengetragen.
+Diese lassen sich dabei in drei Kategorien einteilen:
+
+\begin{enumerate}
+\litem{Grundsätzliche Eigenschaften} Eigenschaften einer \ac{pwa}, welche grundlegende Funktionen ermöglichen.
+\litem{Verbreitete Eigenschaften} Eigenschaften einer \ac{pwa}, welche von verschiedenen Quellen als Voraussetzung genannt werden, aber nicht unbedingt notwendig für das Funktionieren der \ac{pwa} sind.
+\litem{Designempfehlungen} Eigenschaften einer \ac{pwa}, die sich positiv auf das Nutzererlebnis auswirken.
+\end{enumerate}
 
 
-\subsection{Definitionskriterien}
+\subsection{Grundsätzliche Eigenschaften}
+
+Eine der wenigen Eigenschaften einer \ac{pwa}, über die Einigkeit herrscht, ist, dass eine \ac{pwa} installierbar sein muss.
+Dies bedeutet, dass es dem Nutzer möglich sein soll, die \ac{pwa} nach einem Installationsvorgang direkt vom Gerät aus starten zu können.
+Ob dies nun über einen Desktopeintrag oder etwa eine Verknüpfung auf dem Startbildschirm erfolgt, ist abhängig vom Gerät des Benutzers.
+Wichtig ist bloß, dass sich die installierte \ac{pwa} wie eine herkömmlich-installierte native Anwendung verhalten soll.
+
+Dabei ist es natürlich nötig, Unterstützung vom Browser zu erhalten, welcher die \ac{pwa} startet, ausführt und anzeigt.
+Dieser übernimmt auch die Verwaltung der Installation und fügt die entsprechenden Einträge in Menüs oder dem Desktop hinzu.
+Um dem Nutzer ein mit einer herkömmlichen App vergleichbares Erlebnis zu bieten, erhalten \acp{pwa} beim Ausführen auch eine Sonderbehandlung vom Browser.
+In Google-Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
+
+
+Durch den Installationsprozess werden Teile der Anwendung lokal auf dem Gerät gespeichert.
+Die Auswahl und Verwaltung der lokal gespeicherten Inhalte der Anwendung geschieht über sogenannte \enquote{Service Worker}, welche bei der Installation konfiguriert werden.
+Darüber, dass das Speichern von Anwendungsinhalten durch Service Worker für eine \ac{pwa} notwendig ist, sind sich die meisten Quellen einig.
+Jedoch werden verschiedene Gründe für das Speichern angeführt.
+Laut dem Google-Entwickler Pete LePage optimiert das lokale Speichern von Anwendungsteilen den Startvorgang einer \ac{pwa}.
+Durch das Eliminieren von Engpässen bei der Netzwerkgeschwindigkeit könne eine konsistent schnelle Ladezeit sichergestellt werden.\cite{googledev_pwaondesktop}
+Bei Mozilla ist das lokale Speichern von Anwendungsinhalten unter dem Punkt der Netzwerkunabhängigkeit betrachtet.
+Laut Chris David Mills solle so die Anwendung nicht nur bei schlechter Netzwerkverbindung funktionstüchtig bleiben, sondern gar ohne eine Netzwerkverbindung auskommen können\cite{mozilladevs-pwaintroduction}.
+
+Durch die Verwendung von Service Worker ergibt sich eine weitere Eigenschaft aller \acp{pwa}.
+Um Service Worker verwenden zu können, muss eine Website nämlich über % TODO
+
 
 \subsection{Häufige Eigenschaften}
 
@@ -155,10 +190,8 @@ Was kann man damit machen? Worum geht's eigentlich?
 
 \section{Fazit}
 
-Hallo~\cite{test_online}
-
 \newpage
-UUga
+
 \printbibliography
 
 \end{document}
