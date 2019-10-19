@@ -156,28 +156,35 @@ Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in folgende Kateg
 
 \subsection{Grundlegende Eigenschaften}
 
-Eine der wenigen Eigenschaften einer \ac{pwa}, über die Einigkeit herrscht, ist, dass eine \ac{pwa} installierbar sein muss.
-Dies bedeutet, dass es dem Nutzer möglich sein soll, die \ac{pwa} nach einem Installationsvorgang direkt vom Gerät aus starten zu können.
-Ob dies nun über einen Desktopeintrag oder etwa eine Verknüpfung auf dem Startbildschirm erfolgt, ist abhängig vom Gerät des Benutzers.
-Wichtig ist bloß, dass sich die installierte \ac{pwa} wie eine herkömmlich-installierte native Anwendung verhalten soll.
+Die wohl wichtigste Eigenschaft einer \ac{pwa} ist, dass sie installierbar sein muss.
+Wenn ein Nutzer eine Website besucht, welche als \ac{pwa} agiert, so kann dem Nutzer eine Installationsaufforderung gezeigt werden.
+Durch den Installationsvorgang werden teile der Anwendung auf dem lokalen Gerät gespeichert und die \ac{pwa} optisch zu den nativen Anwendung integriert.
+Ob diese Integration nun über das Hinzufügen eines Desktopicons, eine Verknüpfung auf dem Startbildschirm oder auch nur über einen Eintrag in einem Anwendungslauncher erfolgt, ist dabei vom unterliegenden System abhängig.
+Auf einem Android-Gerät wird es beispielsweise sinnvoll sein, die \ac{pwa} als Icon auf dem Startbildschirm anzuzeigen.
+Auf einem Windows-Gerät stattdessen wird dem Nutzer eine Verknüpfung auf dem Desktop lieber sein.
+Da die \ac{pwa} nicht eigenständig entscheiden kann, welches Gerät der Nutzer verwendet und wohl unmöglich die Fähigkeit besitzt, für jedes Gerät die entsprechende Konfiguration durchzuführen, muss der Installationsvorgang durch den Browser unterstützt und verwaltet werden.
 
-Dabei ist es natürlich nötig, Unterstützung vom Browser zu erhalten, welcher die \ac{pwa} startet, ausführt und anzeigt.
-Dieser übernimmt auch die Verwaltung der Installation und fügt die entsprechenden Einträge in Menüs oder dem Desktop hinzu.
-Um dem Nutzer ein mit einer herkömmlichen App vergleichbares Erlebnis zu bieten, erhalten \acp{pwa} beim Ausführen auch eine Sonderbehandlung vom Browser.
+Beim anschließenden Ausführen einer installierten \ac{pwa} ist erneut Unterstützung vom Browser notwendig.
+\acp{pwa} als Webanwendung werden mit Webtechnologien wie HTML und CSS aufgebaut und erhalten ihre Funktionalität durch JavaScript.
+Betriebsysteme bieten jedoch nur eine begrenzte Unterstützung für Programmformate, die nativ ausgeführt werden können.
+Abgesehen von Skriptdateien wie etwa Shell-Scripts für Linux oder Command-Files für Windows, die in einem betriebsystemabhängigen Format geschrieben sein müssen, wird meist nur die Ausführung von Binärformaten unterstützt\cite{fisher_executablelist}.
+Es wird also Hilfe vom Browser benötigt, welcher die installierte \ac{pwa} verwaltet und daher alle benötigten Dateien laden und ausführen kann.
+Zudem ist es dem Browser möglich, für die Ausführung einer \ac{pwa} bestimmte Regeln festzulegen.
 In Google-Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
 
 
-Durch den Installationsprozess werden Teile der Anwendung lokal auf dem Gerät gespeichert.
-Die Auswahl und Verwaltung der lokal gespeicherten Inhalte der Anwendung geschieht über sogenannte \enquote{Service Worker}, welche bei der Installation konfiguriert werden.
-Darüber, dass das Speichern von Anwendungsinhalten durch Service Worker für eine \ac{pwa} notwendig ist, sind sich die meisten Quellen einig.
-Jedoch werden verschiedene Gründe für das Speichern angeführt.
-Laut dem Google-Entwickler Pete LePage optimiert das lokale Speichern von Anwendungsteilen den Startvorgang einer \ac{pwa}.
-Durch das Eliminieren von Engpässen bei der Netzwerkgeschwindigkeit könne eine konsistent schnelle Ladezeit sichergestellt werden.\cite{googledev_pwaondesktop}
-Bei Mozilla ist das lokale Speichern von Anwendungsinhalten unter dem Punkt der Netzwerkunabhängigkeit betrachtet.
-Laut Chris David Mills solle so die Anwendung nicht nur bei schlechter Netzwerkverbindung funktionstüchtig bleiben, sondern gar ohne eine Netzwerkverbindung auskommen können\cite{mozilladevs-pwaintroduction}.
+Durch den Installationsprozess werden nur Teile \ac{pwa} lokal auf dem Gerät gespeichert.
+Der Grund dafür ist, dass es meist nicht genügt, eine Website einfach vollständig zu kopieren, um sie offline verfügbar zu machen.
+Viele Webanwendungen, wie beispielsweise die \ac{pwa} von Twitter\cite{twitter_pwa}, basieren darauf stetig neue Inhalte von einem Server abzufragen.
+Die Verwaltung, welche Inhalte offline verfügbar sein sollen und welche nicht, geschieht über sogenannte \enquote{Service Worker}.
+Dadurch dass jede \ac{pwa} lokale und entfernte Inhalte verwalten muss, ist das vorhandensein von Service Workern, eine weitere Eigenschaft, die jede \ac{pwa} besitzt.
 
-Durch die Verwendung von Service Worker ergibt sich eine weitere Eigenschaft aller \acp{pwa}.
-Um Service Worker verwenden zu können, muss eine Website nämlich über % TODO
+Eine Voraussetzung der Service Worker erzwingt eine weitere Eigenschaft aller \acp{pwa}.
+Service Worker können laut Spezifikation nur auf Seiten ausgeführt werden, die über HTTPS ausgeliefert werden.
+Der Grund dafür ist, dass Service Worker die Fähigkeit besitzen, Anfragen zu filtern, umzuleiten und auszulesen.
+Die verschlüsselte Verbindung bei HTTPS verhindert dabei die Manipulation durch Dritte beim Ausliefern des Service Worker.
+So soll sichergestellt werden, dass Service Worker nicht für das Ausspionieren von Daten genutzt werden\cite{ServiceWorker_explained}.
+
 
 
 \subsection{Häufige Eigenschaften}
