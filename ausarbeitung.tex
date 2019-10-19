@@ -121,38 +121,40 @@ Diese Arbeit befasst sich mit Progressive Web Applications.
 
 https://medium.com/@amberleyjohanna/seriously-though-what-is-a-progressive-web-app-56130600a093
 
-\acp{pwa}
-Progressive Web Apps werden immer relevanter.
+\acp{pwa} werden immer relevanter.
 Ergänzendes Element zwischen herkömmlicher Anwendung und Website.
 Was kann man damit machen? Worum geht's eigentlich?
 
 \section{Was ist eine PWA?}
 
-Im Folgenden wird zunächst versucht, zu klären, was eine \ac{pwa} ist.
-Eine \ac{pwa} ist dabei jedoch keine klar abgegrenzte Technologie, sondern vielmehr eine Webanwendung, welche bestimmte Eigenschaften erfüllt.
+Der Begriff \acl{pwa} beschreibt eine Kategorie von Webanwendungen, welche eine Reihe an Eigenschaften erfüllen, um das Erlebnis einer nativen Anwendung in modernen Browsern zu bieten.
+Geprägt wurde dieser Begriff von Alex Russell, welcher in seinem Blog\cite{russell_pwaescapingtabs} beschreibt, wie durch die Weiterentwicklung und Standardisierung von Browsern und Webtechnologien eine neue Art von Anwendung entstanden ist.
+Diese Kategorie von Anwendungen entspreche dem nächsten Schritt in einer Reihe von Technologien, die versuchen, Entwicklern die Möglichkeit zu geben, mit nur einer plattformübergreifenden Anwendung auf plattformspezifische Ressourcen zuzugreifen.
 
-Der Begriff setzt sich dabei aus \enquote{Progressive} und \enquote{Web App} zusammen.
-\enquote{Web App} bezeichnet die Art der Anwendung.
-\acp{pwa} basieren auf HTML, CSS und JavaScript wie herkömmliche Webanwendungen.
-\enquote{Progressive} steht für \enquote{Progressive Enhancement}, was eine Methodik im Webdesign beschreibt. %TODO: Erläutern
+Diese Kategorie von Webanwendungen ist also eine Art Nachfolger auf Technologien wie \enquote{Universal Windows Platform}-Apps\cite{msdocs_uwp} von Microsoft oder die von W3C standardisierten \enquote{Packaged Web Apps}\cite{w3c_packagedwebapps}, welche auch als \enquote{Widget} bekannt sind.
+Der Begriff \enquote{Progressive} in \acl{pwa} steht für \enquote{Progressive Enhancement} (fortschreitende Verbesserung) und beschreibt ebendiese Vorgehensweise, eine Webanwendung auf möglichst vielen Geräten mit verschiedenen Kapazitäten nutzbar zu machen.
+Die Idee dabei ist es, eine Grundversion der Anwendung zu erstellen, die auf jedem Gerät funktionieren kann.
+Weitere Funktionalität für potentere Geräte werden dann auf diese Grundversion aufgebaut.
 
-Eine \ac{pwa} ist also eine Webanwendung, die für Barrierefreiheit ausgerichtet ist, möglichst auf jedem Gerät verwendet werden kann und zudem noch einige zusätzliche Eigenschaften erfüllt.
-Welche Eigenschaften genau eine \ac{pwa} erfüllen muss, ist jedoch nicht eindeutig geklärt und oft verschwimmen die Beschreibungen von dem, was eine \ac{pwa} können \textit{muss} mit dem, was sich ohnehin als \enquote{Best Practice} etabliert hat.
+Da der Begriff der \ac{pwa} zusammen mit den notwendigen Technologien über einen längeren Zeitraum gewachsen ist, gibt es keine feste Definition für das, was eine \ac{pwa} ausmacht.
+Die Beschreibung einer \ac{pwa} basiert vielmehr auf einer Menge an Eigenschaften, die eine Anwendung innehaben kann.
+Im Folgenden werden daher einige Eigenschaften zusammengetragen und erläutert, die immer wieder für die Beschreibung von \acp{pwa} verwendet werden.
+Ein besonderer Schwerpunkt wird dabei auf die Standpunkte der Google- und Mozilla-Entwickler gelegt, da diese treibende Kraft beim Entwickeln von \acp{pwa} sind und gemeinsam die Fähigkeiten dieser Gruppe von Anwendungen ausbauen.
 
-Im Folgenden werden daher verschiedene Standpunkte zusammengetragen und verglichen.
-Dabei wird der Schwerpunkt besonders auf Definitionen und Empfehlungen gelegt, die von Google oder Mozilla veröffentlicht wurden, da diese Vorreiter dieser Webtechnologie sind.
-Die häufig genannten Eigenschaften lassen sich in die folgenden drei Kategorien einteilen, welche anschließend einzeln erläutert werden.
+\newpage % TODO: Eine Seite mehr an dieser Stelle. Nachher vielleicht anpassen?
+
+Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in folgende Kategorien einteilen, in welcher sie auch erläutert werden.
 
 \begin{enumerate}
-  \litem{Grundsätzliche Eigenschaften} Eigenschaften einer \ac{pwa}, die dem Charakter einer \ac{pwa} entsprechen und ohne die ein Funktionieren der Anwendung nicht möglich wäre.
+  \litem{Grundlegende Eigenschaften} Eigenschaften einer \ac{pwa}, die dem Charakter einer \ac{pwa} entsprechen und ohne die ein Funktionieren der Anwendung nicht möglich wäre.
 
   \litem{Verbreitete Eigenschaften} Eigenschaften einer \ac{pwa}, welche von verschiedenen Quellen genannt werden, aber nicht unbedingt notwendig für das Funktionieren der Anwendung sind.
 
-  \litem{Designempfehlungen} Eigenschaften einer \ac{pwa}, die sich positiv auf das Nutzererlebnis auswirken.
+  \litem{Designmerkmale} Eigenschaften einer \ac{pwa}, die sich positiv auf das Nutzererlebnis auswirken.
 \end{enumerate}
 
 
-\subsection{Grundsätzliche Eigenschaften}
+\subsection{Grundlegende Eigenschaften}
 
 Eine der wenigen Eigenschaften einer \ac{pwa}, über die Einigkeit herrscht, ist, dass eine \ac{pwa} installierbar sein muss.
 Dies bedeutet, dass es dem Nutzer möglich sein soll, die \ac{pwa} nach einem Installationsvorgang direkt vom Gerät aus starten zu können.
