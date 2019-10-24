@@ -38,7 +38,7 @@
 
 x "Site is served over HTTPS"gd
 - "Pages are responsive on tablets & mobile devices"gd
-- "All app URLs load while offline"gd (Service Worker)
+? "All app URLs load while offline"gd (Service Worker)
 - "First Load is fast even on 3G"gd (PRPL Pattern, Page Speed Module, async load)
 - "Page transitions don't feel like they block on the network"gd Geringe Netzwerk-Ladezeiten sind Schlüssel für UX
 - "Each page has a URL"gd
@@ -48,7 +48,7 @@ gd - Google Developers' PWA Checklist
 Osmani
 x Progressive - Work for every user, regardless of browser choice because they’re built with progressive enhancement as a core tenet.
 - Responsive - Fit any form factor, desktop, mobile, tablet, or whatever is next.
-- Connectivity independent - Enhanced with service workers to work offline or on low quality networks.
+x Connectivity independent - Enhanced with service workers to work offline or on low quality networks.
 - App-like - Use the app-shell model to provide app-style navigations and interactions.
 - Fresh - Always up-to-date thanks to the service worker update process.
 - Safe - Served via TLS to prevent snooping and ensure content hasn’t been tampered with.

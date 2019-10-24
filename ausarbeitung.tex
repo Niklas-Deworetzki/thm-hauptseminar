@@ -186,17 +186,42 @@ Der Grund dafür ist, dass Service Worker die Fähigkeit besitzen, Anfragen zu f
 Die verschlüsselte Verbindung bei HTTPS verhindert dabei die Manipulation durch Dritte beim Ausliefern des Service Worker.
 So soll sichergestellt werden, dass Service Worker nicht für das Ausspionieren von Daten genutzt werden\cite{ServiceWorker_explained}.
 
-% TODO: Abschnitt URLs
+% TODO: Bin unzufrieden mit dem Abschnitt.
 Die letzte grundlegende Eigenschaft einer \ac{pwa} ergibt sich aus der Herkunft dieser.
-Wie bei einer herkömmlichen Website geschieht die Auswahl der angezeigten Inhalte über URLs.
-Daraus ergibt sich, dass jeder Teil der Anwendung über eine URL erreichbar sein muss.
+Wie bei einer herkömmlichen Website geschieht die Auswahl der Inhalte, die angezeigt werden sollen, über eine URL.
+Folglich sollte jeder Zustand der \ac{pwa} durch eine URL erzeugbar und erreichbar sein.
+Dadurch ergeben sich viele Vorteile, vor allem in Hinsicht auf die Interaktion mit der \ac{pwa}.
+Ist nämlich der angezeigte Inhalt allein von der URL abhängig, so genügt die URL, um Inhalte zu verbreiten und zu teilen.
+Dadurch wird die Anwendung komplett unabhängig von Gerät oder Nutzer, was dem progressiven Design entspricht.
+Auch die soziale Komponente dieses uneingeschränkten Teilens ist nicht zu unterschätzen.
 
 
 \subsection{Häufige Eigenschaften}
 
+Die im Folgenden genannten Eigenschaften, werden häufig bei \acp{pwa} angetroffen, sind jedoch nicht notwendig für die Funktionalitäten, die eine \ac{pwa} ausmachen.
+Größtenteils entstehen diese Eigenschaften durch Marketing für \acp{pwa}.
 
+Beispielsweise wird von den Google Entwicklern bei einer Erklärung zu \acp{pwa} mit der Aussage geworben, dass 53\% der Nutzer eine Website wieder verlassen, falls sie länger als drei Sekunden lädt.\cite{googledevs_performance}
+Dies suggeriert, dass \acp{pwa} automatisch schnellere Ladezeiten besitzen.
+% TODO: Erklären, warum es wirklich besser ist. (Analysesoftware bereitgestellt, Frameworks)
+% Walton "Real World Performance"
+% Bishop "Are PWA faster?"
+% Faletski "Speed"
+
+% TODO API Nutzung
 
 \subsection{Designmerkmale}
+
+Wie sehr \acp{pwa} an native Anwendungen angelehnt sind, lässt sich häufig in den Designmerkmalen der Anwendungen wiedererkennen.
+
+Das bereits erwähnte Starten der Anwendung in einem eigenen Fenster beispielsweise soll dem Nutzer das Gefühl verleihen, eine native, installierte Anwendung zu starten.
+Zusätzlich gibt es die Möglichkeit, ein Farbschema für die gesamte Anwendung festzulegen.
+Der Effekt eines solchen Farbschemas ist, dass die Steuerungskomponenten des Browsers farblich an die \ac{pwa} angepasst werden können.
+Dadurch wirkt die Anwendung für den Nutzer einheitlich und es wird versteckt, dass die \ac{pwa} eigentlich nur im Browser angezeigt wird und keine eigenständige Anwendung ist.
+Es gibt das gleiche Prinzip bei nativen Anwendungen, die mit Farbschemen die Komponenten des Systems einfärben können, um die gesamte angezeigte Oberfläche einheitlich erscheinen zu lassen.
+
+% TODO: Notifications und Einbindung in native Oberflächen.
+
 
 
 \section{Technische Voraussetzungen}
