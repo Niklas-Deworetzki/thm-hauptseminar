@@ -2,7 +2,8 @@
 %
 % ----------------------------------------------------------------------------
 
-\documentclass[11pt, parskip=half]{scrartcl}       % KOMA-Skript für Artikel
+\documentclass[12pt, parskip=half]{scrartcl}       % KOMA-Skript für Artikel
+\usepackage{setspace}
 
 %% Präambel
 \usepackage[english, ngerman]{babel} % deutsche typogr. Regeln + Trenntabelle
@@ -36,7 +37,8 @@
 
 \usepackage[nolist]{acronym}
 \begin{acronym}
-\acro{pwa}[PWA]{Progressive Web App}
+  \acro{pwa}[PWA]{Progressive Web App}
+  \acro{json}[JSON]{JavaScript Object Notation}
 \end{acronym}
 
 \newcommand\litem[1]{\item{\bfseries#1.\space}}
@@ -106,10 +108,14 @@
 \date{\today}
 \maketitle
 
+\spacing{1.16} % Spacing entspricht Arial 12 - Zeilenabstand 1.3
+
 \vspace*{1.5cm}
 \section*{\centerline{Zusammenfassung}}
 
 Diese Arbeit befasst sich mit Progressive Web Applications.
+
+
 
 
 \newpage
@@ -171,7 +177,7 @@ Betriebsysteme bieten jedoch nur eine begrenzte Unterstützung für Programmform
 Abgesehen von Skriptdateien wie etwa Shell-Scripts für Linux oder Command-Files für Windows, die in einem betriebsystemabhängigen Format geschrieben sein müssen, wird meist nur die Ausführung von Binärformaten unterstützt\cite{fisher_executablelist}.
 Es wird also Hilfe vom Browser benötigt, welcher die installierte \ac{pwa} verwaltet und daher alle benötigten Dateien laden und ausführen kann.
 Zudem ist es dem Browser möglich, für die Ausführung einer \ac{pwa} bestimmte Regeln festzulegen.
-In Google-Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
+In Google Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
 
 
 Durch den Installationsprozess werden nur Teile \ac{pwa} lokal auf dem Gerät gespeichert.
@@ -226,7 +232,58 @@ Es gibt das gleiche Prinzip bei nativen Anwendungen, die mit Farbschemen die Kom
 
 \section{Technische Voraussetzungen}
 
+%TODO Einleitung
+
 \subsection{Installationsformat}
+
+Das Installieren einer \ac{pwa} entspricht Größtenteils dem Setzen eines Lesezeichens bei einer herkömmlichen Website.
+Dem Browser wird mitgeteilt, dass eine Referenz auf diese Website in eine lokale Sammlung aufgenommen werden soll.
+Moderne Browser, wie Google Chrome oder Firefox, können Verknüpfungen für beliebige Websites auf dem Desktop oder im Startmenü erstellen.\cite{mozillasupport_desktopshortcut}\cite{businessinsider_desktopshortcut_chrome}
+Dieses Verhalten entspricht genau dem, was bei einer \ac{pwa} gewünscht ist, welche auch zwischen den nativen Anwendungen auf dem Desktop oder Startbildschirm des Gerätes angezeigt werden sollen.
+
+Bei der Installation einer \ac{pwa} wird lediglich auf diesen Fähigkeiten des Browsers aufgebaut.
+Wie bei einer Verknüpfung für eine herkömmliche Website ist es auch bei einer \ac{pwa} gewünscht, ein Icon zusammen mit einem Namen anzuzeigen.
+Es fehlen jedoch einige Eigenschaften bei einer solchen Verknüpfung, die eine native App besitzen würde.
+Für die Konfiguration dieser Informationen existiert ein normiertes Format, welches mit einer \ac{pwa} ausgeliefert wird.
+In dem sogenannten \textit{Manifest} einer Website werden die Eigenschaften über \ac{json} festgelegt.
+
+Die Einbindung des Manifests geschieht im Header einer \ac{pwa}.
+Dort kann über ein gewöhnliches \texttt{link}\-Tag eine Manifestdatei eingebunden werden.
+
+\begin{figure}[h]
+\begin{lstlisting}[language=HTML]
+                <link rel="manifest" href="/manifest.json">
+\end{lstlisting}
+  \caption{Einbindung einer Manifestdatei}
+  \label{fig:html_linkmanifest}
+\end{figure}
+
+Die Spezifikation der Eigenschaften in der Manifestdatei geschieht über Schlüssel\-Werte\-Paare.
+Das definieren von \enquote{short\_name}, \enquote{name}, \enquote{icons}, \enquote{start\_url} und \enquote{display} ist dabei verpflichtend.
+
+\enquote{short\_name} und \enquote{icons} beschreiben das Aussehen der Verknüpfung.
+In der Manifestdatei sollten mehrere Icons in verschiedenen Auflösungen als Pfad angegeben werden.
+So kann je nach Auflösung des Gerätes das am besten passende Icon vom Browser gewählt werden.
+Der Name wird für den Installationsdialog und als Beschriftung der Verknüpfung verwendet.
+Zusätzlich sollte der verkürzte Name angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist.\cite{chromedevs_manifestname}
+Dies kann bei mobilen Geräten der Fall sein.
+
+Mit dem Schlüssel \enquote{display} wird gesteuert, wie der Browser die \ac{pwa} anzeigt.
+Hier kann als Wert \enquote{fullscreen}, \enquote{standalone} oder \enquote{browser} angegeben werden.
+Bei jedem dieser Werte wird die \ac{pwa} in einem eigenständigen Fenster ausgeführt.
+Die Werte \enquote{fullscreen} oder \enquote{standalone} blenden dabei die Anzeigeelemente des Browsers aus.
+Es wird also keine Navigationsleiste oder URL angezeigt.
+Ist der Wert \enquote{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
+Durch den Wert \enquote{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt.\cite{googledev_manifest}
+
+%TODO start_url: Wo anfangen, wenn Lesezeichen irgendwo
+
+description
+background\_color - Ladescreen
+scope
+theme\_color
+cite: webdev, add manifest
+
 
 \subsection{Datenverwaltung durch Service Worker}
 
@@ -241,10 +298,11 @@ Es gibt das gleiche Prinzip bei nativen Anwendungen, die mit Farbschemen die Kom
 
 \section{Kritik an PWAs}
 
-
 \section{Fazit}
 
 \newpage
+
+\spacing{1}
 
 \printbibliography
 
