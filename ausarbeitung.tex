@@ -16,6 +16,7 @@
 \usepackage{amsmath}      % Mathematik
 \usepackage{amssymb}      % Mathematische Symbole
 \usepackage{float}
+\usepackage{wrapfig}
 \usepackage[pdftex]{hyperref}
 \usepackage{subcaption}
 \usepackage{url}
@@ -29,17 +30,13 @@
 \usepackage{scrhack} % unterdrückt Fehlermeldung von listings
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{/home/niklas/Documents/bibfile/bibliographie.bib}
-
+\addbibresource{src/sources.bib}
 
 %% Nummerierungstiefen
 \setcounter{tocdepth}{3}     % 3 Stufen im Inhaltsverzeichnis
 \setcounter{secnumdepth}{3}  % 3 Stufen in Abschnittnummerierung
 
 \usepackage[nolist]{acronym}
-\begin{acronym}
-  \acro{pwa}[PWA]{Progressive Web App}
-  \acro{json}[JSON]{JavaScript Object Notation}
-\end{acronym}
 
 \newcommand\litem[1]{\item{\bfseries#1.\space}}
 
@@ -254,17 +251,17 @@ Dort kann über ein gewöhnliches \texttt{link}\-Tag eine Manifestdatei eingebun
 \begin{lstlisting}[language=HTML]
                 <link rel="manifest" href="/manifest.json">
 \end{lstlisting}
-  \caption{Einbindung einer Manifestdatei}
-  \label{fig:html_linkmanifest}
+\caption{Einbindung einer Manifestdatei}
+\label{fig:html_linkmanifest}
 \end{figure}
 
 Die Spezifikation der Eigenschaften in der Manifestdatei geschieht über Schlüssel\-Werte\-Paare.
-Das definieren von \enquote{short\_name}, \enquote{name}, \enquote{icons}, \enquote{start\_url} und \enquote{display} ist dabei verpflichtend.
+Das Definieren der Schlüssel \enquote{short\_name}, \enquote{name}, \enquote{icons}, \enquote{start\_url} und \enquote{display} ist dabei verpflichtend.
 
 \enquote{short\_name} und \enquote{icons} beschreiben das Aussehen der Verknüpfung.
-In der Manifestdatei sollten mehrere Icons in verschiedenen Auflösungen als Pfad angegeben werden.
+Der Schlüssel \enquote{icons} ist im plural, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
 So kann je nach Auflösung des Gerätes das am besten passende Icon vom Browser gewählt werden.
-Der Name wird für den Installationsdialog und als Beschriftung der Verknüpfung verwendet.
+Der lange Name \enquote{name} wird für Installationsdialoge und als Beschriftung der Verknüpfung verwendet.
 Zusätzlich sollte der verkürzte Name angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist.\cite{chromedevs_manifestname}
 Dies kann bei mobilen Geräten der Fall sein.
 
@@ -276,16 +273,83 @@ Es wird also keine Navigationsleiste oder URL angezeigt.
 Ist der Wert \enquote{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
 Durch den Wert \enquote{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt.\cite{googledev_manifest}
 
-%TODO start_url: Wo anfangen, wenn Lesezeichen irgendwo
+Der Wert \enquote{start\_url} ist wichtig für das Verhalten einer \ac{pwa}.
+Da eine \ac{pwa} wie ein Lesezeichen an jeder Unterseite der Anwendung installiert werden kann, genügt es nicht, bloß die aktuelle URL abzuspeichern.
+Wenn ein Nutzer beispielsweise gerade sein Profil betrachtet und sich an dieser Stelle entschließt, die \ac{pwa} zu installieren, so würde er bei erneutem Starten der \ac{pwa} immer wieder zu seinem Profil zurückkehren, wenn die Eigenschaften eines herkömmlichen Lesezeichens übernommen werden.
+Es ist aber bei einer Anwendung meistens erwünscht, in ein zentrales Menü (Startmenü) herein zu starten, welches zu Beginn angezeigt wird.
+Die URL für dieses Startmenü wird also an dieser Stelle angegeben.
 
-description
-background\_color - Ladescreen
-scope
-theme\_color
-cite: webdev, add manifest
+Alle weiteren Schlüssel sind optional.
+Sie dienen der Verbesserung des Nutzererlebnis, können aber auch weggelassen werden, wenn ein Einsatz nicht sinnvoll ist.
+
+Der Schlüssel \enquote{description} gibt eine Beschreibung der \ac{pwa}.
+Diese kann zusammen mit der Verknüpfung angezeigt werden.
+Ein anderer optionaler Schlüssel ist \enquote{scope}, mit welchem die Reichweite der \ac{pwa} angegeben werden kann.
+So kann eine \ac{pwa} als Teil in eine existierende Website integriert werden, indem nur eine bestimmte Gruppe an Routen zugewiesen wird.\cite{webdev_addmanifest}
+
+Weitere optionale Schlüssel dienen der Integration in den Browser.
+Über den Schlüssel \enquote{background\_color} lässt sich beispielsweise eine Farbe festlegen, die vom Browser beim Laden der Anwendung angezeigt wird, wenn noch keine Inhalte sichtbar sind.
+So lässt sich ein Farbschema wie bei einer nativen Anwendung imitieren.
+Der Schlüssel \enquote{theme\_color} passt zusätzlich noch die Farbe der Browserkomponenten an, sodass ein einheitliches Farbschema für die \ac{pwa} entsteht.
+
 
 
 \subsection{Datenverwaltung durch Service Worker}
+
+Wie bereits erwähnt, werden bei einer \ac{pwa} Inhalte sowohl von lokalen Quellen als auch über das Netzwerk geladen.
+Da eine \ac{pwa} vor der Installation wie eine herkömmliche Website agiert, ist es nicht möglich, einfach im Quelltext der Anwendung die lokal installierten Inhalte anzugeben.
+Diese sind vor der Installation gar nicht lokal verfügbar, wodurch das Abrufen dann zu einem Fehler führen würde.
+Auch das Ausliefern von zwei Versionen an den Nutzer, die einmal für den \textit{Online Gebrauch} und einmal für den \textit{Offline Gebrauch} gedacht sind, ist nicht möglich, da die Installation durch den Browser durchgeführt wird, welcher die aktuell angezeigte Seite installiert.
+Dadurch würde die Online-Version der Anwendung dauerhaft verwendet werden, was dem Sinn der Installation widerspricht.
+
+\begin{wrapfigure}{r}{0.53\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{src/ServiceWorker-Heise.png}
+  \caption{Service Workers als Proxy\cite{src_serviceworker_heise}}
+  \label{fig:heise_serviceworker}
+\end{wrapfigure}
+
+Folglich ist es also notwendig, einheitlich die Inhalte aus dem Netzwerk abzurufen, da sie dort immer erhältlich sind.
+Werden diese Netzwerkanfragen dann noch lokal abgefangen, kann überprüft werden, ob ein Inhalt bereits lokal erhältlich ist.
+Wenn dies der Fall ist, so ist es möglich, die Anfrage umzuleiten, sodass die lokalen Ressourcen verwendet werden.
+Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Worker} zuständig, dessen Funktionsweise im folgenden näher erläutert wird.
+
+Wie andere Arten der \enquote{Worker} sind Service Worker auch ein JavaScript-Programm, das in einem eigenen Kontext läuft.
+Dieser Kontext ermöglicht die Verwendung mehrerer Threads in JavaScript, da jeder Kontext in einem eigenen Thread laufen kann.
+So ist ein Service Worker im Hintergrund aktiv und kann dort auf Events reagieren.
+Dabei haben Service Worker jedoch keinen direkten Zugriff auf das \ac{dom} der \ac{pwa}.
+
+In dem globalen Kontext der Service Worker befindet sich ein Cache-Objekt, welches den lokalen Speicher der \ac{pwa} repräsentiert.\cite{w3c_serviceworker_nightly}
+Dieser Cache muss zunächst populiert werden, was entweder bei der Installation der \ac{pwa} oder zu späterem Zeitpunkt mit der ersten Anfrage einer Ressource geschehen kann.\cite{ServiceWorker_explained}
+Anschließend kann bei Anfragen von gecachten Inhalten, auf den Cache verwiesen werden.
+
+Das Reagieren auf Anfragen geschieht über ein \enquote{fetch}-Event, auf welches Service Worker reagieren können.
+Für dieses Event kann eine Funktion registriert werden, welche ein Event-Objekt als Parameter akzeptiert.
+Das Event-Objekt enthält alle Informationen über die angeforderte Ressource und kann manipuliert werden, um auszuwählen, von wo die Ressource geladen werden soll.
+Wenn der Cache bereits populiert ist, ist die Auswahl über den Cache trivial.
+
+\begin{figure}[h]
+\begin{lstlisting}[language=java]
+  self.addEventListener('fetch', function(event) {
+    event.respondWith(caches.match(event.request)
+      .then(cachedResponse => cachedResponse || fetch(event.request)))
+  });
+\end{lstlisting}
+\caption{Auswahl von Ressourcen aus dem Cache.\cite{heise_pwa2}}
+\label{fig:js_cache}
+\end{figure}
+
+Wie in Abbildung \ref{fig:js_cache} dargestellt, wird eine anonyme Funktion für das \enquote{fetch}-Event registriert.
+Diese Funktion legt fest, dass auf die Anfrage des \enquote{fetch}-Event eine Antwort aus dem Cache gesucht werden soll.
+Wenn die angeforderte Ressource im Cache vorhanden ist, wird sie als Ergebnis der Anfrage festgelegt.
+Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzurufen.
+
+% TODO Gegenlesen: Ressource vs. Inhalt
+
+Auf diese Art ist es möglich, einen Cache in jede Website einzubinden, ohne etwas an der Struktur dieser zu Ändern.
+
+% TODO Fazit. Der eine Satz ist blöd.
+
 
 \subsection{Interaktion mit Nutzern}
 
@@ -303,6 +367,12 @@ cite: webdev, add manifest
 \newpage
 
 \spacing{1}
+
+\begin{acronym}
+  \acro{pwa}[PWA]{Progressive Web App}
+  \acro{json}[JSON]{JavaScript Object Notation}
+  \acro{dom}[DOM]{Document Object Model}
+\end{acronym}
 
 \printbibliography
 
