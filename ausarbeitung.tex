@@ -346,12 +346,37 @@ Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzu
 
 % TODO Gegenlesen: Ressource vs. Inhalt
 
-Auf diese Art ist es möglich, einen Cache in jede Website einzubinden, ohne etwas an der Struktur dieser zu Ändern.
+Durch Service-Worker ist es also möglich, einen Cache in jede Website einzubinden.
+Da diese im Hintergrund arbeiten und auf bereits vorhandene Technologien aufbauen, ist es nicht einmal nötig, eine bereits vorhandene Website anzupassen, um den Cache zu implementieren.
 
-% TODO Fazit. Der eine Satz ist blöd.
-
+% TODO Einfügen: Nur über HTTPS weil Proxy
 
 \subsection{Interaktion mit Nutzern}
+
+Eine weiteres Merkmal von \acp{pwa}, welches herkömmliche Websites nicht besitzen, ist die Art und Weise, wie mit Nutzern interagiert wird.
+Native Anwendungen können auf Ressourcen des Betriebsystems zugreifen, um mit dem Nutzer zu interagieren selbst wenn die Anwendung nicht aktiv vom Nutzer verwendet wird.
+Weit verbreitet ist beispielsweise das Verwenden von Push-Notifications\cite{businessofapps_pushnotificationstatistics}, um Nachrichten oder Informationen an den Nutzer zu leiten.
+
+\acp{pwa} sind ebenso in der Lage, Push-Notifications zu senden, was sie von herkömmlichen Websites abgrenzt.
+Diese können auch Benachrichtigungen senden, jedoch nur, wenn der Nutzer aktiv eine Seite betrachtet.
+Durch Service-Worker, welche unabhängig eines Seitenaufrufs ausgeführt werden, können \acp{pwa} auch Benachrichtigungen senden, ohne dass die \ac{pwa} geöffnet ist\cite{ejaz_progressive_pushnotifications}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\linewidth]{src/permission-request-chrome.png}
+  \caption{Google Chrome fragt um die Zustimmung des Nutzers.}
+  \label{fig:chrome_permission}
+\end{figure}
+
+Zunächst muss ein Nutzer zustimmen, dass er Benachrichtigungen von einer Website oder \ac{pwa} erhalten will.
+Falls die Zustimmung erteilt wird, wird dies für die entsprechende Website oder \ac{pwa} gespeichert, sodass eine Zustimmung nur ein einziges Mal eingeholt werden muss, so lange der Nutzer nicht im Nachhinein die Berechtigung widerruft.
+
+Auf einer geöffneten Website genügt die Zustimmung des Nutzers, um eine Benachrichtigung anzuzeigen.
+Der beim Seitenaufruf ausgeführte JavaScript-Code kann aktiv eine Benachrichtigung erstellen und anzeigen.
+Eine \ac{pwa}, die nicht ausgeführt wird, kann auf diesen Weg keine Benachrichtigung anzeigen.
+Auch der Service-Worker kann nicht aktiv eine Benachrichtigung erstellen, da dieser nur auf externe Events reagiert.
+
+% TODO Wie läuft das Senden / Empfangen eines Events ab (w3c Push API, Atul Medium)
 
 \subsection{Interaktion mit Hardware}
 
