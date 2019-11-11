@@ -374,14 +374,103 @@ Falls die Zustimmung erteilt wird, wird dies für die entsprechende Website oder
 Auf einer geöffneten Website genügt die Zustimmung des Nutzers, um eine Benachrichtigung anzuzeigen.
 Der beim Seitenaufruf ausgeführte JavaScript-Code kann aktiv eine Benachrichtigung erstellen und anzeigen.
 Eine \ac{pwa}, die nicht ausgeführt wird, kann auf diesen Weg keine Benachrichtigung anzeigen.
-Auch der Service-Worker kann nicht aktiv eine Benachrichtigung erstellen, da dieser nur auf externe Events reagiert.
+Auch der Service-Worker kann nicht aktiv eine Benachrichtigung erstellen, da dieser nur auf externe Events reagieren kann.
 
-% TODO Wie läuft das Senden / Empfangen eines Events ab (w3c Push API, Atul Medium)
+Folglich werden Push-Notifications nicht vom eigenen Gerät erstellt, sondern nur auf diesem angezeigt.
+Für das Empfangen der Benachrichtigungen wird die Push-API\cite{w3c_pushapi} verwendet.
+Über diese API kann sich ein Service-Worker bei dem Push-Client des Browsers registrieren, welcher mit einem Push-Service zusammenarbeitet.
 
-\subsection{Interaktion mit Hardware}
+
+
+Für das senden einer Push-Notification wird nun von einem Backend aus eine Anfrage über das \textit{Web Push Protocol}\cite{ietf_webpush} an den Push-Service gesendet.
+Dieser Verteilt dann die Push-Notification an alle registrierten Clients, die die Benachrichtigung erhalten sollen.
+Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange eingefügt und zugestellt, wenn der Client eine erneute Verbindung aufbaut.\cite{googledev_webpush}
+
+%TODO Übersicht: Backend -= Anfrage =-> Push-Service --> Push-Client -= Event =-> Service-Worker -= API =-> Native Benachrichtigung
+
+Der Client leitet dann die erhaltene Push-Notification als Event an den entsprechenden Service-Worker weiter, welcher so auf die Benachrichtigung reagieren kann.
+So ist es für den Service-Worker nun möglich, eine native Benachrichtigung auf dem Gerät des Nutzers anzuzeigen und das, obwohl die \ac{pwa} des Service-Workers nicht aktiv ist, da dieser unabhängig zur \ac{pwa} ausgeführt wird.
+
+
+\subsection{Interaktion mit Systemressourcen}
+
+Um mit nativen Anwendungen mithalten zu können, benötigen \acp{pwa} auch Zugriff auf die sonst geschützten Systemressourcen.
+Für native Anwendungen ist der Zugriff auf Systemressourcen wie das Dateisystem oder angeschlossene Geräte meist keine große Hürde.
+Falls überhaupt, muss vor Zugriff die Erlaubnis des Nutzers eingeholt werden, wofür native Schnittstellen vorliegen.
+Damit auch Webanwendungen und somit \acp{pwa} auf diese Ressourcen zugreifen können, wird die Unterstützung des Browsers benötigt, welcher als Schnittstelle zwischen Webanwendung und den nativen Ressourcen agiert.
+
+Es ergibt sich dadurch jedoch die Herausforderung, eine einheitliche Schnittstelle zu schaffen, sodass eine Webanwendung unabhängig vom Browser auf Systemressourcen zugreifen kann.
+Darauf folgt, dass für jede Zugriffskomponente ein eigener Standard entwickelt wird, welcher anschließend in den einzelnen Browsern umgesetzt werden muss.
+
+Zum aktuellen Zeitpunkt existieren für nahezu alle Zugriffskomponenten, die ein Smartphone oder PC bietet, ein Standard oder zumindest ein Entwurf für diesen.
+In einer Übersicht von Adam Bar\cite{bar_webcando} werden insgesamt 44 dieser Komponenten gelistet.
+Als Folge dieser großen Vielfalt ist eine ebenso große Vielfalt an Zugriffsformen, die in den Standards festgelegt sind.
+
+\paragraph{Positionsdaten} Positionsdaten werden über ein \textit{Geolocation}-Objekt im Navigator des Browsers angefordert.
+Eine Überprüfung, ob dieses Objekt vorhanden ist, genügt, um Kompatibilität des Browsers festzustellen.
+Beim Anfragen der Positionsdaten wird dann automatisch um Erlaubnis des Nutzers gebeten\cite{w3c_geolocation}.
+
+\paragraph{Benachrichtigungen} Benachrichtigungen können über ein \textit{Notification}-Objekt erstellt werden. Dieses befindet sich im globalen Kontext eines Tabs.
+Bevor eine Benachrichtigung angezeigt werden kann, muss aktiv um Erlaubnis gebeten werden\cite{whatwg_notification}.
+
+\paragraph{Kamera und Mikrophon} Geräte wie Kameras oder Mikrophone liefern einen dauerhaften Strom an Daten.
+Diese Datenströme können über ein \textit{Media Devices}-Objekt im Navigator des Browsers angefordert werden\cite{w3c_mediacapture}.
+
+Neben der großen Vielfalt an standardisierten Zugriffsformen unterscheidet sich auch, wie verbreitet die Implementierung der Standards ist.
+Während der Zugriff auf Mikrophon und Kamera beispielsweise noch bei 95\% der Nutzer unterstützt ist, so ist das Erstellen und Anzeigen nur noch bei 77\% der Nutzer möglich\cite{caniuse}.
+Hinzu kommt, dass die Implementierungen in den verschiedenen Browsern fehlerhaft sind, sodass je nach Browser des Benutzers, Fehler innerhalb der Webanwendung auftauchen können.
+
+Trotz der großen Vielfalt gibt es auch einige Komponenten, auf welche \acp{pwa} keinen Zugriff haben.
+Ein Zugriff auf Telefonie-Funktionen existiert nicht.
+\acp{pwa} können also keine Anrufe starten oder SMS schreiben und empfangen.
+Ebenso bleibt der Zugriff auf spezialisierte Geräte verwehrt, da es keinen einheitliche Form für den Zugriff gibt.
+Zu den Geräten, die nicht angesteuert werden können, zählt beispielsweise die Taschenlampe eines Smartphones.
+
+Allgemein betrachtet ist zu sagen, dass bereits auf viele Systemressourcen zugegriffen werden kann, wodurch \acp{pwa} viele Funktionen nativer Anwendungen übernehmen können.
+Jedoch bleibt zu beachten, dass für den Zugriff auf diese Ressourcen jeweils der Browser auch die entsprechenden Berechtigungen benötigt.
+
+Zu beachten ist jedoch, dass der Browser als Schnittstelle zwischen Webanwendung und System ein eigenes System der Rechteverwaltung implementieren muss, damit nicht jede Webanwendung automatisch auf die selben Ressourcen zugreifen kann, für die dem Browser der Zugriff gestattet ist.
+
+% TODO pwa vs Webanwendung
 
 \subsection{Browserspezifische Voraussetzungen}
 
+Nachdem nun besprochen wurde, welche Voraussetzungen nötig sind, um das Funktionieren einer \ac{pwa} zu gewährleisten, werden nun die Voraussetzungen aufgezählt, die die einzelnen Browser an eine Webanwendung stellen, um diese dem Nutzer als \ac{pwa} vorzustellen.
+
+Hierbei wird ein besonderer Schwerpunkt auf die Browser \textit{Google Chrome}, \textit{Mozilla Firefox} und \textit{Microsoft Edge} gelegt.
+In deren Dokumentation\cite{googledev_pwainstallcriteria,docsmicrosoft_pwainstallcriteria,mozilladev_pwainstallcriteria} existiert ein Abschnitt \enquote{\ac{aths}}, welcher sich mit dem Installationsvorgang einer \ac{pwa} befasst.
+\ac{aths} beschreibt die Installation einer \ac{pwa}, wobei dem Nutzer zunächst ein Installationsdialog gezeigt wird, dessen Bestätigung die \ac{pwa} lokal verfügbar macht und eine Verknüpfung zur jener auf dem Home Screen des Nutzers erstellt.
+
+
+\paragraph{Google Chrome}
+Damit der Google Chrome Browser einen Installationsdialog zum Installieren einer \ac{pwa} anzeigt, ist zunächst einmal die wichtigste Voraussetzung, dass die aktuell betrachtete Webanwendung nicht bereits installiert ist.
+Dadurch soll sichergestellt werden, dass in erster Linie die Notwendigkeit besteht, die \ac{pwa} zu installieren.
+Dazu zählt des Weiteren, dass der Nutzer eine heuristische Erwartung erfüllt, die Anwendung zu installieren.
+Wird aus der Interaktion eines Nutzers mit einer Webanwendung nicht erkenntlich, dass er bereit wäre, diese zu installieren, so wird kein Dialog angezeigt.
+Zu dieser Heuristik äußert sich Google nicht weiter, gibt aber bekannt, dass in einer früheren Version eine \enquote{30 sekündige Interaktion mit der Domain} notwendig gewesen war.
+Ist also erkennbar, dass ein Nutzer Installationsabsichten besitzt, werden die Kriterien der \ac{pwa} geprüft.
+Die \ac{pwa} muss einen Service-Worker registriert haben und über HTTPS an den Nutzer ausgeliefert werden, um für eine Installation in Frage zu kommen.
+Zudem muss eine Manifestdatei bestehen, welche mindestens den Namen der \ac{pwa}, eine Start-URL und Icons in der Größe $192\times192$ sowie $512\times512$ Pixel definiert.
+
+\paragraph{Mozilla Firefox}
+Die Kriterien des Firefox Browsers sind weniger streng als die von Google Chrome.
+Hier wird auch verlangt, dass eine \ac{pwa} über HTTPS an den Nutzer ausgeliefert wird und dass sie eine Manifestdatei enthält.
+Eine bestimmte Interaktion des Nutzers mit der \ac{pwa} wird nicht verlangt.
+Die Manifestdatei muss ähnlich wie bei Google Chrome den Namen der \ac{pwa}, eine Start-URL und passende Icons definieren.
+Zudem wird noch eine Hintergrundfarbe verlangt.
+
+\paragraph{Microsoft Edge}
+Der Edge Browser stellt ähnliche Anforderungen an eine \ac{pwa} wie die bisher besprochen Browser.
+Es wird erwartet, dass die \ac{pwa} über HTTPS an den Nutzer ausgeliefert wird und Service Worker registriert hat.
+Ebenso wird eine Manifestdatei verlangt, jedoch nicht angegeben, welche Felder diese mindestens definieren muss.
+Da der Unterpunkt \enquote{Web app manifest} in der Dokumentation des Edge Browsers auf die von Mozilla verweist, ist anzunehmen, dass die Anforderungen an die Manifestdatei denen der anderen Browser entsprechen.
+
+\paragraph{Weiter Browser}
+Weitere Browser wie Opera\cite{devopera_pwainstallcriteria}, Samsung Internet\cite{samsung_pwainstallcriteria} oder der UC Browser\cite{ucweb_pwainstallcriteria} definieren ähnliche Kriterien für die Installation einer \ac{pwa}.
+Sowohl das Ausliefern einer \ac{pwa} über HTTPS als auch das Vorhandensein von Service Workern zieht sich als roter Faden durch die Kriterien.
+Des Weiteren wird von jedem Browser die Manifestdatei der \ac{pwa} verlangt.
+
+Die Voraussetzungen aller Browser % TODO enthalten kritische Merkmale einer \ac{pwa}
 
 \section{Vorteile von PWAs}
 
@@ -397,6 +486,7 @@ Auch der Service-Worker kann nicht aktiv eine Benachrichtigung erstellen, da die
   \acro{pwa}[PWA]{Progressive Web App}
   \acro{json}[JSON]{JavaScript Object Notation}
   \acro{dom}[DOM]{Document Object Model}
+  \acro{aths}[A2HS]{Add to Home Screen}
 \end{acronym}
 
 \printbibliography
