@@ -61,7 +61,6 @@ x Installable - Allow users to “keep” apps they find most useful on their ho
 - Titelleiste wird erwartet von Nutzern
 - In eigenem Fenster / Fullscreen (gerade auf Desktop)
 
-##### Service Worker        >> Loads while offline
 ##### PRPL Pattern https://developers.google.com/web/fundamentals/performance/prpl-pattern/ >> Faster load?
 ##### Page Speed Insights https://developers.google.com/speed/pagespeed/insights/
 ##### History API https://developer.mozilla.org/en-US/docs/Web/API/History_API >> Macht Sachen im Browser
@@ -74,20 +73,11 @@ x Installable - Allow users to “keep” apps they find most useful on their ho
 - Samsung Internet https://hub.samsunginter.net/docs/ambient-badging/
 - UC Browser https://plus.ucweb.com/docs/pwa/docs-en/zvrh56
 
-# Web App Manifest
-- Splash Screen https://developers.google.com/web/updates/2015/10/splashscreen?hl=en
-- Theme color (App Bar) https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android?hl=en
-- (Verweise auf Design)
 
 # Installation
 - App Install Banners https://developers.google.com/web/updates/2015/03/increasing-engagement-with-app-install-banners-in-chrome-for-android?hl=en
-- 
 
-## Hardwareinteraktion
-- Push API
 
-# Service Worker
-https://jakearchibald.com/2014/offline-cookbook/
 
 ## Fallbeispiel
 https://pokedex.org/
