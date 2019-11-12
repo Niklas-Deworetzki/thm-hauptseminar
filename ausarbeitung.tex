@@ -37,7 +37,6 @@
 \setcounter{secnumdepth}{3}  % 3 Stufen in Abschnittnummerierung
 
 \usepackage[nolist]{acronym}
-
 \newcommand\litem[1]{\item{\bfseries#1.\space}}
 
 \newcommand*{\N}{\mathbb{N}}
@@ -472,11 +471,19 @@ Weitere Browser wie Opera\cite{devopera_pwainstallcriteria}, Samsung Internet\ci
 Sowohl das Ausliefern einer \ac{pwa} über HTTPS als auch das Vorhandensein von Service Workern zieht sich als roter Faden durch die Kriterien.
 Des Weiteren wird von jedem Browser die Manifestdatei der \ac{pwa} verlangt.
 
-Die Voraussetzungen aller Browser % TODO enthalten kritische Merkmale einer \ac{pwa}
+Die Voraussetzungen der verschiedenen Browser sind größtenteils identisch.
+Es ist festzustellen, dass die Voraussetzungen größtenteils das abdecken, was zum installieren einer \ac{pwa} notwendig ist.
+Service Worker sind notwendig, um die \ac{pwa} lokal verfügbar zu machen.
+Ohne HTTPS können Service Worker nicht verwendet werden.
+Dadurch sind die meisten Voraussetzungen der Browser bereits abgedeckt.
+Des Weiteren wird die Manifestdatei vorausgesetzt, welche definiert, wie die \ac{pwa} installiert wird.
+Weitere Voraussetzungen sind nicht nötig, um die Anwendung installieren zu können.
+Die von Google Chrome definierte Voraussetzung, dass ein Nutzer zunächst mit einer Domain interagieren muss, soll lediglich das Nutzererlebnis verbessern.
 
-\section{Vorteile von PWAs}
 
-\section{Kritik an PWAs}
+\section{Vorteile von \acp{pwa}}
+
+\section{Kritik an \acp{pwa}}
 
 \section{Fazit}
 
