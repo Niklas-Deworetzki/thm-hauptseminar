@@ -483,7 +483,47 @@ Die von Google Chrome definierte Voraussetzung, dass ein Nutzer zunächst mit ei
 
 \section{Vorteile von \acp{pwa}}
 
+\acp{pwa} bringen einige Vorteile mit sich.
+Nutzern wird durch \acp{pwa} ein natives Nutzererlebnis für häufig genutzte Webanwendungen geboten.
+Zudem verbrauchen \acp{pwa} zumeist deutlich weniger Speicher als eine native Anwendung, da nur die Manifestdatei, ein Icon und einige lokale Dateien gespeichert werden.
+Gerade für Nutzer von Mobilgeräten ist dies von Vorteil, da solche Geräte wenig Ressourcen bieten, die durch \acp{pwa} weniger belastet werden.
+
+Die größten Vorteile entstehen jedoch aus Sicht der Entwickler und Anbieter einer \ac{pwa}.
+Durch Service Worker und Manifestdateien ist es möglich, eine bereits bestehende Webanwendung ohne großen Extraaufwand zu einer \ac{pwa} zu erweitern.
+Die Entwicklungskosten sind im Vergleich zu einer nativen Anwendung deutlich geringer.
+Zudem bieten \acp{pwa} bessere Möglichkeiten zur Interaktion mit dem Nutzer.
+Aufgrund der URL-basierten Grundlage einer \ac{pwa}, ist es für Nutzer sehr einfach, Inhalte zu teilen, wodurch sich eine \ac{pwa} deutlich schneller als eine native Anwendung verbreiten kann.
+Durch Push-Benachrichtigungen können Nutzer dann zu weiterer Interaktion mit der Anwendung animiert werden.
+Es ist also zu erwarten, dass eine \ac{pwa} mehr Nutzer erhält als eine herkömmliche Webanwendung oder eine native App.
+Ein weiterer Vorteil für Entwickler ist, dass Aktualisierungen sofort bei Nutzung der \ac{pwa} installiert werden können.
+Die Service Worker ermöglichen es, immer die aktuellsten Dateien herunterzuladen, ohne dass der Nutzer manuell eine Aktualisierung durchführen muss.
+So können neue Features leichter durchgesetzt werden und die gezwungene Unterstützung für ältere Versionen entfällt.
+
+Die meisten Vorteile von \acp{pwa} entstehen also für Entwickler und Anbieter, welchen schnellere und günstigere Entwicklung ermöglicht wird.
+Zusammen mit einer höheren Nutzerinteraktion und Motivation kann sich eine \ac{pwa} so durchaus als lukrativ erweisen.
+Für Nutzer bieten \acp{pwa} ein natives Nutzererlebnis und die Möglichkeit, ressourcenschonende Anwendungen zu nutzen.
+
+
 \section{Kritik an \acp{pwa}}
+
+Die größten Kritikpunkte an \acp{pwa} entstehen durch die Kerneigenschaften dieser.
+Als Webanwendungen müssen sie von einem Browser ausgeführt werden, welcher zumeist eine hochkomplexe Anwendung ist.
+Dies ist gerade auf Mobilgeräten ein Problem, welche durch eine Batterie nur begrenzte Spannungsversorgung haben.
+Das Ausführen des Browsers zusammen mit der eigentlichen Anwendung erhöht den Batterieverbrauch, wodurch gerade Nutzer auf schwächeren Geräten davon absehen werden, die \ac{pwa} zu verwenden.
+Ein weiteres Problem ist der Zugriff auf Systemressourcen und Geräte durch den Browser.
+\acp{pwa} können längst nicht alle Aktivitäten ausführen, zu denen native Anwendungen in Stande sind.
+Des weiteren entsteht die Problematik, dass verschiedene Browser verschiedene Schnittstellen für \acp{pwa} bieten.
+Es kann also nicht garantiert werden, dass eine \ac{pwa} für jeden Nutzer funktioniert.
+Gerade bei iOS-Geräte wird dies zu einem Problem, da auf dieser Plattform die Unterstützung für \acp{pwa} erst spät eingeführt wurde.
+
+Ein weiterer Aspekt, der kritisch beachtet werden muss, ist die Sicherheit von \acp{pwa}.
+Im Vergleich zu nativen Anwendungen gibt es nämlich keine einheitliche Instanz, die für den Vertrieb und die Kontrolle der Anwendungen zuständig ist.
+So muss dem Anbieter der \ac{pwa} vertraut werden, dass diese sowohl sicher als auch frei von eventueller Schadsoftware ist.
+Die Möglichkeit, mit einer \ac{pwa} Schadsoftware zu installieren, ist besonders in Hinsicht auf Service Worker bedenklich, welche den Kern einer \ac{pwa} ausmachen.
+Deren Position ermöglicht es, alle von einer Anwendung gestellten Netzwerkanfragen zu unterbinden und umzuleiten.
+
+Die größten Kritikpunkte liegen also im Bereich der Sicherheit, das \acp{pwa} ohne weitere Kontrolle installiert werden können.
+Jedoch ist auch zu bedenken, dass der Funktionsumfang einer \ac{pwa} immer an den Browser eines Nutzers angepasst werden muss, was zur Folge hat, dass manche Nutzer die Webanwendung nur eingeschränkt oder gar überhaupt nicht verwenden können.
 
 \section{Fazit}
 
