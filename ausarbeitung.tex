@@ -345,12 +345,16 @@ Diese Funktion legt fest, dass auf die Anfrage des \enquote{fetch}-Event eine An
 Wenn die angeforderte Ressource im Cache vorhanden ist, wird sie als Ergebnis der Anfrage festgelegt.
 Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzurufen.
 
+Durch die Funktionsweise von Service Workern stellen diese gleichzeitig ein großes Sicherheitsrisiko dar.
+Wenn ein Dritter einen Service Worker zwischen Server und Nutzer manipulieren würde, hätte dieser Zugriff auf alle Netzwerkanfragen, die der Nutzer der \ac{pwa} sendet.
+Um Angriffe eines solchen Mittelmannes zu verhindern, dürfen Service Worker laut Spezifikation nur über HTTPS ausgeliefert werden.
+Dabei wird der Übertragungskanal verschlüsselt, wodurch eine Manipulation des Service Worker durch Dritte nicht möglich ist.
+
 % TODO Gegenlesen: Ressource vs. Inhalt
 
 Durch Service-Worker ist es also möglich, einen Cache in jede Website einzubinden.
 Da diese im Hintergrund arbeiten und auf bereits vorhandene Technologien aufbauen, ist es nicht einmal nötig, eine bereits vorhandene Website anzupassen, um den Cache zu implementieren.
 
-% TODO Einfügen: Nur über HTTPS weil Proxy
 
 \subsection{Interaktion mit Nutzern}
 
