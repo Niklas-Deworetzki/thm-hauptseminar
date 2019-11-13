@@ -325,17 +325,17 @@ Diese sind vor der Installation gar nicht lokal verfügbar, wodurch das Abrufen 
 Auch das Ausliefern von zwei Versionen an den Nutzer, die einmal für den \textit{Online Gebrauch} und einmal für den \textit{Offline Gebrauch} gedacht sind, ist nicht möglich, da die Installation durch den Browser durchgeführt wird, welcher die aktuell angezeigte Seite installiert.
 Dadurch würde die Online-Version der Anwendung dauerhaft verwendet werden, was dem Sinn der Installation widerspricht.
 
-\begin{wrapfigure}{r}{0.53\textwidth}
-  \centering
-  \includegraphics[width=1\linewidth]{src/ServiceWorker-Heise.png}
-  \caption{Service Workers als Proxy\cite{src_serviceworker_heise}}
-  \label{fig:heise_serviceworker}
-\end{wrapfigure}
-
 Folglich ist es also notwendig, einheitlich die Inhalte aus dem Netzwerk abzurufen, da sie dort immer erhältlich sind.
 Werden diese Netzwerkanfragen dann noch lokal abgefangen, kann überprüft werden, ob ein Inhalt bereits lokal erhältlich ist.
 Wenn dies der Fall ist, so ist es möglich, die Anfrage umzuleiten, sodass die lokalen Ressourcen verwendet werden.
 Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Worker} zuständig, dessen Funktionsweise im folgenden näher erläutert wird.
+
+\begin{wrapfigure}{r}{0.53\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{src/ServiceWorker-Heise.png}
+  \caption{Service Worker als Proxy\cite{src_serviceworker_heise}}
+  \label{fig:heise_serviceworker}
+\end{wrapfigure}
 
 Wie andere Arten der \enquote{Worker} sind Service Worker auch ein JavaScript-Programm, das in einem eigenen Kontext läuft.
 Dieser Kontext ermöglicht die Verwendung mehrerer Threads in JavaScript, da jeder Kontext in einem eigenen Thread laufen kann.
@@ -388,13 +388,6 @@ Weit verbreitet ist beispielsweise das Verwenden von Push-Notifications\cite{bus
 Diese können auch Benachrichtigungen senden, jedoch nur, wenn der Nutzer aktiv eine Seite betrachtet.
 Durch Service-Worker, welche unabhängig eines Seitenaufrufs ausgeführt werden, können \acp{pwa} auch Benachrichtigungen senden, ohne dass die \ac{pwa} geöffnet ist\cite{ejaz_progressive_pushnotifications}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.4\linewidth]{src/permission-request-chrome.png}
-  \caption{Google Chrome fragt um die Zustimmung des Nutzers.}
-  \label{fig:chrome_permission}
-\end{figure}
-
 Zunächst muss ein Nutzer zustimmen, dass er Benachrichtigungen von einer Website oder \ac{pwa} erhalten will.
 Falls die Zustimmung erteilt wird, wird dies für die entsprechende Website oder \ac{pwa} gespeichert, sodass eine Zustimmung nur ein einziges Mal eingeholt werden muss, so lange der Nutzer nicht im Nachhinein die Berechtigung widerruft.
 
@@ -407,15 +400,13 @@ Folglich werden Push-Notifications nicht vom eigenen Gerät erstellt, sondern nu
 Für das Empfangen der Benachrichtigungen wird die Push-API\cite{w3c_pushapi} verwendet.
 Über diese API kann sich ein Service-Worker bei dem Push-Client des Browsers registrieren, welcher mit einem Push-Service zusammenarbeitet.
 
-
-
 Für das Senden einer Push-Notification wird nun von einem Backend aus eine Anfrage über das \textit{Web Push Protocol}\cite{ietf_webpush} an den Push-Service gesendet.
 Dieser Verteilt dann die Push-Notification an alle registrierten Clients, die die Benachrichtigung erhalten sollen.
 Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange eingefügt und zugestellt, wenn der Client eine erneute Verbindung aufbaut\cite{googledev_webpush}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{src/Push-API.png}
+  \includegraphics[width=0.7\textwidth]{src/Push-API.png}
   \caption{Ablauf beim Senden einer Push-Notification}
   \label{fig:push_api}
 \end{figure}
@@ -512,8 +503,10 @@ Des Weiteren wird die Manifestdatei vorausgesetzt, welche definiert, wie die \ac
 Weitere Voraussetzungen sind nicht nötig, um die Anwendung installieren zu können.
 Die von Google Chrome definierte Voraussetzung, dass ein Nutzer zunächst mit einer Domain interagieren muss, soll lediglich das Nutzererlebnis verbessern.
 
+\newpage
 
 \section{Vorteile von \acp{pwa}}
+\label{sec:vorteile}
 
 \acp{pwa} bringen einige Vorteile mit sich.
 Nutzern wird durch \acp{pwa} ein natives Nutzererlebnis für häufig genutzte Webanwendungen geboten.
@@ -536,7 +529,10 @@ Zusammen mit einer höheren Nutzerinteraktion und Motivation kann sich eine \ac{
 Für Nutzer bieten \acp{pwa} ein natives Nutzererlebnis und die Möglichkeit, ressourcenschonende Anwendungen zu nutzen.
 
 
+\newpage
+
 \section{Kritik an \acp{pwa}}
+\label{sec:nachteile}
 
 Die größten Kritikpunkte an \acp{pwa} entstehen durch die Kerneigenschaften dieser.
 Als Webanwendungen müssen sie von einem Browser ausgeführt werden, welcher zumeist eine hochkomplexe Anwendung ist.
