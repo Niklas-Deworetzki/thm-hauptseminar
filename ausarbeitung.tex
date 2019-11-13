@@ -204,29 +204,31 @@ Der Grund dafür ist, dass Service Worker die Fähigkeit besitzen, Anfragen zu f
 Die verschlüsselte Verbindung bei HTTPS verhindert dabei die Manipulation durch Dritte beim Ausliefern des Service Worker.
 So soll sichergestellt werden, dass Service Worker nicht für das Ausspionieren von Daten genutzt werden\cite{ServiceWorker_explained}.
 
-% TODO: Bin unzufrieden mit dem Abschnitt.
-Die letzte grundlegende Eigenschaft einer \ac{pwa} ergibt sich aus der Herkunft dieser.
-Wie bei einer herkömmlichen Website geschieht die Auswahl der Inhalte, die angezeigt werden sollen, über eine URL.
-Folglich sollte jeder Zustand der \ac{pwa} durch eine URL erzeugbar und erreichbar sein.
-Dadurch ergeben sich viele Vorteile, vor allem in Hinsicht auf die Interaktion mit der \ac{pwa}.
-Ist nämlich der angezeigte Inhalt allein von der URL abhängig, so genügt die URL, um Inhalte zu verbreiten und zu teilen.
-Dadurch wird die Anwendung komplett unabhängig von Gerät oder Nutzer, was dem progressiven Design entspricht.
-Auch die soziale Komponente dieses uneingeschränkten Teilens ist nicht zu unterschätzen.
+Letztlich ist das Vorhandensein einer Manifestdatei als Eigenschaft aller \acp{pwa} zu nennen.
+Die Manifestdatei listet die Eigenschaften einer \ac{pwa} auf und ist somit auch bei jeder aufzufinden.
+
 
 
 \subsection{Häufige Eigenschaften}
 
-Die im Folgenden genannten Eigenschaften, werden häufig bei \acp{pwa} angetroffen, sind jedoch nicht notwendig für die Funktionalitäten, die eine \ac{pwa} ausmachen.
-Größtenteils entstehen diese Eigenschaften durch Marketing für \acp{pwa}.
+Die im Folgenden genannten Eigenschaften, werden häufig bei \acp{pwa} angetroffen, müssen jedoch nicht notwendigerweise umgesetzt werden.
+Größtenteils entstehen diese Eigenschaften durch die für \acp{pwa} verwendeten Bibliotheken.
 
-Beispielsweise wird von den Google Entwicklern bei einer Erklärung zu \acp{pwa} mit der Aussage geworben, dass 53\% der Nutzer eine Website wieder verlassen, falls sie länger als drei Sekunden lädt\cite{googledevs_performance}.
-Dies suggeriert, dass \acp{pwa} automatisch schnellere Ladezeiten besitzen.
-% TODO: Erklären, warum es wirklich besser ist. (Analysesoftware bereitgestellt, Frameworks)
-% Walton "Real World Performance"
-% Bishop "Are PWA faster?"
-% Faletski "Speed"
+\acp{pwa} besitzen die Fähigkeit, viele Aufgaben von nativen Apps zu übernehmen.
+Grund dafür ist, dass der Browser als Laufzeitumgebung den Zugriff auf viele Systemressourcen ermöglicht.
+Sie können auf die Kamera eines Gerätes zugreifen, Audio- und Videoaufnahmen machen oder Positionsdaten einsehen.
+Das Vorhandensein dieses Zugriffs ermutigt natürlich, dass die entsprechenden Ressourcen auch von einer \ac{pwa} genutzt werden.
 
-% TODO API Nutzung
+Da Teile einer \ac{pwa} lokal gespeichert sind, können schnellere Ladezeiten erreicht werden.
+Gerade bei einer schlechten Netzwerkverbindung wird dies deutlich.
+Zudem wird von den Google Entwicklern zusammen mit dem Entwicklungs-Framework für \acp{pwa} das Tool \enquote{Pagespeed Insights}\footnote{https://developers.google.com/speed/pagespeed/insights/} angeboten, welches eine Analyse der Ladezeiten vereinfacht und Vorschläge zur Optimierung gibt.
+
+Eine weitere Eigenschaft, die bei vielen \acp{pwa} auftritt, ist dass es einfacher ist, Inhalte zu teilen.
+Da eine \ac{pwa} auf einer herkömmlichen Webanwendung basiert, ist in der Regel jeder angezeigte Inhalt über eine URL erreichbar.
+Dies macht ein Teilen der Inhalte sehr einfach, da lediglich die URL kopiert werden muss.
+Ist nämlich der angezeigte Inhalt allein von der URL abhängig, so genügt die URL, um Inhalte zu verbreiten und zu teilen.
+Dadurch wird die Anwendung komplett unabhängig von Gerät oder Nutzer, was dem progressiven Design entspricht.
+
 
 \subsection{Designmerkmale}
 
@@ -238,11 +240,14 @@ Der Effekt eines solchen Farbschemas ist, dass die Steuerungskomponenten des Bro
 Dadurch wirkt die Anwendung für den Nutzer einheitlich und es wird versteckt, dass die \ac{pwa} eigentlich nur im Browser angezeigt wird und keine eigenständige Anwendung ist.
 Es gibt das gleiche Prinzip bei nativen Anwendungen, die mit Farbschemen die Komponenten des Systems einfärben können, um die gesamte angezeigte Oberfläche einheitlich erscheinen zu lassen.
 
-% TODO: Notifications und Einbindung in native Oberflächen.
-
+Ebenso erwähnt wurde bereits, dass der Browser als Laufzeitumgebung der \ac{pwa} einen Zugriff auf Systemressourcen zulässt.
+Dies beinhaltet auch das Senden und Anzeigen von Benachrichtigungen von einer \ac{pwa}.
+Dabei ist nicht nur das Darstellen von Benachrichtigungen auf einer gerade angezeigten Seitemöglich, sondern auch Push-Notifications wie von einer nativen App können erstellt werden.
+Zusätzlich mit den Einträgen einer installierten \ac{pwa} auf dem Startbildschirm des Nutzers, integrieren sich \acp{pwa} so nahezu nahtlos in die Darstellung nativer Apps.
 
 
 \section{Technische Voraussetzungen}
+\label{sec:voraussetzung}
 
 Im folgenden Abschnitt werden die technischen Voraussetzungen besprochen, die im Zusammenhang mit \acp{pwa} auftreten.
 Zunächst wird behandelt, welche Voraussetzungen nötig sind, um eine \ac{pwa} zu installieren und Daten lokal verfügbar zu machen.
