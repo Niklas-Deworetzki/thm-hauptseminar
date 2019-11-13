@@ -210,7 +210,7 @@ Auch die soziale Komponente dieses uneingeschränkten Teilens ist nicht zu unter
 Die im Folgenden genannten Eigenschaften, werden häufig bei \acp{pwa} angetroffen, sind jedoch nicht notwendig für die Funktionalitäten, die eine \ac{pwa} ausmachen.
 Größtenteils entstehen diese Eigenschaften durch Marketing für \acp{pwa}.
 
-Beispielsweise wird von den Google Entwicklern bei einer Erklärung zu \acp{pwa} mit der Aussage geworben, dass 53\% der Nutzer eine Website wieder verlassen, falls sie länger als drei Sekunden lädt.\cite{googledevs_performance}
+Beispielsweise wird von den Google Entwicklern bei einer Erklärung zu \acp{pwa} mit der Aussage geworben, dass 53\% der Nutzer eine Website wieder verlassen, falls sie länger als drei Sekunden lädt\cite{googledevs_performance}.
 Dies suggeriert, dass \acp{pwa} automatisch schnellere Ladezeiten besitzen.
 % TODO: Erklären, warum es wirklich besser ist. (Analysesoftware bereitgestellt, Frameworks)
 % Walton "Real World Performance"
@@ -271,7 +271,7 @@ Das Definieren der Schlüssel \enquote{short\_name}, \enquote{name}, \enquote{ic
 Der Schlüssel \enquote{icons} ist im plural, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
 So kann je nach Auflösung des Gerätes das am besten passende Icon vom Browser gewählt werden.
 Der lange Name \enquote{name} wird für Installationsdialoge und als Beschriftung der Verknüpfung verwendet.
-Zusätzlich sollte der verkürzte Name angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist.\cite{chromedevs_manifestname}
+Zusätzlich sollte der verkürzte Name angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist\cite{chromedevs_manifestname}.
 Dies kann bei mobilen Geräten der Fall sein.
 
 Mit dem Schlüssel \enquote{display} wird gesteuert, wie der Browser die \ac{pwa} anzeigt.
@@ -280,7 +280,7 @@ Bei jedem dieser Werte wird die \ac{pwa} in einem eigenständigen Fenster ausgef
 Die Werte \enquote{fullscreen} oder \enquote{standalone} blenden dabei die Anzeigeelemente des Browsers aus.
 Es wird also keine Navigationsleiste oder URL angezeigt.
 Ist der Wert \enquote{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
-Durch den Wert \enquote{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt.\cite{googledev_manifest}
+Durch den Wert \enquote{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt\cite{googledev_manifest}.
 
 Der Wert \enquote{start\_url} ist wichtig für das Verhalten einer \ac{pwa}.
 Da eine \ac{pwa} wie ein Lesezeichen an jeder Unterseite der Anwendung installiert werden kann, genügt es nicht, bloß die aktuelle URL abzuspeichern.
@@ -294,7 +294,7 @@ Sie dienen der Verbesserung des Nutzererlebnis, können aber auch weggelassen we
 Der Schlüssel \enquote{description} gibt eine Beschreibung der \ac{pwa}.
 Diese kann zusammen mit der Verknüpfung angezeigt werden.
 Ein anderer optionaler Schlüssel ist \enquote{scope}, mit welchem die Reichweite der \ac{pwa} angegeben werden kann.
-So kann eine \ac{pwa} als Teil in eine existierende Website integriert werden, indem nur eine bestimmte Gruppe an Routen zugewiesen wird.\cite{webdev_addmanifest}
+So kann eine \ac{pwa} als Teil in eine existierende Website integriert werden, indem nur eine bestimmte Gruppe an Routen zugewiesen wird\cite{webdev_addmanifest}.
 
 Weitere optionale Schlüssel dienen der Integration in den Browser.
 Über den Schlüssel \enquote{background\_color} lässt sich beispielsweise eine Farbe festlegen, die vom Browser beim Laden der Anwendung angezeigt wird, wenn noch keine Inhalte sichtbar sind.
@@ -328,8 +328,8 @@ Dieser Kontext ermöglicht die Verwendung mehrerer Threads in JavaScript, da jed
 So ist ein Service Worker im Hintergrund aktiv und kann dort auf Events reagieren.
 Dabei haben Service Worker jedoch keinen direkten Zugriff auf das \ac{dom} der \ac{pwa}.
 
-In dem globalen Kontext der Service Worker befindet sich ein Cache-Objekt, welches den lokalen Speicher der \ac{pwa} repräsentiert.\cite{w3c_serviceworker_nightly}
-Dieser Cache muss zunächst populiert werden, was entweder bei der Installation der \ac{pwa} oder zu späterem Zeitpunkt mit der ersten Anfrage einer Ressource geschehen kann.\cite{ServiceWorker_explained}
+In dem globalen Kontext der Service Worker befindet sich ein Cache-Objekt, welches den lokalen Speicher der \ac{pwa} repräsentiert\cite{w3c_serviceworker_nightly}.
+Dieser Cache muss zunächst populiert werden, was entweder bei der Installation der \ac{pwa} oder zu späterem Zeitpunkt mit der ersten Anfrage einer Ressource geschehen kann\cite{ServiceWorker_explained}.
 Anschließend kann bei Anfragen von gecachten Inhalten, auf den Cache verwiesen werden.
 
 Das Reagieren auf Anfragen geschieht über ein \enquote{fetch}-Event, auf welches Service Worker reagieren können.
