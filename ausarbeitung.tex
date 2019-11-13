@@ -395,11 +395,17 @@ Für das Empfangen der Benachrichtigungen wird die Push-API\cite{w3c_pushapi} ve
 
 
 
-Für das senden einer Push-Notification wird nun von einem Backend aus eine Anfrage über das \textit{Web Push Protocol}\cite{ietf_webpush} an den Push-Service gesendet.
+Für das Senden einer Push-Notification wird nun von einem Backend aus eine Anfrage über das \textit{Web Push Protocol}\cite{ietf_webpush} an den Push-Service gesendet.
 Dieser Verteilt dann die Push-Notification an alle registrierten Clients, die die Benachrichtigung erhalten sollen.
-Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange eingefügt und zugestellt, wenn der Client eine erneute Verbindung aufbaut.\cite{googledev_webpush}
+Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange eingefügt und zugestellt, wenn der Client eine erneute Verbindung aufbaut\cite{googledev_webpush}.
 
-%TODO Übersicht: Backend -= Anfrage =-> Push-Service --> Push-Client -= Event =-> Service-Worker -= API =-> Native Benachrichtigung
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{src/Push-API.png}
+  \caption{Ablauf beim Senden einer Push-Notification}
+  \label{fig:push_api}
+\end{figure}
+
 
 Der Client leitet dann die erhaltene Push-Notification als Event an den entsprechenden Service-Worker weiter, welcher so auf die Benachrichtigung reagieren kann.
 So ist es für den Service-Worker nun möglich, eine native Benachrichtigung auf dem Gerät des Nutzers anzuzeigen und das, obwohl die \ac{pwa} des Service-Workers nicht aktiv ist, da dieser unabhängig zur \ac{pwa} ausgeführt wird.
