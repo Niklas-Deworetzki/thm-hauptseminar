@@ -28,7 +28,7 @@
   linkcolor=blue
 }
 \usepackage{scrhack} % unterdrückt Fehlermeldung von listings
-\usepackage[backend=bibtex]{biblatex}
+\usepackage[backend=bibtex,sorting=none]{biblatex}
 \addbibresource{/home/niklas/Documents/bibfile/bibliographie.bib}
 \addbibresource{src/sources.bib}
 
@@ -126,7 +126,7 @@
 Diese Arbeit befasst sich mit dem Begriff der \ac{pwa}, einer neuen Technologie, welche die Lücke zwischen herkömmlichen Webanwendungen und nativen Anwendungen füllen soll.
 Worum es sich dabei handelt, wie die Technologie der \acp{pwa} umgesetzt ist und welche Konsequenzen sich daraus ergeben, wird im Folgenden besprochen.
 
-Zunächst wird in Sektion \ref{sec:wasistpwa} erläutert, wie sich eine \ac{pwa} von einer herkömmlichen Webanwendung oder einer nativen Anwendung abgrenzt.
+Zunächst wird in Sektion~\ref{sec:wasistpwa} erläutert, wie sich eine \ac{pwa} von einer herkömmlichen Webanwendung oder einer nativen Anwendung abgrenzt.
 Als \textit{herkömmliche Webanwendung} wird dabei eine Webseite oder Anwendung bezeichnet, die als Teil einer Website eine Funktionalität bereitstellt und auf HTML sowie CSS und JavaScript basiert.
 Wichtig ist dabei, dass herkömmliche Webanwendungen nur online durch den Browser erreichbar sind.
 Im Vergleich dazu sind \textit{native Anwendungen} eine Kategorie von Anwendungen, die direkt vom Betriebsystem eines Gerätes ausgeführt werden und deren Ressourcen lokal vorliegen.
@@ -134,51 +134,51 @@ Hierbei handelt es sich häufig um Anwendungen, die in systemnahen Programmiersp
 Auf Android-Systemen kommen auch Java oder seit Neuerem Kotlin zum Einsatz.
 Im Folgenden werden native Anwendungen auch als Apps bezeichnet, was zum einen dem Trend folgt, dass als Apps nicht mehr nur Applikationen auf Mobilgeräten sondern generell ausführbare Programme bezeichnet werden und andererseits zur deutlicheren namentlichen Unterscheidung zwischen Webanwendung und nativer Anwendung dient.
 
-Nachdem die Eigenschaften und Abgrenzungen einer \ac{pwa} besprochen wurden, wird in Sektion \ref{sec:voraussetzung} erläutert, welche Voraussetzungen im Zusammenhang mit einer \ac{pwa} auftreten.
+Nachdem die Eigenschaften und Abgrenzungen einer \ac{pwa} besprochen wurden, wird in Sektion~\ref{sec:voraussetzung} erläutert, welche Voraussetzungen im Zusammenhang mit einer \ac{pwa} auftreten.
 Hier liegt der Schwerpunkt besonders auf den benötigten Technologien, die für die Funktionalität einer \ac{pwa} notwendig sind, wodurch sich eine \ac{pwa} von anderen Anwendungen abgrenzt.
 Des weiteren wird auf die Voraussetzungen eingegangen, die von den verschiedenen Browsern an \acp{pwa} gestellt wird.
 
-Letztlich werden in den Sektionen \ref{sec:vorteile} und \ref{sec:nachteile} angeführt, welche positiven und negativen Eigenschaften \acp{pwa} mit sich bringen, sodass schließlich in Sektion \ref{sec:fazit} eine finale Wertung zur Nutzung und Verbreitung von \acp{pwa} gegeben werden kann.
+Letztlich werden in den Sektionen~\ref{sec:vorteile} und Sektion~\ref{sec:nachteile} angeführt, welche positiven und negativen Eigenschaften \acp{pwa} mit sich bringen, sodass schließlich in Sektion~\ref{sec:fazit} eine finale Wertung zur Nutzung und Verbreitung von \acp{pwa} gegeben werden kann.
 
 
 \newpage
 
-\section{Was ist eine \ac{pwa}?}
+\section{Was ist eine \acl{pwa}?}
 \label{sec:wasistpwa}
 
 
 
-Der Begriff \acl{pwa} beschreibt eine Kategorie von Webanwendungen, welche eine Reihe an Eigenschaften erfüllen, um das Erlebnis einer nativen Anwendung in modernen Browsern zu bieten.
+Der Begriff \textit{\acf{pwa}} beschreibt eine Kategorie von Webanwendungen, welche eine Reihe an Eigenschaften erfüllen, um das Erlebnis einer nativen Anwendung in modernen Browsern zu bieten.
 Geprägt wurde dieser Begriff von Alex Russell, welcher in seinem Blog\cite{russell_pwaescapingtabs} beschreibt, wie durch die Weiterentwicklung und Standardisierung von Browsern und Webtechnologien eine neue Art von Anwendung entstanden ist.
 Diese Kategorie von Anwendungen entspreche dem nächsten Schritt in einer Reihe von Technologien, die versuchen, Entwicklern die Möglichkeit zu geben, mit nur einer plattformübergreifenden Anwendung auf plattformspezifische Ressourcen zuzugreifen.
 
-Diese Kategorie von Webanwendungen ist also eine Art Nachfolger auf Technologien wie \enquote{Universal Windows Platform}-Apps\cite{msdocs_uwp} von Microsoft oder die von W3C standardisierten \enquote{Packaged Web Apps}\cite{w3c_packagedwebapps}, welche auch als \enquote{Widget} bekannt sind.
+So sind \acp{pwa} also eine Art Nachfolger von Technologien wie \enquote{Universal Windows Platform}-Apps\cite{msdocs_uwp} von Microsoft oder die von W3C standardisierten \enquote{Packaged Web Apps}\cite{w3c_packagedwebapps}, welche auch als \enquote{Widget} bekannt sind.
 Der Begriff \enquote{Progressive} in \acl{pwa} steht für \enquote{Progressive Enhancement} (fortschreitende Verbesserung) und beschreibt ebendiese Vorgehensweise, eine Webanwendung auf möglichst vielen Geräten mit verschiedenen Kapazitäten nutzbar zu machen.
 Die Idee dabei ist es, eine Grundversion der Anwendung zu erstellen, die auf jedem Gerät funktionieren kann.
-Weitere Funktionalität für potentere Geräte werden dann auf diese Grundversion aufgebaut.
+Weitere Funktionalität für potentere Geräte wird dann auf diese Grundversion aufgebaut.
 
 Da der Begriff der \ac{pwa} zusammen mit den notwendigen Technologien über einen längeren Zeitraum gewachsen ist, gibt es keine feste Definition für das, was eine \ac{pwa} ausmacht.
 Die Beschreibung einer \ac{pwa} basiert vielmehr auf einer Menge an Eigenschaften, die eine Anwendung innehaben kann.
 Im Folgenden werden daher einige Eigenschaften zusammengetragen und erläutert, die immer wieder für die Beschreibung von \acp{pwa} verwendet werden.
 Ein besonderer Schwerpunkt wird dabei auf die Standpunkte der Google- und Mozilla-Entwickler gelegt, da diese treibende Kraft beim Entwickeln von \acp{pwa} sind und gemeinsam die Fähigkeiten dieser Gruppe von Anwendungen ausbauen.
 
-Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in folgende Kategorien einteilen, in welcher sie auch erläutert werden.
+Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in folgende Kategorien einteilen, in welche im Folgenden erläutert werden.
 
 \begin{enumerate}
-  \litem{Grundlegende Eigenschaften} Eigenschaften einer \ac{pwa}, die dem Charakter einer \ac{pwa} entsprechen und ohne die ein Funktionieren der Anwendung nicht möglich wäre.
+  \litem{Grundlegende Eigenschaften} Eigenschaften, die dem Charakter einer \ac{pwa} entsprechen und ohne die ein Funktionieren der Anwendung nicht möglich wäre.
 
   \litem{Verbreitete Eigenschaften} Eigenschaften einer \ac{pwa}, welche von verschiedenen Quellen genannt werden, aber nicht unbedingt notwendig für das Funktionieren der Anwendung sind.
 
-  \litem{Designmerkmale} Eigenschaften einer \ac{pwa}, die sich positiv auf das Nutzererlebnis auswirken.
+  \litem{Designmerkmale} Eigenschaften einer \ac{pwa}, die sich positiv auf das Nutzererlebnis auswirken und optischer Natur sind.
 \end{enumerate}
 
 
 \subsection{Grundlegende Eigenschaften}
 
-Die wohl wichtigste Eigenschaft einer \ac{pwa} ist, dass sie installierbar sein muss.
-Wenn ein Nutzer eine Webanwendung nutzt, welche als \ac{pwa} agiert, so kann dem Nutzer ein Installationsdialog gezeigt werden.
+Die wohl wichtigste Eigenschaft einer \ac{pwa} ist, dass sie lokal installiert werden kann.
+Wenn ein Nutzer eine Webanwendung nutzt, welche als \ac{pwa} agiert, so kann dem Nutzer ein Installationsdialog gezeigt werden, um den Installationsvorgang zu starten.
 Durch den Installationsvorgang werden teile der Anwendung auf dem lokalen Gerät gespeichert und die \ac{pwa} optisch zu den nativen Anwendung integriert.
-Ob diese Integration nun über das Hinzufügen eines Desktopicons, eine Verknüpfung auf dem Startbildschirm oder auch nur über einen Eintrag in einem Anwendungslauncher erfolgt, ist dabei vom unterliegenden System abhängig.
+Ob diese Integration nun über das Hinzufügen eines Desktopicons, eine Verknüpfung auf dem Startbildschirm oder über einen Eintrag in einem Anwendungslauncher erfolgt, ist dabei vom unterliegenden System abhängig.
 Auf einem Android-Gerät wird es beispielsweise sinnvoll sein, die \ac{pwa} als Icon auf dem Startbildschirm anzuzeigen.
 Auf einem Windows-Gerät stattdessen wird dem Nutzer eine Verknüpfung auf dem Desktop lieber sein.
 Da die \ac{pwa} nicht eigenständig entscheiden kann, welches Gerät der Nutzer verwendet und wohl unmöglich die Fähigkeit besitzt, für jedes Gerät die entsprechende Konfiguration durchzuführen, muss der Installationsvorgang durch den Browser unterstützt und verwaltet werden.
@@ -191,12 +191,11 @@ Es wird also Hilfe vom Browser benötigt, welcher die installierte \ac{pwa} verw
 Zudem ist es dem Browser möglich, für die Ausführung einer \ac{pwa} bestimmte Regeln festzulegen.
 In Google Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
 
-
 Durch den Installationsprozess werden nur Teile der \ac{pwa} lokal auf dem Gerät gespeichert.
 Der Grund dafür ist, dass es meist nicht genügt, eine Website einfach vollständig zu kopieren, um sie offline verfügbar zu machen.
-Viele Webanwendungen, wie beispielsweise die \ac{pwa} von Twitter\cite{twitter_pwa}, basieren darauf stetig neue Inhalte von einem Server abzufragen.
+Viele Webanwendungen, wie beispielsweise die \ac{pwa} von Twitter\footnote{https://play.google.com/store/apps/details?id=com.twitter.android.lite}, basieren darauf, stetig neue Inhalte von einem Server abzufragen.
 Die Verwaltung, welche Inhalte offline verfügbar sein sollen und welche nicht, geschieht über sogenannte \enquote{Service Worker}.
-Dadurch dass jede \ac{pwa} lokale und entfernte Inhalte verwalten muss, ist das vorhandensein von Service Workern, eine weitere Eigenschaft, die jede \ac{pwa} besitzt.
+Dadurch, dass jede \ac{pwa} lokale und entfernte Inhalte verwalten muss, ist das vorhandensein von Service Workern, eine weitere Eigenschaft, die jede \ac{pwa} besitzt.
 
 Eine Voraussetzung der Service Worker erzwingt eine weitere Eigenschaft aller \acp{pwa}.
 Service Worker können laut Spezifikation nur auf Seiten ausgeführt werden, die über HTTPS ausgeliefert werden.
@@ -206,7 +205,6 @@ So soll sichergestellt werden, dass Service Worker nicht für das Ausspionieren 
 
 Letztlich ist das Vorhandensein einer Manifestdatei als Eigenschaft aller \acp{pwa} zu nennen.
 Die Manifestdatei listet die Eigenschaften einer \ac{pwa} auf und ist somit auch bei jeder aufzufinden.
-
 
 
 \subsection{Häufige Eigenschaften}
@@ -223,26 +221,26 @@ Da Teile einer \ac{pwa} lokal gespeichert sind, können schnellere Ladezeiten er
 Gerade bei einer schlechten Netzwerkverbindung wird dies deutlich.
 Zudem wird von den Google Entwicklern zusammen mit dem Entwicklungs-Framework für \acp{pwa} das Tool \enquote{Pagespeed Insights}\footnote{https://developers.google.com/speed/pagespeed/insights/} angeboten, welches eine Analyse der Ladezeiten vereinfacht und Vorschläge zur Optimierung gibt.
 
-Eine weitere Eigenschaft, die bei vielen \acp{pwa} auftritt, ist dass es einfacher ist, Inhalte zu teilen.
+Eine weitere Eigenschaft, die bei vielen \acp{pwa} auftritt, ist, dass es einfacher ist, Inhalte zu teilen.
 Da eine \ac{pwa} auf einer herkömmlichen Webanwendung basiert, ist in der Regel jeder angezeigte Inhalt über eine URL erreichbar.
 Dies macht ein Teilen der Inhalte sehr einfach, da lediglich die URL kopiert werden muss.
 Ist nämlich der angezeigte Inhalt allein von der URL abhängig, so genügt die URL, um Inhalte zu verbreiten und zu teilen.
-Dadurch wird die Anwendung komplett unabhängig von Gerät oder Nutzer, was dem progressiven Design entspricht.
+Dadurch werden Inhalte komplett unabhängig von Gerät oder Nutzer, was dem progressiven Design entspricht.
 
 
 \subsection{Designmerkmale}
 
-Wie sehr \acp{pwa} an native Anwendungen angelehnt sind, lässt sich häufig in den Designmerkmalen der Anwendungen wiedererkennen.
+Wie sehr \acp{pwa} an native Anwendungen angelehnt sind, lässt sich in den Designmerkmalen der Anwendungen wiedererkennen.
 
-Das bereits erwähnte Starten der Anwendung in einem eigenen Fenster beispielsweise soll dem Nutzer das Gefühl verleihen, eine native, installierte Anwendung zu starten.
+Das bereits erwähnte Starten der Anwendung in einem eigenen Fenster beispielsweise soll dem Nutzer das Gefühl verleihen, eine native installierte Anwendung zu starten.
 Zusätzlich gibt es die Möglichkeit, ein Farbschema für die gesamte Anwendung festzulegen.
 Der Effekt eines solchen Farbschemas ist, dass die Steuerungskomponenten des Browsers farblich an die \ac{pwa} angepasst werden können.
 Dadurch wirkt die Anwendung für den Nutzer einheitlich und es wird versteckt, dass die \ac{pwa} eigentlich nur im Browser angezeigt wird und keine eigenständige Anwendung ist.
-Es gibt das gleiche Prinzip bei nativen Anwendungen, die mit Farbschemen die Komponenten des Systems einfärben können, um die gesamte angezeigte Oberfläche einheitlich erscheinen zu lassen.
+Das gleiche Prinzip existiert für native Anwendungen, die mit einem Farbschema die Komponenten des Systems einfärben können, um die gesamte angezeigte Oberfläche einheitlich erscheinen zu lassen.
 
 Ebenso erwähnt wurde bereits, dass der Browser als Laufzeitumgebung der \ac{pwa} einen Zugriff auf Systemressourcen zulässt.
 Dies beinhaltet auch das Senden und Anzeigen von Benachrichtigungen von einer \ac{pwa}.
-Dabei ist nicht nur das Darstellen von Benachrichtigungen auf einer gerade angezeigten Seitemöglich, sondern auch Push-Notifications wie von einer nativen App können erstellt werden.
+Dabei ist nicht nur das Darstellen von Benachrichtigungen auf einer gerade angezeigten Seite möglich, sondern auch Push-Notifications wie von einer nativen App können erstellt werden.
 Zusätzlich mit den Einträgen einer installierten \ac{pwa} auf dem Startbildschirm des Nutzers, integrieren sich \acp{pwa} so nahezu nahtlos in die Darstellung nativer Apps.
 
 
@@ -362,7 +360,7 @@ Wenn der Cache bereits populiert ist, ist die Auswahl über den Cache trivial.
 \label{fig:js_cache}
 \end{figure}
 
-Wie in Abbildung \ref{fig:js_cache} dargestellt, wird eine anonyme Funktion für das \enquote{fetch}-Event registriert.
+Wie in Abbildung~\ref{fig:js_cache} dargestellt, wird eine anonyme Funktion für das \enquote{fetch}-Event registriert.
 Diese Funktion legt fest, dass auf die Anfrage des \enquote{fetch}-Event eine Antwort aus dem Cache gesucht werden soll.
 Wenn die angeforderte Ressource im Cache vorhanden ist, wird sie als Ergebnis der Anfrage festgelegt.
 Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzurufen.
