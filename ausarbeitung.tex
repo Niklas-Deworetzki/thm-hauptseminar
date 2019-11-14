@@ -263,7 +263,7 @@ Bei der Installation einer \ac{pwa} wird lediglich auf diesen Fähigkeiten des B
 Wie bei einer Verknüpfung für eine herkömmliche Website ist es auch bei einer \ac{pwa} gewünscht, ein Icon zusammen mit einem Namen anzuzeigen.
 Es fehlen jedoch einige Eigenschaften bei einer solchen Verknüpfung, die eine native App besitzen würde.
 Für die Konfiguration dieser Informationen existiert ein normiertes Format, welches mit einer \ac{pwa} ausgeliefert wird.
-In dem sogenannten \textit{Manifest} einer Website werden die Eigenschaften über \ac{json} festgelegt.
+In dem sogenannten \textit{Manifest} einer Website werden die Eigenschaften als \ac{json} festgelegt.
 
 Die Einbindung des Manifests geschieht im Header einer \ac{pwa}.
 Dort kann über ein gewöhnliches \texttt{link}\-Tag eine Manifestdatei eingebunden werden.
@@ -277,55 +277,55 @@ Dort kann über ein gewöhnliches \texttt{link}\-Tag eine Manifestdatei eingebun
 \end{figure}
 
 Die Spezifikation der Eigenschaften in der Manifestdatei geschieht über Schlüssel\-Werte\-Paare.
-Das Definieren der Schlüssel \enquote{short\_name}, \enquote{name}, \enquote{icons}, \enquote{start\_url} und \enquote{display} ist dabei verpflichtend.
+Das Definieren der Schlüssel \texttt{short\_name}, \texttt{name}, \texttt{icons}, \texttt{start\_url} und \texttt{display} ist dabei verpflichtend.
 
-\enquote{short\_name} und \enquote{icons} beschreiben das Aussehen der Verknüpfung.
-Der Schlüssel \enquote{icons} ist im plural, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
+\texttt{short\_name} und \texttt{icons} beschreiben das Aussehen der Verknüpfung.
+Der Schlüssel \texttt{icons} wird im plural verwendet, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
 So kann je nach Auflösung des Gerätes das am besten passende Icon vom Browser gewählt werden.
-Der lange Name \enquote{name} wird für Installationsdialoge und als Beschriftung der Verknüpfung verwendet.
-Zusätzlich sollte der verkürzte Name angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist\cite{chromedevs_manifestname}.
+Der lange Name \texttt{name} wird für Installationsdialoge und als Beschriftung der Verknüpfung verwendet.
+Zusätzlich sollte der verkürzte Name unter \texttt{short\_name} angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist\cite{chromedevs_manifestname}.
 Dies kann bei mobilen Geräten der Fall sein.
 
-Mit dem Schlüssel \enquote{display} wird gesteuert, wie der Browser die \ac{pwa} anzeigt.
-Hier kann als Wert \enquote{fullscreen}, \enquote{standalone} oder \enquote{browser} angegeben werden.
+Mit dem Schlüssel \texttt{display} wird gesteuert, wie der Browser die \ac{pwa} anzeigt.
+Hier kann als Wert \texttt{fullscreen}, \texttt{standalone} oder \texttt{browser} angegeben werden.
 Bei jedem dieser Werte wird die \ac{pwa} in einem eigenständigen Fenster ausgeführt.
-Die Werte \enquote{fullscreen} oder \enquote{standalone} blenden dabei die Anzeigeelemente des Browsers aus.
+Die Werte \texttt{fullscreen} oder \texttt{standalone} blenden dabei die Anzeigeelemente des Browsers aus.
 Es wird also keine Navigationsleiste oder URL angezeigt.
-Ist der Wert \enquote{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
-Durch den Wert \enquote{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt\cite{googledev_manifest}.
+Ist der Wert \texttt{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
+Durch den Wert \texttt{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt\cite{googledev_manifest}.
 
-Der Wert \enquote{start\_url} ist wichtig für das Verhalten einer \ac{pwa}.
-Da eine \ac{pwa} wie ein Lesezeichen an jeder Unterseite der Anwendung installiert werden kann, genügt es nicht, bloß die aktuelle URL abzuspeichern.
+Der Wert \texttt{start\_url} ist wichtig für das Verhalten einer \ac{pwa}.
+Da die Installation einer \ac{pwa} wie das setzen eines Lesezeichens an jeder Unterseite einer Anwendung geschehen kann, genügt es nicht, bloß die aktuelle URL zu speichern.
 Wenn ein Nutzer beispielsweise gerade sein Profil betrachtet und sich an dieser Stelle entschließt, die \ac{pwa} zu installieren, so würde er bei erneutem Starten der \ac{pwa} immer wieder zu seinem Profil zurückkehren, wenn die Eigenschaften eines herkömmlichen Lesezeichens übernommen werden.
-Es ist aber bei einer Anwendung meistens erwünscht, in ein zentrales Menü (Startmenü) herein zu starten, welches zu Beginn angezeigt wird.
-Die URL für dieses Startmenü wird also an dieser Stelle angegeben.
+Es ist aber bei einer Anwendung meistens erwünscht, in ein zentrales Menü herein zu starten, welches zu Beginn angezeigt wird.
+Die URL für dieses Startmenü wird daher an dieser Stelle angegeben.
 
 Alle weiteren Schlüssel sind optional.
 Sie dienen der Verbesserung des Nutzererlebnis, können aber auch weggelassen werden, wenn ein Einsatz nicht sinnvoll ist.
 
-Der Schlüssel \enquote{description} gibt eine Beschreibung der \ac{pwa}.
+Der Schlüssel \texttt{description} gibt eine Beschreibung der \ac{pwa}.
 Diese kann zusammen mit der Verknüpfung angezeigt werden.
-Ein anderer optionaler Schlüssel ist \enquote{scope}, mit welchem die Reichweite der \ac{pwa} angegeben werden kann.
-So kann eine \ac{pwa} als Teil in eine existierende Website integriert werden, indem nur eine bestimmte Gruppe an Routen zugewiesen wird\cite{webdev_addmanifest}.
+Ein anderer optionaler Schlüssel ist \texttt{scope}, mit welchem die Reichweite der \ac{pwa} angegeben werden kann.
+So kann eine \ac{pwa} in eine existierende Website integriert werden, indem nur eine bestimmte Gruppe an Routen zugewiesen wird\cite{webdev_addmanifest}.
 
-Weitere optionale Schlüssel dienen der Integration in den Browser.
-Über den Schlüssel \enquote{background\_color} lässt sich beispielsweise eine Farbe festlegen, die vom Browser beim Laden der Anwendung angezeigt wird, wenn noch keine Inhalte sichtbar sind.
+Weitere optionale Schlüssel dienen der visuellen Integration in den Browser.
+Über den Schlüssel \texttt{background\_color} lässt sich beispielsweise eine Farbe festlegen, die vom Browser beim Laden der Anwendung angezeigt wird, wenn noch keine Inhalte sichtbar sind.
 So lässt sich ein Farbschema wie bei einer nativen Anwendung imitieren.
-Der Schlüssel \enquote{theme\_color} passt zusätzlich noch die Farbe der Browserkomponenten an, sodass ein einheitliches Farbschema für die \ac{pwa} entsteht.
+Der Schlüssel \texttt{theme\_color} passt zusätzlich die Farbe der Browserkomponenten an, sodass ein einheitliches Farbschema für die gesamte Oberfläche entsteht.
 
 
 
 \subsection{Datenverwaltung durch Service Worker}
 
-Wie bereits erwähnt, werden bei einer \ac{pwa} Inhalte sowohl von lokalen Quellen als auch über das Netzwerk geladen.
-Da eine \ac{pwa} vor der Installation wie eine herkömmliche Website agiert, ist es nicht möglich, einfach im Quelltext der Anwendung die lokal installierten Inhalte anzugeben.
-Diese sind vor der Installation gar nicht lokal verfügbar, wodurch das Abrufen dann zu einem Fehler führen würde.
-Auch das Ausliefern von zwei Versionen an den Nutzer, die einmal für den \textit{Online Gebrauch} und einmal für den \textit{Offline Gebrauch} gedacht sind, ist nicht möglich, da die Installation durch den Browser durchgeführt wird, welcher die aktuell angezeigte Seite installiert.
-Dadurch würde die Online-Version der Anwendung dauerhaft verwendet werden, was dem Sinn der Installation widerspricht.
+Wie bereits erwähnt, werden bei einer \ac{pwa} Ressourcen sowohl von lokalen Quellen als auch über das Netzwerk geladen.
+Da eine \ac{pwa} vor der Installation wie eine herkömmliche Website agiert, ist es nicht möglich, einfach im Quelltext der Anwendung die lokal installierten Ressourcen anzugeben.
+Diese sind vor der Installation noch nicht lokal verfügbar, wodurch das Abrufen zu einem Fehler führen würde.
+Auch das Ausliefern von zwei Versionen an den Nutzer, die einmal für den \textit{Online Gebrauch} und einmal für den \textit{Offline Gebrauch} gedacht sind, ist nicht möglich, da die Installation durch den Browser durchgeführt wird, welcher die aktuell angezeigte Version installiert.
+Demnach würde die Online-Version der Anwendung dauerhaft verwendet werden, was dem Sinn der Installation widerspricht.
 
-Folglich ist es also notwendig, einheitlich die Inhalte aus dem Netzwerk abzurufen, da sie dort immer erhältlich sind.
-Werden diese Netzwerkanfragen dann noch lokal abgefangen, kann überprüft werden, ob ein Inhalt bereits lokal erhältlich ist.
-Wenn dies der Fall ist, so ist es möglich, die Anfrage umzuleiten, sodass die lokalen Ressourcen verwendet werden.
+Folglich ist es also notwendig, einheitlich die Ressourcen aus dem Netzwerk abzurufen, da sie dort immer erhältlich sind.
+Werden diese Netzwerkanfragen dann noch lokal abgefangen, kann überprüft werden, ob Ressourcen bereits lokal erhältlich sind.
+Sollte dies der Fall sein, so ist es möglich, die Anfragen umzuleiten, sodass die lokalen Ressourcen verwendet werden.
 Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Worker} zuständig, dessen Funktionsweise im folgenden näher erläutert wird.
 
 \begin{wrapfigure}{r}{0.53\textwidth}
@@ -335,14 +335,14 @@ Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Wo
   \label{fig:heise_serviceworker}
 \end{wrapfigure}
 
-Wie andere Arten der \enquote{Worker} sind Service Worker auch ein JavaScript-Programm, das in einem eigenen Kontext läuft.
-Dieser Kontext ermöglicht die Verwendung mehrerer Threads in JavaScript, da jeder Kontext in einem eigenen Thread laufen kann.
-So ist ein Service Worker im Hintergrund aktiv und kann dort auf Events reagieren.
+Worker im Allgemeinen sind JavaScript-Programme, die in einem eigenen Kontext ausgeführt werden.
+Dieser Kontext ermöglicht die Verwendung mehrerer Threads in JavaScript, da jeder Kontext unabhängig und parallel zu anderen ausgeführt werden kann.
+Ein Service Worker ist ein Worker, der im Hintergrund aktiv ist und dort auf Ereignisse (Events) reagieren kann.
 Dabei haben Service Worker jedoch keinen direkten Zugriff auf das \ac{dom} der \ac{pwa}.
 
 In dem globalen Kontext der Service Worker befindet sich ein Cache-Objekt, welches den lokalen Speicher der \ac{pwa} repräsentiert\cite{w3c_serviceworker_nightly}.
 Dieser Cache muss zunächst populiert werden, was entweder bei der Installation der \ac{pwa} oder zu späterem Zeitpunkt mit der ersten Anfrage einer Ressource geschehen kann\cite{ServiceWorker_explained}.
-Anschließend kann bei Anfragen von gecachten Inhalten, auf den Cache verwiesen werden.
+Anschließend kann bei Netzwerkanfragen auf den Cache verwiesen werden.
 
 Das Reagieren auf Anfragen geschieht über ein \enquote{fetch}-Event, auf welches Service Worker reagieren können.
 Für dieses Event kann eine Funktion registriert werden, welche ein Event-Objekt als Parameter akzeptiert.
@@ -368,31 +368,29 @@ Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzu
 Durch die Funktionsweise von Service Workern stellen diese gleichzeitig ein großes Sicherheitsrisiko dar.
 Wenn ein Dritter einen Service Worker zwischen Server und Nutzer manipulieren würde, hätte dieser Zugriff auf alle Netzwerkanfragen, die der Nutzer der \ac{pwa} sendet.
 Um Angriffe eines solchen Mittelmannes zu verhindern, dürfen Service Worker laut Spezifikation nur über HTTPS ausgeliefert werden.
-Dabei wird der Übertragungskanal verschlüsselt, wodurch eine Manipulation des Service Worker durch Dritte nicht möglich ist.
-
-% TODO Gegenlesen: Ressource vs. Inhalt
+Dabei wird der Übertragungskanal verschlüsselt, wodurch eine Manipulation des Service Worker durch Dritte ausgeschlossen wird.
 
 Durch Service-Worker ist es also möglich, einen Cache in jede Website einzubinden.
 Da diese im Hintergrund arbeiten und auf bereits vorhandene Technologien aufbauen, ist es nicht einmal nötig, eine bereits vorhandene Website anzupassen, um den Cache zu implementieren.
-
+Durch das Speichern von Ressourcen im Cache wird das Installieren einer \ac{pwa} umgesetzt.
 
 \subsection{Interaktion mit Nutzern}
 
 Eine weiteres Merkmal von \acp{pwa}, welches herkömmliche Websites nicht besitzen, ist die Art und Weise, wie mit Nutzern interagiert wird.
 Native Anwendungen können auf Ressourcen des Betriebsystems zugreifen, um mit dem Nutzer zu interagieren selbst wenn die Anwendung nicht aktiv vom Nutzer verwendet wird.
-Weit verbreitet ist beispielsweise das Verwenden von Push-Notifications\cite{businessofapps_pushnotificationstatistics}, um Nachrichten oder Informationen an den Nutzer zu leiten.
+Weit verbreitet ist beispielsweise die Verwendung von Push-Notifications\cite{businessofapps_pushnotificationstatistics}, um Nachrichten oder Informationen an den Nutzer zu leiten.
 
 \acp{pwa} sind ebenso in der Lage, Push-Notifications zu senden, was sie von herkömmlichen Websites abgrenzt.
 Diese können auch Benachrichtigungen senden, jedoch nur, wenn der Nutzer aktiv eine Seite betrachtet.
-Durch Service-Worker, welche unabhängig eines Seitenaufrufs ausgeführt werden, können \acp{pwa} auch Benachrichtigungen senden, ohne dass die \ac{pwa} geöffnet ist\cite{ejaz_progressive_pushnotifications}.
+Durch Service Worker, welche unabhängig von einem Seitenaufruf ausgeführt werden, können \acp{pwa} auch Benachrichtigungen senden, ohne dass die \ac{pwa} geöffnet ist\cite{ejaz_progressive_pushnotifications}.
 
 Zunächst muss ein Nutzer zustimmen, dass er Benachrichtigungen von einer Website oder \ac{pwa} erhalten will.
-Falls die Zustimmung erteilt wird, wird dies für die entsprechende Website oder \ac{pwa} gespeichert, sodass eine Zustimmung nur ein einziges Mal eingeholt werden muss, so lange der Nutzer nicht im Nachhinein die Berechtigung widerruft.
+Falls die Zustimmung erteilt wird, wird dies für die entsprechende Website oder \ac{pwa} gespeichert, sodass ein erneutes Einholen nicht notwendig ist, so lange der Nutzer nicht im Nachhinein die Berechtigung widerruft.
 
 Auf einer geöffneten Website genügt die Zustimmung des Nutzers, um eine Benachrichtigung anzuzeigen.
 Der beim Seitenaufruf ausgeführte JavaScript-Code kann aktiv eine Benachrichtigung erstellen und anzeigen.
 Eine \ac{pwa}, die nicht ausgeführt wird, kann auf diesen Weg keine Benachrichtigung anzeigen.
-Auch der Service-Worker kann nicht aktiv eine Benachrichtigung erstellen, da dieser nur auf externe Events reagieren kann.
+Auch ein Service Worker kann nicht aktiv eine Benachrichtigung erstellen, da dieser nur auf externe Events reagieren kann.
 
 Folglich werden Push-Notifications nicht vom eigenen Gerät erstellt, sondern nur auf diesem angezeigt.
 Für das Empfangen der Benachrichtigungen wird die Push-API\cite{w3c_pushapi} verwendet.
@@ -410,8 +408,8 @@ Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange ei
 \end{figure}
 
 
-Der Client leitet dann die erhaltene Push-Notification als Event an den entsprechenden Service-Worker weiter, welcher so auf die Benachrichtigung reagieren kann.
-So ist es für den Service-Worker nun möglich, eine native Benachrichtigung auf dem Gerät des Nutzers anzuzeigen und das, obwohl die \ac{pwa} des Service-Workers nicht aktiv ist, da dieser unabhängig zur \ac{pwa} ausgeführt wird.
+Der Client leitet dann die erhaltene Push-Notification als Event an den entsprechenden Service Worker weiter, welcher so auf die Benachrichtigung reagieren kann.
+So ist es für den Service Worker nun möglich, eine Benachrichtigung auf dem Gerät des Nutzers anzuzeigen, obwohl die \ac{pwa} des Service Workers nicht aktiv ist, da der Service Worker unabhängig zur \ac{pwa} ausgeführt wird.
 
 
 \subsection{Interaktion mit Systemressourcen}
