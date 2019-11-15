@@ -3,7 +3,6 @@
 % ----------------------------------------------------------------------------
 
 \documentclass[12pt, parskip=half]{scrartcl}       % KOMA-Skript für Artikel
-\usepackage{setspace}
 
 %% Präambel
 \usepackage[english, ngerman]{babel} % deutsche typogr. Regeln + Trenntabelle
@@ -123,7 +122,7 @@
 
 \section{Einleitung}
 
-Diese Arbeit befasst sich mit dem Begriff der \ac{pwa}, einer neuen Technologie, welche die Lücke zwischen herkömmlichen Webanwendungen und nativen Anwendungen füllen soll.
+Diese Arbeit befasst sich mit dem Begriff der \acf{pwa}, einer neuen Technologie, welche die Lücke zwischen herkömmlichen Webanwendungen und nativen Anwendungen füllen soll.
 Worum es sich dabei handelt, wie die Technologie der \acp{pwa} umgesetzt ist und welche Konsequenzen sich daraus ergeben, wird im Folgenden besprochen.
 
 Zunächst wird in Sektion~\ref{sec:wasistpwa} erläutert, wie sich eine \ac{pwa} von einer herkömmlichen Webanwendung oder einer nativen Anwendung abgrenzt.
@@ -367,7 +366,7 @@ Andernfalls wird eine Anfrage über das Netzwerk gesendet, um die Ressource abzu
 
 Durch die Funktionsweise von Service Workern stellen diese gleichzeitig ein großes Sicherheitsrisiko dar.
 Wenn ein Dritter einen Service Worker zwischen Server und Nutzer manipulieren würde, hätte dieser Zugriff auf alle Netzwerkanfragen, die der Nutzer der \ac{pwa} sendet.
-Um Angriffe eines solchen Mittelmannes zu verhindern, dürfen Service Worker laut Spezifikation nur über HTTPS ausgeliefert werden.
+Um Angriffe eines solchen Mittelmannes zu verhindern, können Service Worker laut Spezifikation nur über HTTPS ausgeliefert werden.
 Dabei wird der Übertragungskanal verschlüsselt, wodurch eine Manipulation des Service Worker durch Dritte ausgeschlossen wird.
 
 Durch Service-Worker ist es also möglich, einen Cache in jede Website einzubinden.
@@ -414,48 +413,46 @@ So ist es für den Service Worker nun möglich, eine Benachrichtigung auf dem Ge
 
 \subsection{Interaktion mit Systemressourcen}
 
-Um mit nativen Anwendungen mithalten zu können, benötigen \acp{pwa} auch Zugriff auf die sonst geschützten Systemressourcen.
+Um Aufgaben nativer Anwendungen übernehmen zu können, benötigen \acp{pwa} auch Zugriff auf die sonst geschützten Systemressourcen.
 Für native Anwendungen ist der Zugriff auf Systemressourcen wie das Dateisystem oder angeschlossene Geräte meist keine große Hürde.
-Falls überhaupt, muss vor Zugriff die Erlaubnis des Nutzers eingeholt werden, wofür native Schnittstellen vorliegen.
+Falls überhaupt, muss vor Zugriff die entsprechende Berechtigung eingeholt werden, wofür native Schnittstellen vorliegen.
 Damit auch Webanwendungen und somit \acp{pwa} auf diese Ressourcen zugreifen können, wird die Unterstützung des Browsers benötigt, welcher als Schnittstelle zwischen Webanwendung und den nativen Ressourcen agiert.
 
 Es ergibt sich dadurch jedoch die Herausforderung, eine einheitliche Schnittstelle zu schaffen, sodass eine Webanwendung unabhängig vom Browser auf Systemressourcen zugreifen kann.
-Darauf folgt, dass für jede Zugriffskomponente ein eigener Standard entwickelt wird, welcher anschließend in den einzelnen Browsern umgesetzt werden muss.
+Daraus folgt, dass für jede Zugriffskomponente ein eigener Standard entwickelt wird, welcher anschließend in den einzelnen Browsern umgesetzt werden muss.
 
 Zum aktuellen Zeitpunkt existieren für nahezu alle Zugriffskomponenten, die ein Smartphone oder PC bietet, ein Standard oder zumindest ein Entwurf für diesen.
 In einer Übersicht von Adam Bar\cite{bar_webcando} werden insgesamt 44 dieser Komponenten gelistet.
-Als Folge dieser großen Vielfalt ist eine ebenso große Vielfalt an Zugriffsformen, die in den Standards festgelegt sind.
+Als Folge dieser großen Vielfalt ist eine ebenso große Vielfalt an Zugriffsformen entstanden, die in den Standards festgelegt sind.
+Wie im folgenden beispielhaft gezeigt, besitzen verschiedene Komponenten deutlich unterschiedliche Zugriffsformen:
 
 \paragraph{Positionsdaten} Positionsdaten werden über ein \textit{Geolocation}-Objekt im Navigator des Browsers angefordert.
 Eine Überprüfung, ob dieses Objekt vorhanden ist, genügt, um Kompatibilität des Browsers festzustellen.
-Beim Anfragen der Positionsdaten wird dann automatisch um Erlaubnis des Nutzers gebeten\cite{w3c_geolocation}.
+Beim Anfragen der Positionsdaten wird automatisch um Erlaubnis des Nutzers gebeten\cite{w3c_geolocation}.
 
-\paragraph{Benachrichtigungen} Benachrichtigungen können über ein \textit{Notification}-Objekt erstellt werden. Dieses befindet sich im globalen Kontext eines Tabs.
+\paragraph{Benachrichtigungen} Benachrichtigungen können über ein \textit{Notification}-Objekt erstellt werden.
+Dieses befindet sich im globalen Kontext eines Browsertabs.
 Bevor eine Benachrichtigung angezeigt werden kann, muss aktiv um Erlaubnis gebeten werden\cite{whatwg_notification}.
 
 \paragraph{Kamera und Mikrophon} Geräte wie Kameras oder Mikrophone liefern einen dauerhaften Strom an Daten.
 Diese Datenströme können über ein \textit{Media Devices}-Objekt im Navigator des Browsers angefordert werden\cite{w3c_mediacapture}.
 
 Neben der großen Vielfalt an standardisierten Zugriffsformen unterscheidet sich auch, wie verbreitet die Implementierung der Standards ist.
-Während der Zugriff auf Mikrophon und Kamera beispielsweise noch bei 95\% der Nutzer unterstützt ist, so ist das Erstellen und Anzeigen nur noch bei 77\% der Nutzer möglich\cite{caniuse}.
-Hinzu kommt, dass die Implementierungen in den verschiedenen Browsern fehlerhaft sind, sodass je nach Browser des Benutzers, Fehler innerhalb der Webanwendung auftauchen können.
+Während der Zugriff auf Mikrophon und Kamera beispielsweise noch bei 95\% der Nutzer unterstützt ist, so ist das Erstellen und Anzeigen von Notifications nur noch bei 77\% der Nutzer möglich\cite{caniuse}.
+Hinzu kommt, dass die Implementierungen in den verschiedenen Browsern nicht immer komplett fehlerfrei sind, sodass je nach Browser des Benutzers Fehler innerhalb der Webanwendung auftauchen können.
 
-Trotz der großen Vielfalt gibt es auch einige Komponenten, auf welche \acp{pwa} keinen Zugriff haben.
+Zum aktuellen Zeitpunkt gibt es zudem einige Komponenten, auf welche \acp{pwa} keinen Zugriff haben.
 Ein Zugriff auf Telefonie-Funktionen existiert nicht.
 \acp{pwa} können also keine Anrufe starten oder SMS schreiben und empfangen.
-Ebenso bleibt der Zugriff auf spezialisierte Geräte verwehrt, da es keinen einheitliche Form für den Zugriff gibt.
-Zu den Geräten, die nicht angesteuert werden können, zählt beispielsweise die Taschenlampe eines Smartphones.
+Ebenso bleibt der Zugriff auf spezialisierte Geräte verwehrt, da es keine einheitliche Form für den Zugriff auf diese gibt.
 
 Allgemein betrachtet ist zu sagen, dass bereits auf viele Systemressourcen zugegriffen werden kann, wodurch \acp{pwa} viele Funktionen nativer Anwendungen übernehmen können.
 Jedoch bleibt zu beachten, dass für den Zugriff auf diese Ressourcen jeweils der Browser auch die entsprechenden Berechtigungen benötigt.
 
-Zu beachten ist jedoch, dass der Browser als Schnittstelle zwischen Webanwendung und System ein eigenes System der Rechteverwaltung implementieren muss, damit nicht jede Webanwendung automatisch auf die selben Ressourcen zugreifen kann, für die dem Browser der Zugriff gestattet ist.
-
-% TODO pwa vs Webanwendung
 
 \subsection{Browserspezifische Voraussetzungen}
 
-Nachdem nun besprochen wurde, welche Voraussetzungen nötig sind, um das Funktionieren einer \ac{pwa} zu gewährleisten, werden nun die Voraussetzungen aufgezählt, die die einzelnen Browser an eine Webanwendung stellen, um diese dem Nutzer als \ac{pwa} vorzustellen.
+Nachdem nun besprochen wurde, welche Voraussetzungen nötig sind, um das Funktionieren einer \ac{pwa} zu gewährleisten, werden nun die Voraussetzungen aufgezählt, welche die einzelnen Browser an eine Webanwendung stellen, um diese als \ac{pwa} einzuordnen.
 
 Hierbei wird ein besonderer Schwerpunkt auf die Browser \textit{Google Chrome}, \textit{Mozilla Firefox} und \textit{Microsoft Edge} gelegt.
 In deren Dokumentation\cite{googledev_pwainstallcriteria,docsmicrosoft_pwainstallcriteria,mozilladev_pwainstallcriteria} existiert ein Abschnitt \enquote{\ac{aths}}, welcher sich mit dem Installationsvorgang einer \ac{pwa} befasst.
@@ -464,12 +461,12 @@ In deren Dokumentation\cite{googledev_pwainstallcriteria,docsmicrosoft_pwainstal
 
 \paragraph{Google Chrome}
 Damit der Google Chrome Browser einen Installationsdialog zum Installieren einer \ac{pwa} anzeigt, ist zunächst einmal die wichtigste Voraussetzung, dass die aktuell betrachtete Webanwendung nicht bereits installiert ist.
-Dadurch soll sichergestellt werden, dass in erster Linie die Notwendigkeit besteht, die \ac{pwa} zu installieren.
-Dazu zählt des Weiteren, dass der Nutzer eine heuristische Erwartung erfüllt, die Anwendung zu installieren.
+So soll sichergestellt werden, dass in erster Linie die Notwendigkeit besteht, die \ac{pwa} zu installieren.
+Diese Notwendigkeit wird des Weiteren daran festgelegt, dass der Nutzer eine heuristische Erwartung erfüllt, die Anwendung zu installieren.
 Wird aus der Interaktion eines Nutzers mit einer Webanwendung nicht erkenntlich, dass er bereit wäre, diese zu installieren, so wird kein Dialog angezeigt.
 Zu dieser Heuristik äußert sich Google nicht weiter, gibt aber bekannt, dass in einer früheren Version eine \enquote{30 sekündige Interaktion mit der Domain} notwendig gewesen war.
 Ist also erkennbar, dass ein Nutzer Installationsabsichten besitzt, werden die Kriterien der \ac{pwa} geprüft.
-Die \ac{pwa} muss einen Service-Worker registriert haben und über HTTPS an den Nutzer ausgeliefert werden, um für eine Installation in Frage zu kommen.
+Die \ac{pwa} muss einen Service Worker registriert haben und über HTTPS an den Nutzer ausgeliefert werden, um für eine Installation in Frage zu kommen.
 Zudem muss eine Manifestdatei bestehen, welche mindestens den Namen der \ac{pwa}, eine Start-URL und Icons in der Größe $192\times192$ sowie $512\times512$ Pixel definiert.
 
 \paragraph{Mozilla Firefox}
@@ -477,10 +474,10 @@ Die Kriterien des Firefox Browsers sind weniger streng als die von Google Chrome
 Hier wird auch verlangt, dass eine \ac{pwa} über HTTPS an den Nutzer ausgeliefert wird und dass sie eine Manifestdatei enthält.
 Eine bestimmte Interaktion des Nutzers mit der \ac{pwa} wird nicht verlangt.
 Die Manifestdatei muss ähnlich wie bei Google Chrome den Namen der \ac{pwa}, eine Start-URL und passende Icons definieren.
-Zudem wird noch eine Hintergrundfarbe verlangt.
+Zudem wird noch das Definieren einer Hintergrundfarbe im Manifest verlangt.
 
 \paragraph{Microsoft Edge}
-Der Edge Browser stellt ähnliche Anforderungen an eine \ac{pwa} wie die bisher besprochen Browser.
+Auch der Edge Browser stellt ähnliche Anforderungen an eine \ac{pwa}.
 Es wird erwartet, dass die \ac{pwa} über HTTPS an den Nutzer ausgeliefert wird und Service Worker registriert hat.
 Ebenso wird eine Manifestdatei verlangt, jedoch nicht angegeben, welche Felder diese mindestens definieren muss.
 Da der Unterpunkt \enquote{Web app manifest} in der Dokumentation des Edge Browsers auf die von Mozilla verweist, ist anzunehmen, dass die Anforderungen an die Manifestdatei denen der anderen Browser entsprechen.
@@ -492,8 +489,7 @@ Des Weiteren wird von jedem Browser die Manifestdatei der \ac{pwa} verlangt.
 
 Die Voraussetzungen der verschiedenen Browser sind größtenteils identisch.
 Es ist festzustellen, dass die Voraussetzungen größtenteils das abdecken, was zum installieren einer \ac{pwa} notwendig ist.
-Service Worker sind notwendig, um die \ac{pwa} lokal verfügbar zu machen.
-Ohne HTTPS können Service Worker nicht verwendet werden.
+Service Worker sind notwendig, um die \ac{pwa} lokal verfügbar zu machen und ohne HTTPS können Service Worker nicht verwendet werden.
 Dadurch sind die meisten Voraussetzungen der Browser bereits abgedeckt.
 Des Weiteren wird die Manifestdatei vorausgesetzt, welche definiert, wie die \ac{pwa} installiert wird.
 Weitere Voraussetzungen sind nicht nötig, um die Anwendung installieren zu können.
@@ -510,19 +506,20 @@ Zudem verbrauchen \acp{pwa} zumeist deutlich weniger Speicher als eine native An
 Gerade für Nutzer von Mobilgeräten ist dies von Vorteil, da solche Geräte wenig Ressourcen bieten, die durch \acp{pwa} weniger belastet werden.
 
 Die größten Vorteile entstehen jedoch aus Sicht der Entwickler und Anbieter einer \ac{pwa}.
-Durch Service Worker und Manifestdateien ist es möglich, eine bereits bestehende Webanwendung ohne großen Extraaufwand zu einer \ac{pwa} zu erweitern.
-Die Entwicklungskosten sind im Vergleich zu einer nativen Anwendung deutlich geringer.
+Durch Service Worker und Manifestdateien ist es möglich, eine bereits bestehende Webanwendung ohne großen Mehraufwand zu einer \ac{pwa} zu erweitern.
+Die Entwicklungskosten sind im Vergleich zu einer nativen Anwendung deutlich geringer, da bereits bestehende Strukturen erweitert werden können.
+Für die Entwicklung einer nativen Anwendung müssen zunächst alle Strukturen auf der entsprechenden Plattform neu errichtet werden.
 Zudem bieten \acp{pwa} bessere Möglichkeiten zur Interaktion mit dem Nutzer.
-Aufgrund der URL-basierten Grundlage einer \ac{pwa}, ist es für Nutzer sehr einfach, Inhalte zu teilen, wodurch sich eine \ac{pwa} deutlich schneller als eine native Anwendung verbreiten kann.
+Es ist für Nutzer sehr einfach, Inhalte zu teilen, da diese über URLs zu erreichen sind.
+Wenn Nutzer zum Teilen und Weiterverbreiten der Anwendung ermutigt werden, ist zu erwarten, dass eine \ac{pwa} mehr Nutzer erreichen wird als eine native App.
 Durch Push-Benachrichtigungen können Nutzer dann zu weiterer Interaktion mit der Anwendung animiert werden.
-Es ist also zu erwarten, dass eine \ac{pwa} mehr Nutzer erhält als eine herkömmliche Webanwendung oder eine native App.
 Ein weiterer Vorteil für Entwickler ist, dass Aktualisierungen sofort bei Nutzung der \ac{pwa} installiert werden können.
-Die Service Worker ermöglichen es, immer die aktuellsten Dateien herunterzuladen, ohne dass der Nutzer manuell eine Aktualisierung durchführen muss.
+Service Worker ermöglichen es, immer die aktuellsten Dateien herunterzuladen, ohne dass der Nutzer manuell eine Aktualisierung durchführen muss.
 So können neue Features leichter durchgesetzt werden und die gezwungene Unterstützung für ältere Versionen entfällt.
 
 Die meisten Vorteile von \acp{pwa} entstehen also für Entwickler und Anbieter, welchen schnellere und günstigere Entwicklung ermöglicht wird.
 Zusammen mit einer höheren Nutzerinteraktion und Motivation kann sich eine \ac{pwa} so durchaus als lukrativ erweisen.
-Für Nutzer bieten \acp{pwa} ein natives Nutzererlebnis und die Möglichkeit, ressourcenschonende Anwendungen zu nutzen.
+Für Nutzer bieten \acp{pwa} ein natives Nutzererlebnis und die Aussicht auf ressourcenschonende Anwendungen.
 
 
 \newpage
@@ -535,19 +532,21 @@ Als Webanwendungen müssen sie von einem Browser ausgeführt werden, welcher zum
 Dies ist gerade auf Mobilgeräten ein Problem, welche durch eine Batterie nur begrenzte Spannungsversorgung haben.
 Das Ausführen des Browsers zusammen mit der eigentlichen Anwendung erhöht den Batterieverbrauch, wodurch gerade Nutzer auf schwächeren Geräten davon absehen werden, die \ac{pwa} zu verwenden.
 Ein weiteres Problem ist der Zugriff auf Systemressourcen und Geräte durch den Browser.
-\acp{pwa} können längst nicht alle Aktivitäten ausführen, zu denen native Anwendungen in Stande sind.
+\acp{pwa} können längst nicht alle Aktivitäten ausführen, zu denen native Anwendungen im Stande sind.
 Des weiteren entsteht die Problematik, dass verschiedene Browser verschiedene Schnittstellen für \acp{pwa} bieten.
 Es kann also nicht garantiert werden, dass eine \ac{pwa} für jeden Nutzer funktioniert.
 Gerade bei iOS-Geräte wird dies zu einem Problem, da auf dieser Plattform die Unterstützung für \acp{pwa} erst spät eingeführt wurde.
 
-Ein weiterer Aspekt, der kritisch beachtet werden muss, ist die Sicherheit von \acp{pwa}.
+Ein weiterer Aspekt, der kritisch betrachtet werden muss, ist die Sicherheit von \acp{pwa}.
 Im Vergleich zu nativen Anwendungen gibt es nämlich keine einheitliche Instanz, die für den Vertrieb und die Kontrolle der Anwendungen zuständig ist.
 So muss dem Anbieter der \ac{pwa} vertraut werden, dass diese sowohl sicher als auch frei von eventueller Schadsoftware ist.
 Die Möglichkeit, mit einer \ac{pwa} Schadsoftware zu installieren, ist besonders in Hinsicht auf Service Worker bedenklich, welche den Kern einer \ac{pwa} ausmachen.
-Deren Position ermöglicht es, alle von einer Anwendung gestellten Netzwerkanfragen zu unterbinden und umzuleiten.
+Die Position von Service Workern ermöglicht es, alle von einer Anwendung gestellten Netzwerkanfragen zu unterbinden und umzuleiten, wodurch sie ein großes Sicherheitsrisiko darstellen.
+Zwar wird durch die Spezifikation von Service Workern verhindert, dass Dritte diese manipulieren.
+Eine Absicherung dagegen, dass der Anbieter der \ac{pwa} die Service Worker zum Ausspionieren der Nutzer verwendet, gibt es nicht.
 
-Die größten Kritikpunkte liegen also im Bereich der Sicherheit, das \acp{pwa} ohne weitere Kontrolle installiert werden können.
-Jedoch ist auch zu bedenken, dass der Funktionsumfang einer \ac{pwa} immer an den Browser eines Nutzers angepasst werden muss, was zur Folge hat, dass manche Nutzer die Webanwendung nur eingeschränkt oder gar überhaupt nicht verwenden können.
+Die größten Kritikpunkte liegen also im Bereich der Sicherheit, da \acp{pwa} ohne weitere Kontrolle verbreitet und installiert werden können.
+Jedoch ist auch zu bedenken, dass der Funktionsumfang einer \ac{pwa} immer an den Browser eines Nutzers angepasst werden muss, was zur Folge hat, dass manche Nutzer die Webanwendung nur eingeschränkt oder überhaupt nicht verwenden können.
 
 \newpage
 
@@ -555,28 +554,26 @@ Jedoch ist auch zu bedenken, dass der Funktionsumfang einer \ac{pwa} immer an de
 \label{sec:fazit}
 
 Als Fazit ergibt sich, dass \acp{pwa} weder herkömmliche Webanwendungen noch native Anwendungen vollständig ersetzen können.
-Mit dem Anspruch, die Lücke zwischen diesen beiden Kategorien von Anwendungen zu füllen, verbinden \acp{pwa} zwar viele gute Eigenschaften beider Welten, können jedoch noch nicht alle Einsatzgebiete übernehmen.
+Mit dem Anspruch, die Lücke zwischen diesen beiden Kategorien von Anwendungen zu füllen, verbinden \acp{pwa} zwar viele gute Eigenschaften beider Welten, können jedoch nicht alle Einsatzgebiete übernehmen.
 
 Für Nutzer bieten \acp{pwa} eine nahezu nahtlose Integration in die bereits bestehenden Strukturen nativer Apps und bestechen zudem mit geringerem Speicherverbrauch und schnelleren Ladezeiten.
-Viel mehr ist aber aus Nutzersicht nicht geboten.
-Hinzu kommt, dass \acp{pwa} keine Eigenständigen Anwendungen sind und daher immer die Unterstützung des Browsers benötigen, welcher viele Ressourcen benötigt, was sich besonders im Akkuverbrauch auf Mobilgeräten kenntlich macht.
+Viel mehr wird aber aus Nutzersicht nicht geboten.
+Hinzu kommt, dass \acp{pwa} keine Eigenständigen Anwendungen sind und daher immer die Unterstützung des Browsers benötigen, welcher viele Ressourcen benötigt, was sich besonders im Akkuverbrauch auf Mobilgeräten bemerkbar macht.
 
 Für Entwickler haben \acp{pwa} mehr zu bieten.
-Eine einfache Migration von existierenden Webanwendungen, sofortige Aktualisierungen für die gesamte Nutzerbasis und ein breiter Zugriff auf Systemressourcen, eröffnen für Webanwendungen völlig neue Gebiete und ermöglicht eine schnellere Softwareentwicklung, wodurch Entwicklungskosten sinken.
-Für Entwickler bleibt dabei jedoch zu beachten, dass die Unterstützung für \acp{pwa} browserspezifisch ist, was die Testkosten erhöhen kann oder im schlimmsten Fall, die Nutzung der \ac{pwa} einschränkt.
+Eine einfache Migration von existierenden Webanwendungen, sofortige Aktualisierungen für die gesamte Nutzerbasis und ein breiter Zugriff auf Systemressourcen eröffnen für Webanwendungen völlig neue Gebiete und ermöglichen eine schnellere Softwareentwicklung, wodurch Entwicklungskosten sinken.
+Für Entwickler bleibt dabei jedoch zu beachten, dass die Unterstützung für \acp{pwa} browserspezifisch ist, was die Testkosten erhöhen kann oder im schlimmsten Fall, die Nutzer einer \ac{pwa} einschränkt.
 
-Voraussichtlich werden sich \acp{pwa} in Bereichen durchsetzen, wo ein großteil der Inhalte in Echtzeit aus dem Internet stammt.
-Sozial Media, Online Zeitschriften und Videoplattformen werden wohl am meisten von den \acp{pwa} profitieren.
-Anstelle viele native Anwendungen zusätzlich zu der bereits existierenden Webanwendung zu entwickeln, kann diese zu einer \ac{pwa} weiterentwickelt werden und so eine große Anzahl an Nutzern erreichen.
+Voraussichtlich werden sich \acp{pwa} in Bereichen durchsetzen, wo ein Großteil der Inhalte in Echtzeit aus dem Internet stammt.
+Sozial Media, Online-Zeitschriften und Videoplattformen werden wohl am meisten von \acp{pwa} profitieren.
+Anstelle viele native Anwendungen zusätzlich zu der bereits existierenden Webanwendung zu entwickeln, kann eine bereits bestehende Webanwendung zu einer \ac{pwa} weiterentwickelt werden und so eine große Anzahl an Nutzern erreichen.
 Für Seiten mit statischen Inhalten wird es kaum lohnenswert sein, in den zusätzlichen Entwicklungsaufwand für eine \ac{pwa} zu investieren.
-Ebenso werden native Anwendungen nicht verdrängt werden, da der direkte Systemzugriff für einige Bereiche notwendig ist, sodass beispielsweise Telefonie nicht aus einer Webanwendung heraus möglich ist.
+Ebenso werden native Anwendungen nicht verdrängt werden, da der direkte Systemzugriff für einige Bereiche notwendig ist, da beispielsweise Telefonie nicht aus einer Webanwendung heraus möglich ist.
 
 Wie stark sich \acp{pwa} tatsächlich durchsetzen werden, wird lediglich die Zeit zeigen können, mit welcher \acp{pwa} wohl zunehmend an Unterstützung gewinnen werden.
-Welche Konsequenzen sich daraus ergeben werden, sollte ein Großteil unserer Anwendungen tatsächlich von verteilten Anbietern aus dem Internet kommen statt einer zentralen Stelle, wie es bisher der Trend war, ist auch noch nicht abzusehen.
+Welche Konsequenzen sich daraus ergeben werden, sollte ein Großteil unserer Anwendungen tatsächlich von verteilten Anbietern aus dem Internet stammen statt einer zentralen Stelle, wie es bisher der Trend war, ist auch noch nicht abzusehen.
 
 \newpage
-
-\spacing{1}
 
 \printbibliography
 
