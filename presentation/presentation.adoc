@@ -1,0 +1,91 @@
+
+:imagesdir: images
+:customcss: custom.css
+
+== Progressive Web Apps
+
+Was ist das eigentlich?
+
+[.notes]
+--
+Vielleicht bekannt +
+Einstieg mit dem Erfinder
+--
+
+== Was sagt der Erfinder?
+
+[quote, Alex Russell https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/]
+--
+ * Responsiv
+ * Installierbar (zum Startbildschirm)
+ * Verbindungsunabhängig
+ * Sicher
+ * Fresh
+ * Auffindbar
+ * Teilbar
+ * Re-engageable
+--
+
+[.notes]
+--
+*Installierbar*: Lässt sich wie App installieren. Besitzt Icon, blendet sich zum Rest ein
+*Auffindbar*: Erkennbar als PWA für *Suchmaschinen* durch Manifest und Service Worker +
+*Teilbar*: _reibungslos_ und leicht zu teilen. Durch die URL +
+*Re-engageable*: _Versucht das zu übersetzen_ => Nutzerbindung (Push)
+--
+
+
+== PWA – Erklärung
+
+image::pwa-origins.png[Eigenschaften einer PWA]
+
+[.notes]
+--
+Viel "Marketing", mehr Softwaretechnik hier.
+--
+
+== PWA - Eigenschaften
+
+[%header,cols=3*]
+|===
+|Kerneigenschaften
+|Verbreitete Eigenschaften
+|Design
+
+|Lokal Installierbar
+|Zugriff auf Systemressourcen
+|Eigenes Fenster
+
+|Service Worker
+|Schnellere Ladezeiten
+|Komponenten an Mobile Apps angelehnt
+|===
+
+[.notes]
+--
+Muss haben (ohne keine Funktion) +
+Häufig vorhanden (durch Bibliotheken) +
+Design ist an Anwendungen angelehnt. Erkennt man hier.
+--
+
+== Browserunterstützung
+
+% TODO
+% Benötigen unterstützung für *alles*
+ - Anzeigen (HTML, CSS)
+ - Ausführung (JavaScript)
+ - Starten (Nach der Installation)
+ - Installieren
+
+
+
+== Installation
+
+% TODO Bild von dem Installationsbutton
+
+% Vergleichbar mit Lesezeichen
+ - Verknüpfung wird erstellt
+
+% TODO Manifest
+
+

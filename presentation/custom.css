@@ -1,0 +1,222 @@
+.reveal table {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin: auto;
+    line-height: 1;
+    border-collapse: collapse;
+    font-size: 28px;
+}
+.admonitionblock table{
+    margin-left: 0px
+}
+.admonitionblock td {
+    text-align: left;
+    font-size:36px;
+}
+.admonitionblock td.icon{
+    width:80px;
+    text-align: center;
+    color:#eee;
+    font-size:1.5em;
+}
+.admonitionblock table td.content{
+    padding-left:1.125em;
+    padding-right:1.25em;
+    border-left:1px solid #dddddf;
+    color:rgba(FF,FF,FF,.6)
+}
+
+.ulist {
+    text-align: left;
+    padding-left: 1em !important;
+}
+.reveal li > p {
+    font-size: 28px;
+    margin: 4px 0;
+}
+
+.reveal section.divide {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.reveal .west {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.reveal .east {
+   display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.reveal .left{
+    float: left;
+    width: 50%;
+}
+
+.reveal .left30 {
+    float: left;
+    width: 30%;
+}
+.reveal .left60 {
+    float: left;
+    width: 60%;
+}
+
+.reveal .left70 {
+    float: left;
+    width: 70%;
+}
+
+.reveal .left80 {
+    float: left;
+    width: 80%;
+}
+.reveal .right{
+    float: right;
+    width: 50%;
+}
+
+.reveal .right30{
+    float: right;
+    width: 30%;
+}
+
+.reveal .right20{
+    float: right;
+    width: 20%;
+}
+
+
+.reveal .right40{
+    float: right;
+    width: 40%;
+}
+
+.reveal .right70{
+    float: right;
+    width: 70%;
+}
+
+
+.reveal .leftalign{
+    text-align: left;
+}
+
+.reveal .large{
+	font-size: 1.3em;
+}
+
+.reveal .larger {
+  font-size: 1.5em;
+}
+
+.reveal .huge{
+    font-size: 2em;
+    font-family: "League Gothic", Impact, sans-serif;
+}
+
+.reveal .halign-center {
+  text-align: center;
+}
+
+.reveal .halign-left {
+  text-align: left;
+}
+.reveal .halign-right {
+  text-align: right;
+}
+
+.reveal .valign-top {
+    vertical-align: top;
+}
+
+.reveal .valign-middle {
+  vertical-align: middle;
+}
+
+.reveal .ulist .none{
+    list-style-type: none;
+}
+
+.reveal .hidden {
+    background: #333;
+    color: #333;
+}
+
+.reveal .text-left {
+  text-align: left;
+}
+
+.reveal .important-text {
+  color: #FF4444;
+  font-size: 1.3em;
+
+}
+
+.reveal .text-red {
+  color: #FF4444;
+
+}
+
+.reveal .grid-all {
+  border: 1px solid;
+}
+
+.reveal .frame-all th {
+  border-left: 1px solid;
+}
+
+.reveal .frame-all td {
+  border-left: 1px solid;
+}
+
+.reveal .frame-none th {
+  border: none;
+}
+
+.reveal .grid-none td {
+  border-left: none;
+  border: none;
+}
+
+.reveal .invisible {
+  visibility: hidden;
+}
+
+.reveal .code-medium {
+  font-size: 0.58em;
+  line-height: 0.95em;
+}
+
+.reveal .code-small {
+  font-size: 0.43em;
+  line-height: 0.95em;
+}
+
+.reveal .compact-table table td p {
+  margin: 5px 0;
+}
+
+.reveal .medium {
+  font-size: 0.9em;
+}
+
+.reveal .small {
+  font-size: 0.8em;
+}
+
+.reveal .tiny {
+  font-size: 0.6em;
+}
+.reveal .small p {
+  margin: 10px 0;
+}
