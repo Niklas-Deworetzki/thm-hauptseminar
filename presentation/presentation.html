@@ -9,7 +9,7 @@
 .conum[data-value]:after{content:attr(data-value)}
 pre .conum[data-value]{position:relative;top:-.125em}
 b.conum *{color:inherit!important}
-.conum:not([data-value]):empty{display:none}</style><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>var link = document.createElement( 'link' );
+.conum:not([data-value]):empty{display:none}</style><link rel="stylesheet" href="./fonts/fontawesome/css/rall.css"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>var link = document.createElement( 'link' );
 link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = window.location.search.match( /print-pdf/gi ) ? "reveal.js/css/print/pdf.css" : "reveal.js/css/print/paper.css";
@@ -27,16 +27,72 @@ Einstieg mit dem Erfinder</p></div></aside></section>
 <aside class="notes"><div class="paragraph"><p>Muss haben (ohne keine Funktion)<br>
 Häufig vorhanden (durch Bibliotheken)<br>
 Design ist an Anwendungen angelehnt. Erkennt man hier.</p></div></aside></section>
-<section id="_browserunterstützung"><h2>Browserunterstützung</h2><div class="paragraph"><p>% TODO
-% Benötigen unterstützung für <strong>alles</strong>
- - Anzeigen (HTML, CSS)
- - Ausführung (JavaScript)
- - Starten (Nach der Installation)
- - Installieren</p></div></section>
-<section id="_installation"><h2>Installation</h2><div class="paragraph"><p>% TODO Bild von dem Installationsbutton</p></div>
-<div class="paragraph"><p>% Vergleichbar mit Lesezeichen
- - Verknüpfung wird erstellt</p></div>
-<div class="paragraph"><p>% TODO Manifest</p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<section id="_browserunterstützung"><h2>Browserunterstützung</h2><div class="paragraph"><p>Browser unterstützt PWAs bei (fast) allem</p></div>
+<div class="ulist"><ul><li><p>Anzeige (HTML, CSS)</p></li><li><p>Ausführung (JavaScript)</p></li><li><p>Starten (Nach der Installation)</p></li><li><p>Installation</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p><strong>Anzeige:</strong> HTML Gerüst, CSS Engine<br>
+<strong>Ausführung:</strong> JavaScript Engine (auch Probleme)<br>
+<strong>Starten:</strong> Nur Binärdateien vom BS unterstützt (&#8658; Dateiendungen)<br>
+<strong>Installation:</strong> Speichern, Hinzufügen (wie für das Gerät)<br></p></div></aside></section>
+<section id="_installation"><h2>Installation</h2><div class="imageblock" style=""><img src="images/pwa-install.png" alt="Installationsdialog für "Air Horner""></div>
+<div class="ulist"><ul><li><p>Benötigte Dateien herunterladen</p></li><li><p>Verknüpfung erstellen</p></li></ul></div>
+<div class="paragraph"><p>&#8658; Manifestdatei beschreibt Installation</p></div></section>
+<section><section id="_manifest"><h2>Manifest</h2><div class="paragraph"><p>Manifest wird im Header hinzugefügt.</p></div><pre class="highlight listingblock"><code data-noescape class="html language-html">           &lt;link rel="manifest" href="/manifest.json"&gt;</code></pre><div class="paragraph"><p>Jede bestehende Webanwendung kann erweitert werden.</p></div></section><section id="_verpflichtende_manifesteinträge"><h2>Verpflichtende Manifesteinträge</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Schlüssel</th><th class="tableblock halign-left valign-top">Funktion</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>short_name</code>, <code>name</code>, <code>icons</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Gestaltung der Verknüpfung</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>display</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startmodus für PWA</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>start_url</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startbildschirm der Anwendung</p></td></tr></table>
+<aside class="notes"><div class="paragraph"><p><code>display</code> kann <code>fullscreen</code>, <code>standalone</code>, <code>browser</code><br>
+Start ist wichtig. Beispiel "Einloggen"</p></div></aside></section><section id="_weitere_manifesteinträge"><h2>Weitere Manifesteinträge</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Schlüssel</th><th class="tableblock halign-left valign-top">Funktion</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Gestaltung der Verknüpfung</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>background_color</code>, <code>theme_color</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Browserkomponenten einfärben (Programmstart)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>scope</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Hilfreich bei Subdomain</p></td></tr></table>
+<aside class="notes"></aside></section></section>
+<section id="_service_worker"><h2>Service Worker</h2><div class="paragraph"><p>Installation ≠ "Einfach" Herunterladen</p></div>
+<div class="paragraph"><p>&#8658; Service Worker übernehmen Verwaltung</p></div>
+<hr>
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Service Worker sind JavaScript "Threads" mit eigenem Kontext.
+      Sie werden unabhängig von einem Tab ausgeführt.</td></tr></table></div>
+<aside class="notes"><div class="paragraph"><p>Einfach Herunterladen Online Links, offline Version nicht verfügbar
+'''
+Service Worker sind Worker.<br>
+Sonst Abhängigkeit zu Tab<br>
+Ausführung also unabhängig</p></div></aside></section>
+<section id="_service_worker_2"><h2>Service Worker</h2><div class="paragraph"><p>Service Worker reagieren auf externe Events</p></div>
+<pre class="highlight listingblock"><code data-noescape class="javascript language-javascript">self.addEventListener('fetch', function(event) {
+  event.respondWith(cache.match(event.request)
+    .then(cachedResponse =&gt; cachedResponse
+                         || fetch(event.request)))
+});</code></pre>
+<aside class="notes"><div class="paragraph"><p>Globales <code>cache</code> Objekt<br>
+Erläutern: Externe Events, Fetch Event mit Daten, Cache, <strong>falsy</strong>, Chaining</p></div></aside></section>
+<section id="_ein_kleines_beispiel"><h2>Ein kleines Beispiel</h2><div class="paragraph"><p><a href="https://pokedex.org/" class="bare">https://pokedex.org/</a></p></div>
+<aside class="notes"><div class="paragraph"><p>Alle Pokemon. Mobil Aussehen. Klicken ändert <strong>URL</strong><br></p></div>
+<div class="paragraph"><p>navigator.serviceWorker<br>
+C-F addEvent<br>
+<code><a href="https://pokedex.org/manifest.json" class="bare">https://pokedex.org/manifest.json</a></code></p></div></aside></section>
+<section id="_push_notifications"><h2>Push Notifications</h2><div class="imageblock" style=""><img src="images/push-api.png" alt="Ablauf bei Push-Notifications"></div>
+<aside class="notes"><div class="paragraph"><p>Was können PWA mehr?<br></p></div></aside></section>
+<section><section id="_zugriff_auf_ressourcen"><h2>Zugriff auf Ressourcen</h2><div class="ulist"><ul><li><p>Zugriff auf Ressourcen (Geräte, Dateisystem, Benachrichtigungen) benötigt <em>Hilfe des Browsers</em></p></li><li><p>Jede Zugriffmöglichkeit definiert eigenen Standard</p><div class="ulist"><ul><li><p>Schnittstelle nicht einheitlich</p></li><li><p>Nicht jeder Browser unterstützt Zugriff</p></li><li><p>Nicht jeder Browser unterstützt Zugriff <em>richtig</em></p></li></ul></div></li></ul></div></section><section id="_zugriff_auf_ressourcen_2"><h2>Zugriff auf Ressourcen</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:25%"><col style="width:25%"><col style="width:25%"><col style="width:25%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Ressource</th><th class="tableblock halign-left valign-top">Zugriff via</th><th class="tableblock halign-left valign-top">Kompatibilität überprüfbar durch Objekt</th><th class="tableblock halign-left valign-top">Automatische Berechtigungen</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Positionsdaten</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>navigator.geolocation</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✓</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✓</strong></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Benachrichtigungen</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Globales Objekt: <code>Notification</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✓</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✗</strong></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Kamera und Mikrophon</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✓</strong><code>navigator.mediaDevices</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✗</strong></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✗</strong></p></td></tr></table>
+<div class="paragraph"><p><a href="https://whatwebcando.today/" class="bare">https://whatwebcando.today/</a></p></div>
+<aside class="notes"><div class="paragraph"><p>Pos: Einfach verwenden, Browser fragt nach<br>
+Ben: Wenn Objekt vorhanden, verwendbar. Exception wenn keine Berecht.<br>
+Media: Objekt vorhanden. Methoden können <code>null</code> liefern. Keine Berecht.<br></p></div>
+<hr>
+<div class="paragraph"><p>Telefonie, SMS nicht vorhanden<br>
+"Besondere" Geräte auch nicht, da keine einheitliche Schnittstelle</p></div>
+<div class="paragraph"><p>&#8658; Großes Chaos</p></div></aside></section></section>
+<section id="_browser_voraussetzungen"><h2>Browser Voraussetzungen</h2><div class="ulist"><ul><li><p>Wann kommt Installationsdialog / -option?</p></li><li><p>Je nach Browser anders:</p><div class="ulist"><ul><li><p>Service Worker + HTTPS</p></li><li><p>Manifest mit <code>start_url</code>, <code>name</code>, <code>icons</code>, …</p></li><li><p>Nutzerheuristik (Chrome)</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Meistens nur zum Installieren notwendig<br>
+StartURL, Name sinnvoll<br>
+Firefox will Icons<br>
+Chrome sogar Nutzerheuristik</p></div></aside></section>
+<section id="_vorteile"><h2>Vorteile</h2><div class="ulist"><ul><li><p>Natives Erlebnis, schnellere Ladezeiten</p></li><li><p>Für Entwickler:</p><div class="ulist"><ul><li><p>Zugriff auf Systemressourcen</p></li><li><p>Geringere Entwicklungskosten</p></li><li><p>Schnelle Aktualisierungen</p></li></ul></div></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Für Nutzer nicht viel. <em>Nativ</em>, <em>Fresh</em>, <em>Engaging</em><br>
+* Neue Möglichkeiten (Systemressourcen)
+* Existierende Webanwendung erweitern
+* Kein Neu-Bauen nativ
+* Aktualisierung ohne App-Store</p></div></aside></section>
+<section id="_kritik"><h2>Kritik</h2><div class="ulist"><ul><li><p>Browser für alles Zuständig</p><div class="ulist"><ul><li><p>Komplexe Anwendung (gerade bei schwachen Geräten)</p></li><li><p>Abhängigkeit zu Browser</p></li></ul></div></li><li><p>Unterstützung nicht überall vorhanden</p></li><li><p>Sicherheit</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Mobil Akku schnell leer. Nicht so cool für Nutzer<br>
+Browser benötigt Berechtigung, muss laufen, etc<br>
+Läuft nicht überall<br>
+'''
+Sicherheit: Verteilte Anbieter, keine Überprüfung, Vertrauen auf Anbieter / JavaScript</p></div></aside></section>
+<section id="_ausblick"><h2>Ausblick</h2><div class="paragraph"><p>Lokal &#8594; Im Web</p></div>
+<div class="paragraph"><p>Statische Inhalte &#8594; Live Inhalte</p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -155,12 +211,12 @@ Reveal.initialize({
   // Optional libraries used to extend on reveal.js
   dependencies: [
       { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-      
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
       { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
       { src: 'reveal.js/plugin/notes/notes.js', async: true },
       
       
-      
+      { src: 'reveal.js/plugin/print-pdf/print-pdf.js', async: true },
       
   ],
 

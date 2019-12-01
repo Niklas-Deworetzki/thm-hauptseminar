@@ -1,6 +1,13 @@
 
 :imagesdir: images
+:icons: font
 :customcss: custom.css
+:revealjs_plugin_pdf: enabled
+:source-highlighter: highlightjs
+:iconfont-remote!:
+:iconfont-name: fonts/fontawesome/css/rall
+
+
 
 == Progressive Web Apps
 
@@ -70,22 +77,272 @@ Design ist an Anwendungen angelehnt. Erkennt man hier.
 
 == Browserunterstützung
 
-% TODO
-% Benötigen unterstützung für *alles*
- - Anzeigen (HTML, CSS)
- - Ausführung (JavaScript)
- - Starten (Nach der Installation)
- - Installieren
+Browser unterstützt PWAs bei (fast) allem
 
+** Anzeige (HTML, CSS)
+** Ausführung (JavaScript)
+** Starten (Nach der Installation)
+** Installation
+
+[.notes]
+--
+*Anzeige:* HTML Gerüst, CSS Engine +
+*Ausführung:* JavaScript Engine (auch Probleme) +
+*Starten:* Nur Binärdateien vom BS unterstützt (=> Dateiendungen) +
+*Installation:* Speichern, Hinzufügen (wie für das Gerät) +
+--
 
 
 == Installation
 
-% TODO Bild von dem Installationsbutton
+image::pwa-install.png[Installationsdialog für "Air Horner"]
 
-% Vergleichbar mit Lesezeichen
- - Verknüpfung wird erstellt
+ * Benötigte Dateien herunterladen
+ * Verknüpfung erstellen
 
-% TODO Manifest
+=> Manifestdatei beschreibt Installation
 
+
+== Manifest
+
+Manifest wird im Header hinzugefügt.
+
+[source,html]
+----
+           <link rel="manifest" href="/manifest.json">
+----
+
+Jede bestehende Webanwendung kann erweitert werden.
+
+
+=== Verpflichtende Manifesteinträge
+
+[%header,cols=2*]
+|===
+|Schlüssel
+|Funktion
+
+|`short_name`, `name`, `icons`
+|Gestaltung der Verknüpfung
+
+|`display`
+|Startmodus für PWA
+
+|`start_url`
+|Startbildschirm der Anwendung
+|===
+
+[.notes]
+--
+`display` kann `fullscreen`, `standalone`, `browser` +
+Start ist wichtig. Beispiel "Einloggen"
+--
+
+
+=== Weitere Manifesteinträge
+
+[%header,cols=2*]
+|===
+|Schlüssel
+|Funktion
+
+|`description`
+|Gestaltung der Verknüpfung
+
+|`background_color`, `theme_color`
+|Browserkomponenten einfärben (Programmstart)
+
+|`scope`
+|Hilfreich bei Subdomain
+|===
+
+[.notes]
+--
+
+--
+
+
+
+== Service Worker
+
+Installation ≠ "Einfach" Herunterladen
+
+=> Service Worker übernehmen Verwaltung
+
+'''
+
+NOTE: Service Worker sind JavaScript "Threads" mit eigenem Kontext.
+      Sie werden unabhängig von einem Tab ausgeführt.
+
+[.notes]
+--
+Einfach Herunterladen Online Links, offline Version nicht verfügbar
+'''
+Service Worker sind Worker. +
+Sonst Abhängigkeit zu Tab +
+Ausführung also unabhängig
+--
+
+
+
+== Service Worker
+
+Service Worker reagieren auf externe Events
+
+[source,javascript]
+----
+self.addEventListener('fetch', function(event) {
+  event.respondWith(cache.match(event.request)
+    .then(cachedResponse => cachedResponse
+                         || fetch(event.request)))
+});
+----
+
+[.notes]
+--
+Globales `cache` Objekt +
+Erläutern: Externe Events, Fetch Event mit Daten, Cache, *falsy*, Chaining
+--
+
+
+== Ein kleines Beispiel
+
+https://pokedex.org/
+
+[.notes]
+--
+Alle Pokemon. Mobil Aussehen. Klicken ändert *URL* +
+
+navigator.serviceWorker +
+C-F addEvent +
+`https://pokedex.org/manifest.json`
+--
+
+
+== Push Notifications
+
+image::push-api.png[Ablauf bei Push-Notifications]
+
+[.notes]
+--
+Was können PWA mehr? +
+--
+
+
+
+== Zugriff auf Ressourcen
+
+
+* Zugriff auf Ressourcen (Geräte, Dateisystem, Benachrichtigungen) benötigt _Hilfe des Browsers_
+
+
+* Jede Zugriffmöglichkeit definiert eigenen Standard
+** Schnittstelle nicht einheitlich
+** Nicht jeder Browser unterstützt Zugriff
+** Nicht jeder Browser unterstützt Zugriff _richtig_
+
+=== Zugriff auf Ressourcen
+
+[%header,cols=4*]
+|===
+|Ressource
+|Zugriff via
+|Kompatibilität überprüfbar durch Objekt
+|Automatische Berechtigungen
+
+|Positionsdaten
+|`navigator.geolocation`
+|*✓*
+|*✓*
+
+
+|Benachrichtigungen
+|Globales Objekt: `Notification`
+|*✓*
+|*✗*
+
+|Kamera und Mikrophon
+|*✓*`navigator.mediaDevices`
+|*✗*
+|*✗*
+|===
+
+https://whatwebcando.today/
+
+[.notes]
+--
+Pos: Einfach verwenden, Browser fragt nach +
+Ben: Wenn Objekt vorhanden, verwendbar. Exception wenn keine Berecht. +
+Media: Objekt vorhanden. Methoden können `null` liefern. Keine Berecht. +
+
+'''
+
+Telefonie, SMS nicht vorhanden +
+"Besondere" Geräte auch nicht, da keine einheitliche Schnittstelle
+
+=> Großes Chaos
+--
+
+
+
+== Browser Voraussetzungen
+
+* Wann kommt Installationsdialog / -option?
+
+* Je nach Browser anders:
+** Service Worker + HTTPS
+** Manifest mit `start_url`, `name`, `icons`, …
+** Nutzerheuristik (Chrome)
+
+[.notes]
+--
+Meistens nur zum Installieren notwendig +
+StartURL, Name sinnvoll +
+Firefox will Icons +
+Chrome sogar Nutzerheuristik
+--
+
+
+
+== Vorteile
+
+* Natives Erlebnis, schnellere Ladezeiten
+* Für Entwickler:
+** Zugriff auf Systemressourcen
+** Geringere Entwicklungskosten
+** Schnelle Aktualisierungen
+
+[.notes]
+--
+Für Nutzer nicht viel. _Nativ_, _Fresh_, _Engaging_ +
+* Neue Möglichkeiten (Systemressourcen)
+* Existierende Webanwendung erweitern
+* Kein Neu-Bauen nativ
+* Aktualisierung ohne App-Store
+--
+
+== Kritik
+
+* Browser für alles Zuständig
+** Komplexe Anwendung (gerade bei schwachen Geräten)
+** Abhängigkeit zu Browser
+* Unterstützung nicht überall vorhanden
+* Sicherheit
+
+[.notes]
+--
+Mobil Akku schnell leer. Nicht so cool für Nutzer +
+Browser benötigt Berechtigung, muss laufen, etc +
+Läuft nicht überall +
+'''
+Sicherheit: Verteilte Anbieter, keine Überprüfung, Vertrauen auf Anbieter / JavaScript
+--
+
+
+
+== Ausblick
+
+Lokal -> Im Web
+
+Statische Inhalte -> Live Inhalte
 
