@@ -342,7 +342,16 @@ Sicherheit: Verteilte Anbieter, keine Überprüfung, Vertrauen auf Anbieter / Ja
 
 == Ausblick
 
-Lokal -> Im Web
+* Was PWA nicht können:
+** Systemnahe Programme
+** Statische Inhalte
 
-Statische Inhalte -> Live Inhalte
+* Interessant für dynamische, interaktive Webanwendungen
+
+[.notes]
+--
+IIler hier? Warum nicht aufm M3 Cortex? +
+Viele herkömmliche Apps *nicht* ersetzt (Taschenlampe, SMS, ..) +
+Aufwand lohnt sich nicht für statische Seiten (hasthelargehadroncolliderdestroyedtheworldyet.com)
+--
 
