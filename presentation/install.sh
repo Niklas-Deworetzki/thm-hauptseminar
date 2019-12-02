@@ -10,8 +10,11 @@ echo -e "\e[93mCreating \e[1mGemfile\e[0m"
 
 echo "source 'https://rubygems.org'" > Gemfile
 echo "gem 'asciidoctor-revealjs' # latest released version" >> Gemfile
-
-
+echo "" >> Gemfile
+echo "gem 'rouge'" >> Gemfile
+echo "gem 'asciidoctor-pdf'" >> Gemfile
+echo "gem 'prawn', github: 'prawnpdf/prawn'" >> Gemfile
+echo "gem 'prawn-table', github: 'prawnpdf/prawn-table'" >> Gemfile
 echo -e "\e[93mInstalling Gems..."
 
 bundle config --local github.https true

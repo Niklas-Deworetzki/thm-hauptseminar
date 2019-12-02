@@ -6,6 +6,8 @@
 :source-highlighter: highlightjs
 :iconfont-remote!:
 :iconfont-name: fonts/fontawesome/css/rall
+:revealjs_width: 1400
+:revealjs_height: 630
 
 
 
