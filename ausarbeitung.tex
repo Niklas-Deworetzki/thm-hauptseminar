@@ -91,6 +91,8 @@
 }
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\-\do\\/}
 
+\hyphenation{Web-an-wen-dung}
+
 \begin{document}
 
 \titlehead{\includegraphics[width=\textwidth]{src/Logo_THM_CG_FB06.png}}
@@ -98,12 +100,11 @@
 %% Titelseite
 \subject{Manuskript}
 \title{Progressive Web Apps}
-\subtitle{Kurs \enquote{Hauptseminar -- Mobile Techonologies}}
+\subtitle{Kurs \enquote{Hauptseminar -- Mobile Technologies}}
 \author{Niklas Deworetzki}
 \date{\today}
 \maketitle
 
-%\spacing{1.16} % Spacing entspricht Arial 12 - Zeilenabstand 1.3
 
 \vspace*{1.5cm}
 
@@ -128,14 +129,14 @@ Worum es sich dabei handelt, wie die Technologie der \acp{pwa} umgesetzt ist und
 Zunächst wird in Sektion~\ref{sec:wasistpwa} erläutert, wie sich eine \ac{pwa} von einer herkömmlichen Webanwendung oder einer nativen Anwendung abgrenzt.
 Als \textit{herkömmliche Webanwendung} wird dabei eine Webseite oder Anwendung bezeichnet, die als Teil einer Website eine Funktionalität bereitstellt und auf HTML sowie CSS und JavaScript basiert.
 Wichtig ist dabei, dass herkömmliche Webanwendungen nur online durch den Browser erreichbar sind.
-Im Vergleich dazu sind \textit{native Anwendungen} eine Kategorie von Anwendungen, die direkt vom Betriebsystem eines Gerätes ausgeführt werden und deren Ressourcen lokal vorliegen.
+Im Vergleich dazu sind \textit{native Anwendungen} eine Kategorie von Anwendungen, die direkt vom Betriebssystem eines Gerätes ausgeführt werden und deren Ressourcen lokal vorliegen.
 Hierbei handelt es sich häufig um Anwendungen, die in systemnahen Programmiersprachen wie C, C++ oder Swift geschrieben sind.
-Auf Android-Systemen kommen auch Java oder seit Neuerem Kotlin zum Einsatz.
-Im Folgenden werden native Anwendungen auch als Apps bezeichnet, was zum einen dem Trend folgt, dass als Apps nicht mehr nur Applikationen auf Mobilgeräten sondern generell ausführbare Programme bezeichnet werden und andererseits zur deutlicheren namentlichen Unterscheidung zwischen Webanwendung und nativer Anwendung dient.
+Auf Android-Systemen kommen auch Java oder seit neuerem Kotlin zum Einsatz.
+Im Folgenden werden native Anwendungen auch als Apps bezeichnet, was zum einen dem Trend folgt, dass als Apps nicht mehr nur Applikationen auf Mobilgeräten, sondern generell ausführbare Programme bezeichnet werden und andererseits zur deutlicheren namentlichen Unterscheidung zwischen Webanwendung und nativer Anwendung dient.
 
 Nachdem die Eigenschaften und Abgrenzungen einer \ac{pwa} besprochen wurden, wird in Sektion~\ref{sec:voraussetzung} erläutert, welche Voraussetzungen im Zusammenhang mit einer \ac{pwa} auftreten.
 Hier liegt der Schwerpunkt besonders auf den benötigten Technologien, die für die Funktionalität einer \ac{pwa} notwendig sind, wodurch sich eine \ac{pwa} von anderen Anwendungen abgrenzt.
-Des weiteren wird auf die Voraussetzungen eingegangen, die von den verschiedenen Browsern an \acp{pwa} gestellt wird.
+Des Weiteren wird auf die Voraussetzungen eingegangen, die von den verschiedenen Browsern an \acp{pwa} gestellt werden.
 
 Letztlich werden in den Sektionen~\ref{sec:vorteile} und Sektion~\ref{sec:nachteile} angeführt, welche positiven und negativen Eigenschaften \acp{pwa} mit sich bringen, sodass schließlich in Sektion~\ref{sec:fazit} eine finale Wertung zur Nutzung und Verbreitung von \acp{pwa} gegeben werden kann.
 
@@ -161,7 +162,7 @@ Die Beschreibung einer \ac{pwa} basiert vielmehr auf einer Menge an Eigenschafte
 Im Folgenden werden daher einige Eigenschaften zusammengetragen und erläutert, die immer wieder für die Beschreibung von \acp{pwa} verwendet werden.
 Ein besonderer Schwerpunkt wird dabei auf die Standpunkte der Google- und Mozilla-Entwickler gelegt, da diese treibende Kraft beim Entwickeln von \acp{pwa} sind und gemeinsam die Fähigkeiten dieser Gruppe von Anwendungen ausbauen.
 
-Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in folgende Kategorien einteilen, in welche im Folgenden erläutert werden.
+Die gesammelten Eigenschaften einer \ac{pwa} lassen sich dabei in Kategorien einteilen, welche im Folgenden erläutert werden.
 
 \begin{enumerate}
   \litem{Grundlegende Eigenschaften} Eigenschaften, die dem Charakter einer \ac{pwa} entsprechen und ohne die ein Funktionieren der Anwendung nicht möglich wäre.
@@ -184,8 +185,8 @@ Da die \ac{pwa} nicht eigenständig entscheiden kann, welches Gerät der Nutzer 
 
 Beim anschließenden Ausführen einer installierten \ac{pwa} ist erneut Unterstützung vom Browser notwendig.
 \acp{pwa} als Webanwendung werden mit Webtechnologien wie HTML und CSS aufgebaut und erhalten ihre Funktionalität durch JavaScript.
-Betriebsysteme bieten jedoch nur eine begrenzte Unterstützung für Programmformate, die nativ ausgeführt werden können.
-Abgesehen von Skriptdateien wie etwa Shell-Scripts für Linux oder Command-Files für Windows, die in einem betriebsystemabhängigen Format geschrieben sein müssen, wird meist nur die Ausführung von Binärformaten unterstützt\cite{fisher_executablelist}.
+Betriebssysteme bieten jedoch nur eine begrenzte Unterstützung für Programmformate, die nativ ausgeführt werden können.
+Abgesehen von Skriptdateien wie etwa Shell-Scripts für Linux oder Command-Files für Windows, die in einem betriebssystemabhängigen Format geschrieben sein müssen, wird meist nur die Ausführung von Binärformaten unterstützt\cite{fisher_executablelist}.
 Es wird also Hilfe vom Browser benötigt, welcher die installierte \ac{pwa} verwaltet und daher alle benötigten Dateien laden und ausführen kann.
 Zudem ist es dem Browser möglich, für die Ausführung einer \ac{pwa} bestimmte Regeln festzulegen.
 In Google Chrome beispielsweise wird jede \ac{pwa} in einem eigenen Fenster gestartet, wodurch das Nutzererlebnis einer nativen Anwendung entstehen soll\cite{googledevs_pwa}.
@@ -194,7 +195,7 @@ Durch den Installationsprozess werden nur Teile der \ac{pwa} lokal auf dem Gerä
 Der Grund dafür ist, dass es meist nicht genügt, eine Website einfach vollständig zu kopieren, um sie offline verfügbar zu machen.
 Viele Webanwendungen, wie beispielsweise die \ac{pwa} von Twitter\footnote{https://play.google.com/store/apps/details?id=com.twitter.android.lite}, basieren darauf, stetig neue Inhalte von einem Server abzufragen.
 Die Verwaltung, welche Inhalte offline verfügbar sein sollen und welche nicht, geschieht über sogenannte \enquote{Service Worker}.
-Dadurch, dass jede \ac{pwa} lokale und entfernte Inhalte verwalten muss, ist das vorhandensein von Service Workern, eine weitere Eigenschaft, die jede \ac{pwa} besitzt.
+Dadurch, dass jede \ac{pwa} lokale und entfernte Inhalte verwalten muss, ist das Vorhandensein von Service Workern eine weitere Eigenschaft, die jede \ac{pwa} besitzt.
 
 Eine Voraussetzung der Service Worker erzwingt eine weitere Eigenschaft aller \acp{pwa}.
 Service Worker können laut Spezifikation nur auf Seiten ausgeführt werden, die über HTTPS ausgeliefert werden.
@@ -208,7 +209,7 @@ Die Manifestdatei listet die Eigenschaften einer \ac{pwa} auf und ist somit auch
 
 \subsection{Häufige Eigenschaften}
 
-Die im Folgenden genannten Eigenschaften, werden häufig bei \acp{pwa} angetroffen, müssen jedoch nicht notwendigerweise umgesetzt werden.
+Die im Folgenden genannten Eigenschaften werden häufig bei \acp{pwa} angetroffen, müssen jedoch nicht notwendigerweise umgesetzt werden.
 Größtenteils entstehen diese Eigenschaften durch die für \acp{pwa} verwendeten Bibliotheken.
 
 \acp{pwa} besitzen die Fähigkeit, viele Aufgaben von nativen Apps zu übernehmen.
@@ -253,7 +254,7 @@ Letztlich werden die Voraussetzungen verglichen, welche von Browsern an eine \ac
 
 \subsection{Installationsformat}
 
-Das Installieren einer \ac{pwa} entspricht Größtenteils dem Setzen eines Lesezeichens bei einer herkömmlichen Website.
+Das Installieren einer \ac{pwa} entspricht größtenteils dem Setzen eines Lesezeichens bei einer herkömmlichen Website.
 Dem Browser wird mitgeteilt, dass eine Referenz auf diese Website in eine lokale Sammlung aufgenommen werden soll.
 Moderne Browser, wie Google Chrome oder Firefox, können Verknüpfungen für beliebige Websites auf dem Desktop oder im Startmenü erstellen\cite{mozillasupport_desktopshortcut}\cite{businessinsider_desktopshortcut_chrome}.
 Dieses Verhalten entspricht genau dem, was bei einer \ac{pwa} gewünscht ist, welche auch zwischen den nativen Anwendungen auf dem Desktop oder Startbildschirm des Gerätes angezeigt werden sollen.
@@ -265,7 +266,7 @@ Für die Konfiguration dieser Informationen existiert ein normiertes Format, wel
 In dem sogenannten \textit{Manifest} einer Website werden die Eigenschaften als \ac{json} festgelegt.
 
 Die Einbindung des Manifests geschieht im Header einer \ac{pwa}.
-Dort kann über ein gewöhnliches \texttt{link}\-Tag eine Manifestdatei eingebunden werden.
+Dort kann über ein gewöhnliches \texttt{link}-Tag eine Manifestdatei eingebunden werden.
 
 \begin{figure}[h]
 \begin{lstlisting}[language=HTML]
@@ -279,7 +280,7 @@ Die Spezifikation der Eigenschaften in der Manifestdatei geschieht über Schlüs
 Das Definieren der Schlüssel \texttt{short\_name}, \texttt{name}, \texttt{icons}, \texttt{start\_url} und \texttt{display} ist dabei verpflichtend.
 
 \texttt{short\_name} und \texttt{icons} beschreiben das Aussehen der Verknüpfung.
-Der Schlüssel \texttt{icons} wird im plural verwendet, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
+Der Schlüssel \texttt{icons} wird im Plural verwendet, da in der Manifestdatei mehrere Icons in verschiedenen Auflösungen angegeben werden sollten.
 So kann je nach Auflösung des Gerätes das am besten passende Icon vom Browser gewählt werden.
 Der lange Name \texttt{name} wird für Installationsdialoge und als Beschriftung der Verknüpfung verwendet.
 Zusätzlich sollte der verkürzte Name unter \texttt{short\_name} angegeben werden, welcher alternativ angezeigt wird, wenn weniger Platz vorhanden ist\cite{chromedevs_manifestname}.
@@ -290,11 +291,11 @@ Hier kann als Wert \texttt{fullscreen}, \texttt{standalone} oder \texttt{browser
 Bei jedem dieser Werte wird die \ac{pwa} in einem eigenständigen Fenster ausgeführt.
 Die Werte \texttt{fullscreen} oder \texttt{standalone} blenden dabei die Anzeigeelemente des Browsers aus.
 Es wird also keine Navigationsleiste oder URL angezeigt.
-Ist der Wert \texttt{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebsystems ausgeblendet sind.
+Ist der Wert \texttt{fullscreen} gewählt, so wird die \ac{pwa} im Vollbildmodus gestartet, sodass zusätzlich die Anzeigeelemente des Betriebssystems ausgeblendet sind.
 Durch den Wert \texttt{browser} werden die Anzeigeelemente des Browsers wie bei einer herkömmlichen Website angezeigt\cite{googledev_manifest}.
 
 Der Wert \texttt{start\_url} ist wichtig für das Verhalten einer \ac{pwa}.
-Da die Installation einer \ac{pwa} wie das setzen eines Lesezeichens an jeder Unterseite einer Anwendung geschehen kann, genügt es nicht, bloß die aktuelle URL zu speichern.
+Da die Installation einer \ac{pwa} wie das Setzen eines Lesezeichens an jeder Unterseite einer Anwendung geschehen kann, genügt es nicht, bloß die aktuelle URL zu speichern.
 Wenn ein Nutzer beispielsweise gerade sein Profil betrachtet und sich an dieser Stelle entschließt, die \ac{pwa} zu installieren, so würde er bei erneutem Starten der \ac{pwa} immer wieder zu seinem Profil zurückkehren, wenn die Eigenschaften eines herkömmlichen Lesezeichens übernommen werden.
 Es ist aber bei einer Anwendung meistens erwünscht, in ein zentrales Menü herein zu starten, welches zu Beginn angezeigt wird.
 Die URL für dieses Startmenü wird daher an dieser Stelle angegeben.
@@ -325,7 +326,7 @@ Demnach würde die Online-Version der Anwendung dauerhaft verwendet werden, was 
 Folglich ist es also notwendig, einheitlich die Ressourcen aus dem Netzwerk abzurufen, da sie dort immer erhältlich sind.
 Werden diese Netzwerkanfragen dann noch lokal abgefangen, kann überprüft werden, ob Ressourcen bereits lokal erhältlich sind.
 Sollte dies der Fall sein, so ist es möglich, die Anfragen umzuleiten, sodass die lokalen Ressourcen verwendet werden.
-Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Worker} zuständig, dessen Funktionsweise im folgenden näher erläutert wird.
+Für die lokale Verwaltung von Inhalten sind die sogenannten \enquote{Service Worker} zuständig, dessen Funktionsweise im Folgenden näher erläutert wird.
 
 \begin{wrapfigure}{r}{0.53\textwidth}
   \centering
@@ -376,7 +377,7 @@ Durch das Speichern von Ressourcen im Cache wird das Installieren einer \ac{pwa}
 \subsection{Interaktion mit Nutzern}
 
 Eine weiteres Merkmal von \acp{pwa}, welches herkömmliche Websites nicht besitzen, ist die Art und Weise, wie mit Nutzern interagiert wird.
-Native Anwendungen können auf Ressourcen des Betriebsystems zugreifen, um mit dem Nutzer zu interagieren selbst wenn die Anwendung nicht aktiv vom Nutzer verwendet wird.
+Native Anwendungen können auf Ressourcen des Betriebssystems zugreifen, um mit dem Nutzer zu interagieren, selbst wenn die Anwendung nicht aktiv vom Nutzer verwendet wird.
 Weit verbreitet ist beispielsweise die Verwendung von Push-Notifications\cite{businessofapps_pushnotificationstatistics}, um Nachrichten oder Informationen an den Nutzer zu leiten.
 
 \acp{pwa} sind ebenso in der Lage, Push-Notifications zu senden, was sie von herkömmlichen Websites abgrenzt.
@@ -396,7 +397,7 @@ Für das Empfangen der Benachrichtigungen wird die Push-API\cite{w3c_pushapi} ve
 Über diese API kann sich ein Service-Worker bei dem Push-Client des Browsers registrieren, welcher mit einem Push-Service zusammenarbeitet.
 
 Für das Senden einer Push-Notification wird nun von einem Backend aus eine Anfrage über das \textit{Web Push Protocol}\cite{ietf_webpush} an den Push-Service gesendet.
-Dieser Verteilt dann die Push-Notification an alle registrierten Clients, die die Benachrichtigung erhalten sollen.
+Dieser verteilt dann die Push-Notification an alle registrierten Clients, die die Benachrichtigung erhalten sollen.
 Falls ein Client offline ist, wird die Benachrichtigung in eine Warteschlange eingefügt und zugestellt, wenn der Client eine erneute Verbindung aufbaut\cite{googledev_webpush}.
 
 \begin{figure}[h]
@@ -424,7 +425,7 @@ Daraus folgt, dass für jede Zugriffskomponente ein eigener Standard entwickelt 
 Zum aktuellen Zeitpunkt existieren für nahezu alle Zugriffskomponenten, die ein Smartphone oder PC bietet, ein Standard oder zumindest ein Entwurf für diesen.
 In einer Übersicht von Adam Bar\cite{bar_webcando} werden insgesamt 44 dieser Komponenten gelistet.
 Als Folge dieser großen Vielfalt ist eine ebenso große Vielfalt an Zugriffsformen entstanden, die in den Standards festgelegt sind.
-Wie im folgenden beispielhaft gezeigt, besitzen verschiedene Komponenten deutlich unterschiedliche Zugriffsformen:
+Wie im Folgenden beispielhaft gezeigt, besitzen verschiedene Komponenten deutlich unterschiedliche Zugriffsformen:
 
 \paragraph{Positionsdaten} Positionsdaten werden über ein \textit{Geolocation}-Objekt im Navigator des Browsers angefordert.
 Eine Überprüfung, ob dieses Objekt vorhanden ist, genügt, um Kompatibilität des Browsers festzustellen.
@@ -482,22 +483,22 @@ Es wird erwartet, dass die \ac{pwa} über HTTPS an den Nutzer ausgeliefert wird 
 Ebenso wird eine Manifestdatei verlangt, jedoch nicht angegeben, welche Felder diese mindestens definieren muss.
 Da der Unterpunkt \enquote{Web app manifest} in der Dokumentation des Edge Browsers auf die von Mozilla verweist, ist anzunehmen, dass die Anforderungen an die Manifestdatei denen der anderen Browser entsprechen.
 
-\paragraph{Weiter Browser}
+\paragraph{Weitere Browser}
 Weitere Browser wie Opera\cite{devopera_pwainstallcriteria}, Samsung Internet\cite{samsung_pwainstallcriteria} oder der UC Browser\cite{ucweb_pwainstallcriteria} definieren ähnliche Kriterien für die Installation einer \ac{pwa}.
 Sowohl das Ausliefern einer \ac{pwa} über HTTPS als auch das Vorhandensein von Service Workern zieht sich als roter Faden durch die Kriterien.
 Des Weiteren wird von jedem Browser die Manifestdatei der \ac{pwa} verlangt.
 
 Die Voraussetzungen der verschiedenen Browser sind größtenteils identisch.
-Es ist festzustellen, dass die Voraussetzungen größtenteils das abdecken, was zum installieren einer \ac{pwa} notwendig ist.
+Es ist festzustellen, dass die Voraussetzungen größtenteils das abdecken, was zum Installieren einer \ac{pwa} notwendig ist.
 Service Worker sind notwendig, um die \ac{pwa} lokal verfügbar zu machen und ohne HTTPS können Service Worker nicht verwendet werden.
 Dadurch sind die meisten Voraussetzungen der Browser bereits abgedeckt.
 Des Weiteren wird die Manifestdatei vorausgesetzt, welche definiert, wie die \ac{pwa} installiert wird.
 Weitere Voraussetzungen sind nicht nötig, um die Anwendung installieren zu können.
-Die von Google Chrome definierte Voraussetzung, dass ein Nutzer zunächst mit einer Domain interagieren muss, soll lediglich das Nutzererlebnis verbessern.
+Die von Google Chrome definierten Voraussetzung, dass ein Nutzer zunächst mit einer Domain interagieren muss, soll lediglich das Nutzererlebnis verbessern.
 
 \newpage
 
-\section{Vorteile von \acp{pwa}}
+\section{Vorteile von \aclp{pwa}}
 \label{sec:vorteile}
 
 \acp{pwa} bringen einige Vorteile mit sich.
@@ -524,7 +525,7 @@ Für Nutzer bieten \acp{pwa} ein natives Nutzererlebnis und die Aussicht auf res
 
 \newpage
 
-\section{Kritik an \acp{pwa}}
+\section{Kritik an \aclp{pwa}}
 \label{sec:nachteile}
 
 Die größten Kritikpunkte an \acp{pwa} entstehen durch die Kerneigenschaften dieser.
@@ -533,7 +534,7 @@ Dies ist gerade auf Mobilgeräten ein Problem, welche durch eine Batterie nur be
 Das Ausführen des Browsers zusammen mit der eigentlichen Anwendung erhöht den Batterieverbrauch, wodurch gerade Nutzer auf schwächeren Geräten davon absehen werden, die \ac{pwa} zu verwenden.
 Ein weiteres Problem ist der Zugriff auf Systemressourcen und Geräte durch den Browser.
 \acp{pwa} können längst nicht alle Aktivitäten ausführen, zu denen native Anwendungen im Stande sind.
-Des weiteren entsteht die Problematik, dass verschiedene Browser verschiedene Schnittstellen für \acp{pwa} bieten.
+Des Weiteren entsteht die Problematik, dass verschiedene Browser verschiedene Schnittstellen für \acp{pwa} bieten.
 Es kann also nicht garantiert werden, dass eine \ac{pwa} für jeden Nutzer funktioniert.
 Gerade bei iOS-Geräte wird dies zu einem Problem, da auf dieser Plattform die Unterstützung für \acp{pwa} erst spät eingeführt wurde.
 
@@ -558,7 +559,7 @@ Mit dem Anspruch, die Lücke zwischen diesen beiden Kategorien von Anwendungen z
 
 Für Nutzer bieten \acp{pwa} eine nahezu nahtlose Integration in die bereits bestehenden Strukturen nativer Apps und bestechen zudem mit geringerem Speicherverbrauch und schnelleren Ladezeiten.
 Viel mehr wird aber aus Nutzersicht nicht geboten.
-Hinzu kommt, dass \acp{pwa} keine Eigenständigen Anwendungen sind und daher immer die Unterstützung des Browsers benötigen, welcher viele Ressourcen benötigt, was sich besonders im Akkuverbrauch auf Mobilgeräten bemerkbar macht.
+Hinzu kommt, dass \acp{pwa} keine eigenständigen Anwendungen sind und daher immer die Unterstützung des Browsers benötigen, welcher viele Ressourcen benötigt, was sich besonders im Akkuverbrauch auf Mobilgeräten bemerkbar macht.
 
 Für Entwickler haben \acp{pwa} mehr zu bieten.
 Eine einfache Migration von existierenden Webanwendungen, sofortige Aktualisierungen für die gesamte Nutzerbasis und ein breiter Zugriff auf Systemressourcen eröffnen für Webanwendungen völlig neue Gebiete und ermöglichen eine schnellere Softwareentwicklung, wodurch Entwicklungskosten sinken.
