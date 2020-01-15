@@ -244,6 +244,12 @@ Was können PWA mehr? +
 ** Nicht jeder Browser unterstützt Zugriff
 ** Nicht jeder Browser unterstützt Zugriff _richtig_
 
+[.notes]
+--
+Fällt auf: Browser wieder beteiligt.+
+Keine einheitliche Schnittstellen
+--
+
 === Zugriff auf Ressourcen
 
 [%header,cols=4*]
@@ -265,7 +271,7 @@ Was können PWA mehr? +
 |*✗*
 
 |Kamera und Mikrophon
-|*✓*`navigator.mediaDevices`
+|`navigator.mediaDevices`
 |*✗*
 |*✗*
 |===
@@ -357,4 +363,6 @@ IIler hier? Warum nicht aufm M3 Cortex? +
 Viele herkömmliche Apps *nicht* ersetzt (Taschenlampe, SMS, ..) +
 Aufwand lohnt sich nicht für statische Seiten (hasthelargehadroncolliderdestroyedtheworldyet.com)
 --
+
+== Fragen
 
