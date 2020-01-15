@@ -72,6 +72,7 @@ Viel "Marketing", mehr Softwaretechnik hier.
 
 [.notes]
 --
+Drei Kategorien für mich+
 Muss haben (ohne keine Funktion) +
 Häufig vorhanden (durch Bibliotheken) +
 Design ist an Anwendungen angelehnt. Erkennt man hier.
