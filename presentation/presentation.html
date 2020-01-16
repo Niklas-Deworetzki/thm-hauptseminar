@@ -2,59 +2,14 @@
   float: right;
 }
 
-.reveal .listingblock.stretch > .content {
-  height: 100%;
-}
-
-.reveal .listingblock.stretch > .content > pre {
-  height: 100%;
-}
-
-.reveal .listingblock.stretch > .content > pre > code {
-  height: 100%;
-  max-height: 100%;
-}
-
-/* tables */
-table{border-collapse:collapse;border-spacing:0}
-table{margin-bottom:1.25em;border:solid 1px #dedede}
-table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;text-align:left}
-table tr th,table tr td{padding:.5625em .625em;font-size:inherit}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
-td.tableblock>.content{margin-bottom:1.25em}
-td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
-table.frame-all{border-width:1px}
-table.frame-sides{border-width:0 1px}
-table.frame-topbot,table.frame-ends{border-width:1px 0}
-.reveal table th.halign-left,.reveal table td.halign-left{text-align:left}
-.reveal table th.halign-right,.reveal table td.halign-right{text-align:right}
-.reveal table th.halign-center,.reveal table td.halign-center{text-align:center}
-.reveal table th.valign-top,.reveal table td.valign-top{vertical-align:top}
-.reveal table th.valign-bottom,.reveal table td.valign-bottom{vertical-align:bottom}
-.reveal table th.valign-middle,.reveal table td.valign-middle{vertical-align:middle}
-table thead th,table tfoot th{font-weight:bold}
-tbody tr th{display:table-cell;line-height:1.6}
-tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{font-weight:bold}
-thead{display:table-header-group}
-
-.reveal table.grid-none th,.reveal table.grid-none td{border-bottom:0!important}
-
 /* callouts */
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] {display:inline-block;color:#fff!important;background-color:rgba(50,150,50,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
-.conum[data-value]::after{content:attr(data-value)}
+.conum[data-value]:after{content:attr(data-value)}
 pre .conum[data-value]{position:relative;top:-.125em}
 b.conum *{color:inherit!important}
-.conum:not([data-value]):empty{display:none}</style><link rel="stylesheet" href="./fonts/fontawesome/css/rall.css"><script>var link = document.createElement( 'link' );
+.conum:not([data-value]):empty{display:none}</style><link rel="stylesheet" href="./fonts/fontawesome/css/rall.css"><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet"><script>var link = document.createElement( 'link' );
 link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = window.location.search.match( /print-pdf/gi ) ? "reveal.js/css/print/pdf.css" : "reveal.js/css/print/paper.css";
@@ -82,7 +37,7 @@ Design ist an Anwendungen angelehnt. Erkennt man hier.</p></div></aside></sectio
 <section id="_installation"><h2>Installation</h2><div class="imageblock" style=""><img src="images/pwa-install.png" alt="Installationsdialog für "Air Horner""></div>
 <div class="ulist"><ul><li><p>Benötigte Dateien herunterladen</p></li><li><p>Verknüpfung erstellen</p></li></ul></div>
 <div class="paragraph"><p>&#8658; Manifestdatei beschreibt Installation</p></div></section>
-<section><section id="_manifest"><h2>Manifest</h2><div class="paragraph"><p>Manifest wird im Header hinzugefügt.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code data-lang="html" class="language-html hljs" data-noescape="true">           &lt;link rel="manifest" href="/manifest.json"&gt;</code></pre></div></div><div class="paragraph"><p>Jede bestehende Webanwendung kann erweitert werden.</p></div></section><section id="_verpflichtende_manifesteinträge"><h2>Verpflichtende Manifesteinträge</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Schlüssel</th><th class="tableblock halign-left valign-top">Funktion</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>short_name</code>, <code>name</code>, <code>icons</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Gestaltung der Verknüpfung</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>display</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startmodus für PWA</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>start_url</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startbildschirm der Anwendung</p></td></tr></table>
+<section><section id="_manifest"><h2>Manifest</h2><div class="paragraph"><p>Manifest wird im Header hinzugefügt.</p></div><pre class="highlight listingblock"><code data-noescape class="html language-html">           &lt;link rel="manifest" href="/manifest.json"&gt;</code></pre><div class="paragraph"><p>Jede bestehende Webanwendung kann erweitert werden.</p></div></section><section id="_verpflichtende_manifesteinträge"><h2>Verpflichtende Manifesteinträge</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Schlüssel</th><th class="tableblock halign-left valign-top">Funktion</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>short_name</code>, <code>name</code>, <code>icons</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Gestaltung der Verknüpfung</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>display</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startmodus für PWA</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>start_url</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Startbildschirm der Anwendung</p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p><code>display</code> kann <code>fullscreen</code>, <code>standalone</code>, <code>browser</code><br>
 Start ist wichtig. Beispiel "Einloggen"</p></div></aside></section><section id="_weitere_manifesteinträge"><h2>Weitere Manifesteinträge</h2><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Schlüssel</th><th class="tableblock halign-left valign-top">Funktion</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Gestaltung der Verknüpfung</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>background_color</code>, <code>theme_color</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Browserkomponenten einfärben (Programmstart)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>scope</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Hilfreich bei Subdomain</p></td></tr></table>
 <aside class="notes"></aside></section></section>
@@ -97,11 +52,11 @@ Service Worker sind Worker.<br>
 Sonst Abhängigkeit zu Tab<br>
 Ausführung also unabhängig</p></div></aside></section>
 <section id="_service_worker_2"><h2>Service Worker</h2><div class="paragraph"><p>Service Worker reagieren auf externe Events</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code data-lang="javascript" class="language-javascript hljs" data-noescape="true">self.addEventListener('fetch', function(event) {
+<pre class="highlight listingblock"><code data-noescape class="javascript language-javascript">self.addEventListener('fetch', function(event) {
   event.respondWith(cache.match(event.request)
     .then(cachedResponse =&gt; cachedResponse
                          || fetch(event.request)))
-});</code></pre></div></div>
+});</code></pre>
 <aside class="notes"><div class="paragraph"><p>Globales <code>cache</code> Objekt<br>
 Erläutern: Externe Events, Fetch Event mit Daten, Cache, <strong>falsy</strong>, Chaining</p></div></aside></section>
 <section id="_ein_kleines_beispiel"><h2>Ein kleines Beispiel</h2><div class="paragraph"><p><a href="https://pokedex.org/" class="bare">https://pokedex.org/</a></p></div>
@@ -168,7 +123,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: false,
+  slideNumber: 'true',
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Push each slide change to the browser history
@@ -248,8 +203,8 @@ Reveal.initialize({
   // The "normal" size of the presentation, aspect ratio will be preserved
   // when the presentation is scaled to fit different resolutions. Can be
   // specified using percentage units.
-  width: 1400,
-  height: 630,
+  width: 1200,
+  height: 1000,
 
   // Factor of the display size that should remain empty around the content
   margin: 0.1,
@@ -257,12 +212,6 @@ Reveal.initialize({
   // Bounds for smallest/largest possible scale to apply to content
   minScale: 0.2,
   maxScale: 1.5,
-
-  // PDF Export Options
-  // Put each fragment on a separate page
-  pdfSeparateFragments: true,
-  // For slides that do not fit on a page, max number of pages
-  pdfMaxPagesPerSlide: 1,
 
   // Optional libraries used to extend on reveal.js
   dependencies: [
@@ -278,4 +227,4 @@ Reveal.initialize({
 
   
 
-});</script><link rel="stylesheet" href="reveal.js/lib/css/zenburn.css"/></body></html>
+});</script></body></html>

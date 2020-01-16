@@ -6,9 +6,9 @@
 :source-highlighter: highlightjs
 :iconfont-remote!:
 :iconfont-name: fonts/fontawesome/css/rall
-:revealjs_width: 1400
-:revealjs_height: 630
-
+:revealjs_width: 1200
+:revealjs_height: 1000
+:revealjs_slideNumber: true
 
 
 == Progressive Web Apps
